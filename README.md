@@ -1,6 +1,6 @@
 # Integrify intranet Event manager App
 
-This app is created to manage events within Integrify Academy, Helsinki. It is created for our June, 2019 demo day at Integrify winter 2019 batch . It was using Reaact. Happy Using 😀.
+This is an intranet event management react app within Integrify Academy, Helsinki. It is created for our June, 2019 demo day at Integrify winter 2019 batch . It was using React. Happy Using 😀.
 
 ## Demo
 
