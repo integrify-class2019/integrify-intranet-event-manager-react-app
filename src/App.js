@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import LogIn from './components/auth/LogIn';
+import CreateEvent from './components/events/CreateEvent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </header>
       </div>
       <LogIn />
+      <CreateEvent />
     </BrowserRouter>
   );
 }
