@@ -1,110 +1,137 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
-import TimePicker from 'react-time-picker';
+import DateTimePicker from 'react-datetime-picker';
 
 import '../../CreateEvent.css';
 
 export default class CreateEvent extends Component {
-  state = {
-    date: new Date(),
-    time: '10:00'
-  };
+    state = {
+        eventName: '',
+        eventDescription: '',
+        eventType: '',
+        eventLocation: '',
+        date: new Date(),
+    };
 
-  onChange = (date, time) => {
-    console.log(this.state);
+    handleDate = date => {
+        this.setState({ date });
+        console.log(this.state);
+    };
 
-    this.setState({ date });
-    this.setState({ time });
-  };
+    handleChange = e => {
+        const { value, name } = e.target;
+        this.setState({ [name]: value });
+    };
 
-  render() {
-    return (
-      <div className='CreateEvent'>
-        <div className='CreateEvent-title'>
-          <h1>Create Event</h1>
-          <div>Menu</div>
-        </div>
-        <div className='CreateEvent-Form'>
-          <form className='FormFields'>
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventName'>
-                Name
-              </label>
-              <input
-                type='text'
-                id='eventName'
-                value=''
-                className='FormField-Input'
-                placeholder='Name of your event'
-                name='eventName'
-                onChange=''
-              />
+    handleSubmit = e => {
+        e.preventDefault();
+
+        // this is where we can send the data to the server for Sign UP or Sign In
+
+        console.log('the event created with the following data:');
+        console.log(this.state);
+    };
+
+    render() {
+        const { eventName, eventDescription, eventType, eventLocation, date } = this.state;
+        return (
+            <div className="CreateEvent">
+                <div className="CreateEvent-title">
+                    <h1>Create Event</h1>
+                    <div>Menu</div>
+                </div>
+                <div className="CreateEvent-Form">
+                    <form className="FormFields">
+                        <div className="FormField">
+                            <label className="FormField-Label" htmlFor="eventName">
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                id="eventName"
+                                value={eventName}
+                                className="FormField-Input"
+                                placeholder="Name of your event"
+                                name="eventName"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+
+                        <div className="FormField">
+                            <label className="FormField-Label" htmlFor="eventDescription">
+                                Description
+                            </label>
+                            <input
+                                type="text"
+                                id="eventDescription"
+                                value={eventDescription}
+                                className="FormField-Input"
+                                placeholder="what are you organising?"
+                                name="eventDescription"
+                                onChange={this.handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="FormField">
+                            <label className="FormField-Label" htmlFor="eventType">
+                                Type of Event
+                            </label>
+                            <select
+                                value={eventType}
+                                name="eventType"
+                                onChange={this.handleChange}
+                                required
+                            >
+                                <option value="">-- Select your Event --</option>
+                                <option value="type1">type1</option>
+                                <option value="type2">type2</option>
+                                <option value="type3">type3</option>
+                                <option value="type4">type4</option>
+                            </select>
+                        </div>
+
+                        <div className="FormField">
+                            <label className="FormField-Label" htmlFor="eventLocation">
+                                Location
+                            </label>
+                            <input
+                                type="text"
+                                id="eventLocation"
+                                value={eventLocation}
+                                className="FormField-Input"
+                                placeholder="Place, room, or address"
+                                name="eventLocation"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+
+                        <div className="FormField">
+                            <label className="FormField-Label" htmlFor="eventDate">
+                                Date:
+                            </label>
+                            <DateTimePicker
+                                disableClock
+                                type="date"
+                                className="FormField-Calendar"
+                                name="date"
+                                id="eventDate"
+                                onChange={this.handleDate}
+                                value={date}
+                            />
+                        </div>
+
+                        <div className="FormField">
+                            <button
+                                type="submit"
+                                className="FormField-Button"
+                                onClick={this.handleSubmit}
+                            >
+                                Create Event
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventDescription'>
-                Description
-              </label>
-              <input
-                type='text'
-                id='eventDescription'
-                value=''
-                className='FormField-Input'
-                placeholder='what are you organising?'
-                name='eventDescription'
-                onChange=''
-              />
-            </div>
-
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventType'>
-                Type of Event
-              </label>
-              <select value='' name='eventType' onChange=''>
-                <option value=''>-- Select your Event --</option>
-                <option value='type1'>type1</option>
-                <option value='type2'>type2</option>
-                <option value='type3'>type3</option>
-                <option value='type4'>type4</option>
-              </select>
-            </div>
-
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventLocation'>
-                Location
-              </label>
-              <input
-                type='text'
-                id='eventLocation'
-                value=''
-                className='FormField-Input'
-                placeholder='Place, room, or address'
-                name='eventLocation'
-                onChange=''
-              />
-            </div>
-
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventDate'>
-                Date
-              </label>
-              <Calendar
-                className='FormField-Calendar'
-                id='eventDate'
-                onChange={this.onChange}
-                value={this.state.date}
-              />
-            </div>
-
-            <div className='FormField'>
-              <label className='FormField-Label' htmlFor='eventTime'>
-                Time
-              </label>
-              <TimePicker onChange={this.onChange} value={this.state.time} />
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
