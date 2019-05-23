@@ -65,7 +65,7 @@ export default class CreateEvent extends Component {
                                 id="eventDescription"
                                 value={eventDescription}
                                 className="FormField-Input"
-                                placeholder="what are you organising?"
+                                placeholder="What are you organising?"
                                 name="eventDescription"
                                 onChange={this.handleChange}
                                 required
