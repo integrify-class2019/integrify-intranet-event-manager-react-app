@@ -165,11 +165,10 @@ input {
 button {
   background: #ffb600;
   border: 1px solid #ffb600;
-  display: block;
   height: 3rem;
   border-radius: 1.5rem;
-  margin: 1.5rem auto;
-  padding: 0.7rem 0.85rem;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1rem;
   text-align: center;
-  width: 14rem;
+  width: 9rem;
 }

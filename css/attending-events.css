@@ -136,16 +136,13 @@ nav {
 }
 
 .event-card {
-  margin-bottom: 25px;
-}
-
-.event-image {
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-radius: 2rem;
-  min-height: 180px;
+  margin-bottom: 25px;
 }
 
 .event-1 {
@@ -202,9 +199,4 @@ nav {
 }
 .location {
   width: 18px;
-}
-
-.event-actions {
-  display: flex;
-  justify-content: space-around;
 }
