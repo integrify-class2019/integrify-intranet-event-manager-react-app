@@ -1,0 +1,149 @@
+.LogIn {
+    height: 100vh;
+    display: flex;
+    color: white;
+    /* width: 50%; */
+    margin: auto;
+}
+
+.LogIn-Aside {
+    width: 50%;
+    background-color: #ffb600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.LogIn-Form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #353535;
+    padding: 25px 40px;
+    overflow: auto;
+}
+
+.PageSwitcher {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10%;
+}
+
+.PageSwitcher-Item {
+    background-color: #4c5d72;
+    color: #9da6b1;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 0.9em;
+    border: none;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.PageSwitcher-Item-Active {
+    background-color: #ffb600;
+    color: white;
+}
+
+.PageSwitcher-Item:first-child {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.PageSwitcher-Item:last-child {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.FormCenter {
+    margin-bottom: 100px;
+}
+
+.FormTitle {
+    color: #707c8b;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+.FormTitle-Link {
+    color: #707c8b;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.7em;
+    margin: 0 10px;
+    padding-bottom: 5px;
+}
+
+.FormTitle-Link:first-child {
+    margin-left: 0;
+}
+
+.FormTitle-Link-Active {
+    color: white;
+    border-bottom: 1px solid #ffb600;
+}
+
+.FormField {
+    margin-bottom: 40px;
+}
+
+.FormField-Label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: white;
+}
+.FormField-Input {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #ffb600;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.FormField-Input::placeholder {
+    color: #616e7f;
+}
+
+.FormField-Button {
+    background-color: #ffb600;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding: 15px 70px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.FormField-Link {
+    color: #66707d;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1.5px solid #ffb600;
+    padding-bottom: 5px;
+}
+
+.FormField-CheckboxLabel {
+    color: #646f7d;
+    font-size: 0.9em;
+}
+
+.FormField-Checkbox {
+    position: relative;
+    top: 1.5px;
+}
+
+.FormField-TermsLink {
+    color: white;
+    border-bottom: 1px solid #ffb600;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-left: 5px;
+}

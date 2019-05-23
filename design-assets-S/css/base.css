@@ -1,0 +1,175 @@
+/* UNIVERSAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Asap', sans-serif;
+  scroll-behavior: smooth;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: inherit;
+  font-size: 10px;
+  color: white;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  background: rgb(235, 234, 234);
+}
+
+img {
+  /* display: block; */
+  margin: auto;
+  width: 100%;
+}
+
+/* UTILITY */
+.mobile-wrapper {
+  width: 280px;
+  margin: 5rem auto;
+  /* height: 520px; */
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* TYPOGRAPHY */
+h1,
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.yellow-text {
+  color: #ffb600;
+}
+
+.grey-text {
+  color: #909090;
+}
+
+.white-text {
+  color: white;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+}
+
+/* HEADER */
+header {
+  background: rgba(78, 71, 71, 0.1);
+  display: flex;
+  height: 80px;
+  width: 300px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+header p {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+section {
+  background: white;
+}
+
+/* MAIN */
+main {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+  justify-content: flex-start;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 1.3rem;
+
+  width: 300px;
+  z-index: -10;
+}
+
+main::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+main::-webkit-scrollbar-track {
+  background: white;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #ffb600;
+}
+
+/* FOOTER */
+footer {
+  background: #ffb600;
+  display: flex;
+  height: 85px;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0.5rem 0.5rem 0.5rem 0.2rem;
+  position: relative;
+  width: 280px;
+}
+
+footer::before {
+  background: #4e4747;
+  content: '';
+  height: 2rem;
+  left: 0px;
+  opacity: 0.5;
+  position: absolute;
+  top: -1rem;
+  width: 280px;
+  z-index: 0;
+}
+
+footer p {
+  text-align: center;
+}
+
+/* OTHER COMMON ELEMENTS */
+
+label {
+  color: #ffb600;
+  font-size: 1.5rem;
+  text-align: center;
+  /* padding-bottom: 0.5rem; */
+}
+
+input {
+  /* display: block; */
+  border: 1px solid #909090;
+  color: #909090;
+  border-radius: 1.2rem;
+  margin: 0.25rem auto;
+  line-height: 2.4rem;
+  text-align: center;
+}
+
+button {
+  background: #ffb600;
+  border: 1px solid #ffb600;
+  display: block;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin: 1.5rem auto;
+  padding: 0.7rem 0.85rem;
+  text-align: center;
+  width: 14rem;
+}
