@@ -6,7 +6,10 @@ import '../../Dashboard.css';
 import EventDashboard from './EventDashboard';
 
 export default class Dashboard extends Component {
-    state = { events: [] };
+    state = {
+        events: [],
+        typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
+    };
 
     componentDidMount() {
         this.setState({
@@ -14,9 +17,57 @@ export default class Dashboard extends Component {
         });
     }
 
+    showInputChange = typeInput => {
+        // / show all if all is false
+        if (Object.values(typeInput).filter(item => item == true).length === 0) {
+            this.setState({
+                events,
+            });
+            return;
+        }
+
+        const newEvents = events.filter(event => {
+            if (typeInput[event.type] === true) {
+                return event;
+            }
+        });
+        this.setState({
+            events: newEvents,
+        });
+    };
+
+    handleInputChange = event => {
+        const { name, type, value } = event.target;
+        if (type === 'checkbox') {
+            const typeInput = { ...this.state.typeInput };
+            typeInput[name] = !typeInput[name];
+            this.showInputChange(typeInput);
+            this.setState({
+                typeInput,
+            });
+        } else {
+            this.setState({
+                [name]: value,
+            });
+        }
+    };
+
     render() {
         const renderEvents = this.state.events.map(event => (
             <EventDashboard key={event.id} event={event} />
+        ));
+
+        const renderType = Object.keys(this.state.typeInput).map(typeItem => (
+            <div className="input-type" key={typeItem}>
+                <input
+                    type="checkbox"
+                    id={typeItem}
+                    name={typeItem}
+                    checked={this.state.sport}
+                    onChange={this.handleInputChange}
+                />
+                <label htmlFor={typeItem}>{typeItem}</label>
+            </div>
         ));
 
         return (
@@ -28,16 +79,7 @@ export default class Dashboard extends Component {
                             placeholder="Search events..."
                             className="search-input"
                         />
-                        <input type="checkbox" id="sport" />
-                        <label htmlFor="">Sport</label>
-                        <input type="checkbox" id="meetup" />
-                        <label htmlFor="">Meet up</label>
-                        <input type="checkbox" id="party" />
-                        <label htmlFor="">Party</label>
-                        <input type="checkbox" id="presentation" />
-                        <label htmlFor="">Presentation</label>
-                        <input type="checkbox" id="other" />
-                        <label htmlFor="">Other</label>
+                        {renderType}
                     </form>
                     <div className="add-btn">
                         <img src="./assets/images/add-btn.svg" alt="" />
