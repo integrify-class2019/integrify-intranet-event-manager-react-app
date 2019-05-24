@@ -24,7 +24,7 @@ export default class Dashboard extends Component {
             this.setState({
                 events: eventsData,
             });
-            return;
+            return eventsData;
         }
 
         const newEvents = eventsData.filter(event => {
