@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-const events = [
+const eventsData = [
     {
         id: '1',
         name: 'Bummer Picnic',
@@ -37,4 +37,4 @@ const events = [
     },
 ];
 
-export { events };
+export { eventsData };

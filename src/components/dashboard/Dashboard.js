@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { events } from '../../data';
+import { eventsData } from '../../data';
 import '../../Dashboard.css';
 
 import EventDashboard from './EventDashboard';
@@ -9,12 +9,12 @@ export default class Dashboard extends Component {
     state = {
         events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
-        search: '',
+        searchTerm: '',
     };
 
     componentDidMount() {
         this.setState({
-            events,
+            events: eventsData,
         });
     }
 
@@ -22,13 +22,28 @@ export default class Dashboard extends Component {
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item == true).length === 0) {
             this.setState({
-                events,
+                events: eventsData,
             });
             return;
         }
 
-        const newEvents = events.filter(event => {
+        const newEvents = eventsData.filter(event => {
             if (typeInput[event.type] === true) {
+                return event;
+            }
+        });
+        this.setState({
+            events: newEvents,
+        });
+        return newEvents;
+    };
+
+    showSearchTermChange = searchTerm => {
+        const eventsBefore = this.showInputChange(this.state.typeInput);
+        const newEvents = eventsBefore.filter(event => {
+            console.log(event.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+            if (event.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                 return event;
             }
         });
@@ -50,11 +65,15 @@ export default class Dashboard extends Component {
             this.setState({
                 [name]: value,
             });
+
+            if (name === 'searchTerm') {
+                this.showSearchTermChange(value);
+            }
         }
     };
 
     render() {
-        const { events, typeInput } = this.state;
+        const { events, typeInput, searchTerm } = this.state;
 
         const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
 
@@ -79,6 +98,9 @@ export default class Dashboard extends Component {
                             type="text"
                             placeholder="Search events..."
                             className="search-input"
+                            value={searchTerm}
+                            name="searchTerm"
+                            onChange={this.handleInputChange}
                         />
                         {renderType}
                     </form>
