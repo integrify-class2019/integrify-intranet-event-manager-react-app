@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 export default class EventDashboard extends Component {
     render() {
         const { event } = this.props;
-        const { name, participant, time, type, id } = event;
+        const { name, type, id } = event;
+        // const { name, participant, time, type, id } = event;
         return (
             <div className={`event-card event-${type}`} key={id}>
                 <div className="event-header">
                     <h2 className="event-title">{name}</h2>
                     <div className="progress">
-                        Participant:{participant.in.length}/{participant.total}
+                        {/* Participant:{participant.in.length}/{participant.total} */}
                     </div>
                 </div>
 
@@ -26,13 +27,9 @@ export default class EventDashboard extends Component {
 
                 <div className="event-details">
                     <div className="date-time">
-                        <h3 className="date">
-                            <span>{time.day}</span>{' '}
-                        </h3>
+                        <h3 className="date">{/* <span>{time.day}</span>{' '} */}</h3>
 
-                        <h3 className="time">
-                            {time.hourBegin} - {time.hourEnd}{' '}
-                        </h3>
+                        <h3 className="time">{/* {time.hourBegin} - {time.hourEnd}{' '} */}</h3>
                     </div>
                     <img src="" alt="" className="location" />
                 </div>

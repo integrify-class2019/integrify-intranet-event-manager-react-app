@@ -32,6 +32,7 @@ class CreateEvent extends Component {
         console.log('the event created with the following data:');
         console.log(this.state);
         this.props.createEvent(this.state);
+        // this.props.history.push('/');
     };
 
     render() {

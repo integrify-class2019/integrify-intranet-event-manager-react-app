@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { eventsData } from '../../data';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+// import { eventsData } from '../../data';
 import '../../Dashboard.css';
-
 import EventDashboard from './EventDashboard';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
     state = {
         events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
     };
 
-    componentDidMount() {
-        this.setState({
-            events: eventsData,
-        });
-    }
+    // componentDidMount() {
+    //     const { eventsData } = this.props;
+    //     console.log(eventsData);
+
+    //     this.setState({
+    //         events: eventsData,
+    //     });
+    // }
 
     showInputChange = typeInput => {
+        const { eventsData } = this.props;
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item == true).length === 0) {
             this.setState({
@@ -72,8 +78,16 @@ export default class Dashboard extends Component {
 
     render() {
         const { events, typeInput, searchTerm } = this.state;
+        const { eventsData } = this.props;
+        console.log(eventsData !== undefined, ' ', events.length == 0);
+        if (eventsData !== undefined && events.length == 0) {
+            this.setState({
+                events: eventsData,
+            });
+        }
 
-        const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
+        const renderEvents =
+            events && events.map(event => <EventDashboard key={event.id} event={event} />);
 
         const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="input-type" key={typeItem}>
@@ -116,3 +130,16 @@ export default class Dashboard extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    console.log(state);
+
+    return {
+        eventsData: state.firestore.ordered.events,
+    };
+};
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([{ collection: 'events' }])
+)(Dashboard);
