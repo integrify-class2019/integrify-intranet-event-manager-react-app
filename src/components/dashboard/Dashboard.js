@@ -41,8 +41,6 @@ export default class Dashboard extends Component {
     showSearchTermChange = searchTerm => {
         const eventsBefore = this.showInputChange(this.state.typeInput);
         const newEvents = eventsBefore.filter(event => {
-            console.log(event.name.toLowerCase().includes(searchTerm.toLowerCase()));
-
             if (event.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                 return event;
             }
