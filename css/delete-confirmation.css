@@ -1,0 +1,19 @@
+main {
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  height: 506px;
+}
+
+main h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 13rem;
+  margin-bottom: 2rem;
+}
+
+.delete-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

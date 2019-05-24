@@ -33,4 +33,12 @@
 
 .create-event button {
   width: 15rem;
+  background: #ffb600;
+  border: 1px solid #ffb600;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-top: 1.5rem;
+  /* padding: 0.7rem 1rem; */
+  text-align: center;
+  width: 9rem;
 }

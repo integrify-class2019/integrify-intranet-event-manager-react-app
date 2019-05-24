@@ -13,7 +13,7 @@
 html {
   scroll-behavior: inherit;
   font-size: 10px;
-  color: white;
+  color: #000;
 }
 
 *:focus {
@@ -34,8 +34,6 @@ img {
 .mobile-wrapper {
   width: 380px;
   margin: 2rem auto;
-  /* height: 520px; */
-  /* max-height: 586px; */
 }
 
 .container {
@@ -49,24 +47,6 @@ h2 {
   font-size: 2.2rem;
   font-weight: 700;
   text-align: center;
-}
-
-.yellow-text {
-  color: #ffb600;
-}
-
-.grey-text {
-  color: #909090;
-}
-
-.white-text {
-  color: white;
-  font-weight: 600;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -o-font-smoothing: antialiased;
 }
 
 /* HEADER */
@@ -201,34 +181,11 @@ main::-webkit-scrollbar-thumb {
 
 /* FOOTER */
 footer {
-  background: #ffb600;
-  display: flex;
-  height: 85px;
-  justify-content: space-between;
   margin: auto;
-  padding: 0.5rem 0.5rem 0.5rem 0.2rem;
-  position: relative;
   width: 300px;
-}
-
-footer::before {
-  background: #4e4747;
-  content: '';
-  height: 2rem;
-  left: 0px;
-  opacity: 0.5;
-  position: absolute;
-  top: -1rem;
-  width: 300px;
-  z-index: 0;
-}
-
-footer p {
-  text-align: center;
 }
 
 /* OTHER COMMON ELEMENTS */
-
 label {
   color: #000;
   font-size: 1.3rem;
@@ -258,7 +215,6 @@ button {
   height: 3rem;
   border-radius: 1.5rem;
   margin-top: 1.5rem;
-  padding: 0.7rem 1rem;
   text-align: center;
   width: 9rem;
 }
