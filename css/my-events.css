@@ -1,131 +1,3 @@
-nav {
-  display: none;
-  background: #fff;
-  width: 0;
-  height: 520px;
-  transition: width 0.25s ease 0s;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.open {
-  display: block;
-  width: 250px;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.main-header .navigation {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  margin-right: auto;
-  display: flex;
-  align-items: center;
-}
-
-.header-logo {
-  width: 37px;
-}
-.logo h1 {
-  margin-left: 5px;
-  color: #000;
-}
-
-.menu-bar {
-  width: 33px;
-}
-
-.nav-links {
-  padding: 4rem;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 70%;
-}
-
-.nav-links li {
-  background: #ffb600;
-  border-radius: 40px;
-  display: inline-block;
-  text-align: center;
-  padding: 5px 20px;
-  font-size: 16px;
-  width: 90%;
-  font-weight: 300;
-}
-
-.nav-links li:not(:last-child) {
-  margin-right: 20px;
-}
-
-.nav-links li a {
-  transition: all 0.25s ease 0s;
-  color: #000;
-}
-
-.nav-links li a:hover {
-  color: white;
-}
-
-/* Search box */
-.search-box-add {
-  padding-bottom: 24px;
-}
-
-.search-form input[type='text'] {
-  display: block;
-  width: 90%;
-  margin-top: 10px;
-}
-
-.search-form input[type='checkbox'] {
-  display: inline-block;
-  line-height: 25px;
-  margin-top: 7px;
-  margin-left: 10px;
-}
-
-.search-form label {
-  font-size: 12px;
-}
-
-.search-box-add .more {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 12px;
-  width: 50px;
-  padding: 1px 5px;
-  background: #ffb600;
-  border: 1px solid #ffb600;
-  text-align: center;
-  border-radius: 1.5rem;
-  color: #000;
-}
-
-.add-btn {
-  width: 50px;
-  display: block;
-  margin: 13px;
-}
-
-.progress {
-  width: 55px;
-}
-
 /* Event card */
 .events-section {
   display: flex;
@@ -137,6 +9,10 @@ nav {
 
 .event-card {
   margin-bottom: 25px;
+}
+
+.progress {
+  width: 55px;
 }
 
 .event-image {

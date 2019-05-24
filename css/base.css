@@ -32,9 +32,10 @@ img {
 
 /* UTILITY */
 .mobile-wrapper {
-  width: 280px;
-  margin: 5rem auto;
+  width: 380px;
+  margin: 2rem auto;
   /* height: 520px; */
+  /* max-height: 586px; */
 }
 
 .container {
@@ -87,18 +88,101 @@ section {
   background: white;
 }
 
+/* NAv */
+nav {
+  display: none;
+  background: #fff;
+  width: 0;
+  height: 520px;
+  transition: width 0.25s ease 0s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.open {
+  display: block;
+  width: 250px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.main-header .navigation {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  width: 37px;
+}
+.logo h1 {
+  margin-left: 5px;
+  color: #000;
+}
+
+.menu-bar {
+  width: 33px;
+}
+
+.nav-links {
+  padding: 4rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+}
+
+.nav-links li {
+  background: #ffb600;
+  border-radius: 40px;
+  display: inline-block;
+  text-align: center;
+  padding: 5px 20px;
+  font-size: 16px;
+  width: 90%;
+  font-weight: 300;
+}
+
+.nav-links li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.nav-links li a {
+  transition: all 0.25s ease 0s;
+  color: #000;
+}
+
+.nav-links li a:hover {
+  color: white;
+}
+
 /* MAIN */
 main {
   background: white;
   display: flex;
   flex-direction: column;
-  height: 580px;
+  height: 506px;
   justify-content: flex-start;
   margin: auto;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 1.3rem;
-
   width: 300px;
   z-index: -10;
 }
@@ -124,7 +208,7 @@ footer {
   margin: auto;
   padding: 0.5rem 0.5rem 0.5rem 0.2rem;
   position: relative;
-  width: 280px;
+  width: 300px;
 }
 
 footer::before {
@@ -135,7 +219,7 @@ footer::before {
   opacity: 0.5;
   position: absolute;
   top: -1rem;
-  width: 280px;
+  width: 300px;
   z-index: 0;
 }
 
@@ -146,20 +230,26 @@ footer p {
 /* OTHER COMMON ELEMENTS */
 
 label {
-  color: #ffb600;
-  font-size: 1.5rem;
-  text-align: center;
-  /* padding-bottom: 0.5rem; */
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: left;
+  width: 90px;
+  margin-right: 7px;
 }
 
 input {
-  /* display: block; */
   border: 1px solid #909090;
   color: #909090;
   border-radius: 1.2rem;
   margin: 0.25rem auto;
-  line-height: 2.4rem;
+  line-height: 2rem;
   text-align: center;
+}
+
+input::placeholder {
+  font-size: 1.2rem;
+  color: #707070;
 }
 
 button {

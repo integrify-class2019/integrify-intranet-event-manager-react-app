@@ -1,87 +1,3 @@
-nav {
-  display: none;
-  background: #fff;
-  width: 0;
-  height: 586px;
-  transition: width 0.25s ease 0s;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-.open {
-  display: block;
-  width: 250px;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.main-header .navigation {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  margin-right: auto;
-  display: flex;
-  align-items: center;
-}
-
-.header-logo {
-  width: 37px;
-}
-.logo h1 {
-  margin-left: 5px;
-  color: #000;
-}
-
-.menu-bar {
-  width: 33px;
-}
-
-.nav-links {
-  padding: 4rem;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 70%;
-}
-
-.nav-links li {
-  background: #ffb600;
-  border-radius: 40px;
-  display: inline-block;
-  text-align: center;
-  padding: 5px 20px;
-  font-size: 16px;
-  width: 90%;
-  font-weight: 300;
-}
-
-.nav-links li:not(:last-child) {
-  margin-right: 20px;
-}
-
-.nav-links li a {
-  transition: all 0.25s ease 0s;
-  color: #000;
-}
-
-.nav-links li a:hover {
-  color: white;
-}
-
 /* Search box */
 .search-box-add {
   padding-bottom: 24px;
@@ -97,7 +13,7 @@ nav {
   display: inline-block;
   line-height: 25px;
   margin-top: 7px;
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .search-form label {
@@ -140,7 +56,7 @@ nav {
   margin-top: -40px;
 }
 .event-card {
-  width: 280px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

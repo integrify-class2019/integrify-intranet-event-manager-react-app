@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/create-event.css">
+  <title>Edit Event</title>
+</head>
+
+<body class="mobile-wrapper">
+  
+  <header class="main-header">
+    <div class="container header-nav">
+      <a  href="#" class="logo">
+        <img src="../assets/images/header-logo.svg" alt="logo" class="header-logo">
+        <h1>Edit Event</h1>
+      </a>
+
+      <a href="#" class="menu-bar">
+        <img src="../assets/images/menu bar.svg" alt="menu bar">
+      </a>
+     
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Create Event</a></li>
+          <li><a href="#">My Events</a></li>
+          <li><a href="#">Attending</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+  </header>
+
+  <main>
+    <form action="" class="create-event container">
+      <div class="field title">
+        <label for="title">Title*: </label>
+        <input type="text" id="title" placeholder="event title">
+      </div>
+      <div class="field description">
+        <label for="description">Description*: </label>
+        <input type="text" id="description" placeholder="event description">
+      </div>
+      <div class="field location">
+          <label for="location">Category*: </label>
+          <input type="text" id="location" placeholder="event location">
+        </div>
+      <div class="field category">
+        <label for="category">Category*: </label>
+        <input type="text" id="category" placeholder="event category">
+      </div>
+      <div class="field max-people">
+        <label for="max-people">Max. people*: </label>
+        <input type="text" id="max-people" placeholder="max. no of participants">
+      </div>
+      <div class="field date">
+        <label for="date">Date*: </label>
+        <input type="text" id="date" placeholder="event date">
+      </div>
+      <div class="field time">
+        <label for="start">Time*: </label>
+        <input type="text" id="start" placeholder="start">
+        <input type="text" id="end" placeholder="end">
+      </div>
+      <div class="field more-info">
+        <label for="more-info">More info: </label>
+        <input type="text" id="more-info" placeholder="additional info">
+      </div>
+      <button type="submit">Update Event</button>
+    </form>
+</main>
+  <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
