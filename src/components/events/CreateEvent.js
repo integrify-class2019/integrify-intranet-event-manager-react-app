@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
+import { connect } from 'react-redux';
+import { createEvent } from '../../store/actions/eventActions';
 
 import '../../CreateEvent.css';
 
-export default class CreateEvent extends Component {
+class CreateEvent extends Component {
     state = {
         eventName: '',
         eventDescription: '',
@@ -29,6 +31,7 @@ export default class CreateEvent extends Component {
 
         console.log('the event created with the following data:');
         console.log(this.state);
+        this.props.createEvent(this.state);
     };
 
     render() {
@@ -135,3 +138,12 @@ export default class CreateEvent extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    createEvent: event => dispatch(createEvent(event)),
+});
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(CreateEvent);

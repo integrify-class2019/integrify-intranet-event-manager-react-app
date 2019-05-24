@@ -31,6 +31,12 @@ const initState = {
     ],
 };
 
-const eventReducer = (state = initState, action) => state;
+const eventReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'CREATE_EVENT':
+            console.log('create project', action.event);
+    }
+    return state;
+};
 
 export default eventReducer;

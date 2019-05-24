@@ -1,4 +1,4 @@
-export const createProject = events => (dispatch, getState) => {
+export const createEvent = event => (dispatch, getState) => {
     // make async call to database
-    dispatch({ type: 'CREATE_EVENTS', events });
+    dispatch({ type: 'CREATE_EVENT', event });
 };
