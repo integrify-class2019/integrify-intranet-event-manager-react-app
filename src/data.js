@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-const events = [
+const eventsData = [
     {
         id: '1',
         name: 'Bummer Picnic',
@@ -28,6 +28,13 @@ const events = [
         time: { day: '30 May', hourBegin: '16:00', hourEnd: '19:00' },
         type: 'Presentation',
     },
+    {
+        id: '5',
+        name: 'Demo Day',
+        participant: { total: 15, in: 8, out: 0 },
+        time: { day: '30 May', hourBegin: '16:00', hourEnd: '19:00' },
+        type: 'Meetup',
+    },
 ];
 
-export { events };
+export { eventsData };

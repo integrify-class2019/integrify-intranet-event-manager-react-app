@@ -1,22 +1,91 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { events } from '../../data';
+import { eventsData } from '../../data';
 import '../../Dashboard.css';
 
 import EventDashboard from './EventDashboard';
 
 export default class Dashboard extends Component {
-    state = { events: [] };
+    state = {
+        events: [],
+        typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
+        searchTerm: '',
+    };
 
     componentDidMount() {
         this.setState({
-            events,
+            events: eventsData,
         });
     }
 
+    showInputChange = typeInput => {
+        // / show all if all is false
+        if (Object.values(typeInput).filter(item => item == true).length === 0) {
+            this.setState({
+                events: eventsData,
+            });
+            return;
+        }
+
+        const newEvents = eventsData.filter(event => {
+            if (typeInput[event.type] === true) {
+                return event;
+            }
+        });
+        this.setState({
+            events: newEvents,
+        });
+        return newEvents;
+    };
+
+    showSearchTermChange = searchTerm => {
+        const eventsBefore = this.showInputChange(this.state.typeInput);
+        const newEvents = eventsBefore.filter(event => {
+            if (event.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return event;
+            }
+        });
+        this.setState({
+            events: newEvents,
+        });
+    };
+
+    handleInputChange = event => {
+        const { name, type, value } = event.target;
+        if (type === 'checkbox') {
+            const typeInput = { ...this.state.typeInput };
+            typeInput[name] = !typeInput[name];
+            this.showInputChange(typeInput);
+            this.setState({
+                typeInput,
+            });
+        } else {
+            this.setState({
+                [name]: value,
+            });
+
+            if (name === 'searchTerm') {
+                this.showSearchTermChange(value);
+            }
+        }
+    };
+
     render() {
-        const renderEvents = this.state.events.map(event => (
-            <EventDashboard key={event.id} event={event} />
+        const { events, typeInput, searchTerm } = this.state;
+
+        const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
+
+        const renderType = Object.keys(typeInput).map(typeItem => (
+            <div className="input-type" key={typeItem}>
+                <input
+                    type="checkbox"
+                    id={typeItem}
+                    name={typeItem}
+                    checked={typeInput[typeItem]}
+                    onChange={this.handleInputChange}
+                />
+                <label htmlFor={typeItem}>{typeItem}</label>
+            </div>
         ));
 
         return (
@@ -27,17 +96,11 @@ export default class Dashboard extends Component {
                             type="text"
                             placeholder="Search events..."
                             className="search-input"
+                            value={searchTerm}
+                            name="searchTerm"
+                            onChange={this.handleInputChange}
                         />
-                        <input type="checkbox" id="sport" />
-                        <label htmlFor="">Sport</label>
-                        <input type="checkbox" id="meetup" />
-                        <label htmlFor="">Meet up</label>
-                        <input type="checkbox" id="party" />
-                        <label htmlFor="">Party</label>
-                        <input type="checkbox" id="presentation" />
-                        <label htmlFor="">Presentation</label>
-                        <input type="checkbox" id="other" />
-                        <label htmlFor="">Other</label>
+                        {renderType}
                     </form>
                     <div className="add-btn">
                         <img src="./assets/images/add-btn.svg" alt="" />
