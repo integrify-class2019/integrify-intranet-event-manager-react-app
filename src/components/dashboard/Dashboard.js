@@ -9,6 +9,7 @@ export default class Dashboard extends Component {
     state = {
         events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
+        search: '',
     };
 
     componentDidMount() {
@@ -53,17 +54,17 @@ export default class Dashboard extends Component {
     };
 
     render() {
-        const renderEvents = this.state.events.map(event => (
-            <EventDashboard key={event.id} event={event} />
-        ));
+        const { events, typeInput } = this.state;
 
-        const renderType = Object.keys(this.state.typeInput).map(typeItem => (
+        const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
+
+        const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="input-type" key={typeItem}>
                 <input
                     type="checkbox"
                     id={typeItem}
                     name={typeItem}
-                    checked={this.state.sport}
+                    checked={typeInput[typeItem]}
                     onChange={this.handleInputChange}
                 />
                 <label htmlFor={typeItem}>{typeItem}</label>
