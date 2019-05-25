@@ -19,6 +19,7 @@ You can see the live demo of the App here:
 ## Technologies
 
 -   REACT
+-   REACT REDUX
 -   CSS
 
 
