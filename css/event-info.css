@@ -1,0 +1,87 @@
+main {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+/* Event hero*/
+.event-hero {
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: url(../assets/images/event-1.jpg) top/cover no-repeat;
+}
+.event-hero h2 {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.event-category {
+  font-size: 1.4rem;
+  color: #4e4747;
+}
+
+.event-category span {
+  color: #000;
+  font-weight: 700;
+}
+
+/* Event actions */
+.event-actions {
+  width: 80%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px 8px;
+  border-radius: 20px;
+}
+
+.thumbs-up,
+.thumbs-down {
+  display: flex;
+  align-items: center;
+}
+.up,
+.down {
+  width: 18px;
+  margin-right: 4.5px;
+}
+
+.in,
+.out {
+  width: 60px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 2px 0;
+  font-size: 1.5rem;
+  color: white;
+}
+.in {
+  color: #0c900c;
+  border: 2px solid #0c900c;
+  font-weight: 600;
+}
+.out {
+  color: #e63212;
+  border: 1px solid #e63212;
+  font-weight: 400;
+}
+
+/* Event details */
+.event-description {
+  margin-bottom: 2rem;
+}
+.event-description h2 {
+  font-size: 1.6rem;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+.event-description p {
+  color: #4e4747;
+  font-size: 1.3rem;
+}

@@ -73,7 +73,7 @@ nav {
   display: none;
   background: #fff;
   width: 0;
-  height: 520px;
+  height: 586px;
   transition: width 0.25s ease 0s;
   position: absolute;
   right: 0;
@@ -81,11 +81,12 @@ nav {
   margin: 0;
   bottom: 0;
   left: 0;
+  z-index: 9999;
 }
 
 .open {
   display: block;
-  width: 250px;
+  width: 230px;
 }
 
 .header-nav {
@@ -217,4 +218,9 @@ button {
   margin-top: 1.5rem;
   text-align: center;
   width: 9rem;
+}
+
+a:hover {
+  color: white;
+  font-weight: 700;
 }
