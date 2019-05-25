@@ -85,3 +85,19 @@
   display: flex;
   justify-content: space-around;
 }
+
+.edit-btn,
+.delete-btn {
+  /* border: 1px solid #ffb600; */
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-top: 1.5rem;
+  /* text-align: center; */
+  width: 9rem;
+  /*   
+  margin: 1.5rem 0 1.5rem 0; */
+  background: #ffb600;
+  font-size: 1.33rem;
+  border-radius: 3rem;
+  padding: 0.8rem;
+}

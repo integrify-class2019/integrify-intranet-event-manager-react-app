@@ -29,7 +29,7 @@ body {
 .mobile-wrapper {
   width: 280px;
   margin: 5rem auto;
-  height: 520px;
+  height: 586px;
   overflow: hidden;
 }
 
@@ -59,7 +59,7 @@ img {
 .menu-button {
   position: absolute;
   width: 250px;
-  left: -150px;
+  left: 150px;
   top: 10px;
 }
 
