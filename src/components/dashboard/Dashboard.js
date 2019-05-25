@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-// import { eventsData } from '../../data';
+import { eventsData } from '../../data';
 import '../../Dashboard.css';
 import EventDashboard from './EventDashboard';
 
+let eventInitial = [...eventsData];
 class Dashboard extends Component {
     state = {
         events: [],
@@ -14,26 +15,25 @@ class Dashboard extends Component {
         searchTerm: '',
     };
 
-    // componentDidMount() {
-    //     const { eventsData } = this.props;
-    //     console.log(eventsData);
+    componentDidMount() {
+        // const { eventsJS } = this.props;
+        // console.log(eventsData);
 
-    //     this.setState({
-    //         events: eventsData,
-    //     });
-    // }
+        this.setState({
+            events: eventInitial,
+        });
+    }
 
     showInputChange = typeInput => {
-        const { eventsData } = this.props;
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item == true).length === 0) {
             this.setState({
-                events: eventsData,
+                events: eventInitial,
             });
-            return eventsData;
+            return eventInitial;
         }
 
-        const newEvents = eventsData.filter(event => {
+        const newEvents = eventInitial.filter(event => {
             if (typeInput[event.type] === true) {
                 return event;
             }
@@ -76,16 +76,26 @@ class Dashboard extends Component {
         }
     };
 
+    updateEventFromJB = () => {
+        const { eventsJS } = this.props;
+        if (eventsJS) {
+            // console.log('update events');
+            // console.log(eventsJS[0]);
+            // console.log(eventInitial.includes(eventsJS[0]));
+
+            if (!eventInitial.includes(eventsJS[0])) {
+                eventInitial = [...eventInitial, ...eventsJS];
+                this.setState({
+                    events: eventInitial,
+                });
+                console.log(eventInitial);
+            }
+        }
+    };
+
     render() {
         const { events, typeInput, searchTerm } = this.state;
-        const { eventsData } = this.props;
-        console.log(eventsData !== undefined, ' ', events.length == 0);
-        if (eventsData !== undefined && events.length == 0) {
-            this.setState({
-                events: eventsData,
-            });
-        }
-
+        this.updateEventFromJB();
         const renderEvents =
             events && events.map(event => <EventDashboard key={event.id} event={event} />);
 
@@ -132,13 +142,12 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
-
+    // console.log(state);
+    const { events } = state.firestore.ordered;
     return {
-        eventsData: state.firestore.ordered.events,
+        eventsJS: events,
     };
 };
-
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([{ collection: 'events' }])
