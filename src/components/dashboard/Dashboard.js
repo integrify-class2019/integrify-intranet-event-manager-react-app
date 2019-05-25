@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -97,7 +97,12 @@ class Dashboard extends Component {
         const { events, typeInput, searchTerm } = this.state;
         this.updateEventFromJB();
         const renderEvents =
-            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+            events &&
+            events.map(event => (
+                <Link to={`/event/${event.id}`}>
+                    <EventDashboard key={event.id} event={event} />{' '}
+                </Link>
+            ));
 
         const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="input-type" key={typeItem}>

@@ -4,6 +4,7 @@ import DashBoard from './components/dashboard/Dashboard';
 import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
 import './Base.css';
+import EventDetail from './components/dashboard/EventDetail';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                         <Route exact path="/dashboard" component={DashBoard} />
                         <Route exact path="/sign-in" component={LogIn} />
                         <Route exact path="/create-event" component={CreateEvent} />
+                        <Route path="/event/:id" component={EventDetail} />
                     </Switch>
                 </div>
             </div>
