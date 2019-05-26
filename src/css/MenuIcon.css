@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: margin 0.5s;
+  margin: 0 0 0 -250px;
+}
+
+.wrapper.is-nav-open {
+  margin-left: 0;
+}
+
+.nav {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.nav-icon {
+  position: absolute;
+  top: 0;
+  right: -60px;
+  padding: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-icon span {
+  height: 5px;
+  width: 30px;
+  background-color: #ffb600;
+}
+.nav--icon span:hover {
+  background-color: #5eb2ff;
+}

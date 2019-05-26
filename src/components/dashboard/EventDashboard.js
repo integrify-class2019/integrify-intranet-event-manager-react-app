@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
+import ThumbsUp from '../../assets/images/thumbsup.svg';
+import ThumbsDown from '../../assets/images/thumbsdown.svg';
 
 export default class EventDashboard extends Component {
-    render() {
-        const { event } = this.props;
-        const { name, participant, time, type, id } = event;
-        return (
-            <div className={`event-card event-${type}`} key={id}>
-                <div className="event-header">
-                    <h2 className="event-title">{name}</h2>
-                    <div className="progress">
-                        Participant:{participant.in.length}/{participant.total}
-                    </div>
-                </div>
+  render() {
+    const { event } = this.props;
+    const { name, participant, time, type, id } = event;
+    return (
+      <div className={`event-card event-${type}`} key={id}>
+        <div className="event-header">
+          <h2 className="event-title">{name}</h2>
+          <div className="progress">
+            Participant:{participant.in.length}/{participant.total}
+          </div>
+        </div>
 
-                <div className="event-actions">
-                    <div className="thumbs-up">
-                        <span> svg👍</span>
-                        <span className="in">IN</span>
-                    </div>
-                    <div className="thumbs-down">
-                        <span> svg👎</span>
-                        <span className="out">OUT</span>
-                    </div>
-                </div>
+        <div className="event-actions">
+          <button className="thumbs-up">
+            <img src={ThumbsUp} alt="thumbs up" class="up" />
+            <span className="in">IN</span>
+          </button>
+          <button className="thumbs-down">
+          <img src={ThumbsDown} alt="thumbs up" class="down" />
+            <span className="out">OUT</span>
+          </button>
+        </div>
 
-                <div className="event-details">
-                    <div className="date-time">
-                        <h3 className="date">
-                            <span>{time.day}</span>{' '}
-                        </h3>
+        <div className="event-details">
+          <div className="date-time">
+            <h3 className="date">
+              <span>{time.day}</span>{' '}
+            </h3>
 
-                        <h3 className="time">
-                            {time.hourBegin} - {time.hourEnd}{' '}
-                        </h3>
-                    </div>
-                    <img src="" alt="" className="location" />
-                </div>
-            </div>
-        );
-    }
+            <h3 className="time">
+              {time.hourBegin} - {time.hourEnd}{' '}
+            </h3>
+          </div>
+          <img src="" alt="" className="location" />
+        </div>
+      </div>
+    );
+  }
 }
 
 //   <div class="event-card event-1">

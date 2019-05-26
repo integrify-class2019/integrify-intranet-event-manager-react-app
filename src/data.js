@@ -2,7 +2,7 @@
 const eventsData = [
     {
         id: '1',
-        name: 'Bummer Picnic',
+        name: 'Summer Picnic',
         participant: { total: 15, in: ['userid', 'userid1'], out: ['userid3'] },
         time: { day: '20 May', hourBegin: '16:00', hourEnd: '19:00' },
         type: 'Other',

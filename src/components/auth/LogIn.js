@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from './routes/SignUpForm';
 import SignInForm from './routes/SignInForm';
-import '../../LogIn.css';
+import '../../css/LogIn.css';
 
 class LogIn extends Component {
     render() {
