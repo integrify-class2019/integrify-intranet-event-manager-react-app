@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Switch from 'react-switch';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { eventsData } from '../../data';
 import '../../Dashboard.css';
@@ -10,6 +11,7 @@ export default class Dashboard extends Component {
         events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
+        checked: false,
     };
 
     componentDidMount() {
@@ -20,7 +22,7 @@ export default class Dashboard extends Component {
 
     showInputChange = typeInput => {
         // / show all if all is false
-        if (Object.values(typeInput).filter(item => item == true).length === 0) {
+        if (Object.values(typeInput).filter(item => item === true).length === 0) {
             this.setState({
                 events: eventsData,
             });
@@ -70,13 +72,17 @@ export default class Dashboard extends Component {
         }
     };
 
+    // handleSwitchChange = checked => {
+    //     this.setState({ checked });
+    // };
+
     render() {
-        const { events, typeInput, searchTerm } = this.state;
+        const { events, typeInput, searchTerm, checked } = this.state;
 
         const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
 
         const renderType = Object.keys(typeInput).map(typeItem => (
-            <div className="input-type" key={typeItem}>
+            <>
                 <input
                     type="checkbox"
                     id={typeItem}
@@ -85,7 +91,7 @@ export default class Dashboard extends Component {
                     onChange={this.handleInputChange}
                 />
                 <label htmlFor={typeItem}>{typeItem}</label>
-            </div>
+            </>
         ));
 
         return (
@@ -100,15 +106,15 @@ export default class Dashboard extends Component {
                             name="searchTerm"
                             onChange={this.handleInputChange}
                         />
-                        {renderType}
+                        <div className="search-checkboxes">{renderType}</div>
                     </form>
                     <div className="add-btn">
                         <img src="./assets/images/add-btn.svg" alt="" />
                     </div>
+                    <NavLink exact to="/create-event" className="Dashboard-CreateEvent">
+                        create event (temporary)
+                    </NavLink>
                 </section>
-                <NavLink exact to="/create-event" className="Dashboard-CreateEvent">
-                    create event (temporary)
-                </NavLink>
                 <section className="events-section">
                     <div className="events">{renderEvents}</div>
                 </section>
