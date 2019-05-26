@@ -213,6 +213,7 @@ input::placeholder {
 
 button {
   background: #ffb600;
+  border: 1px solid #ffb600;
   height: 3rem;
   border-radius: 1.5rem;
   margin-top: 1.5rem;

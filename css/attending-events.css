@@ -76,4 +76,5 @@
 }
 .location {
   width: 18px;
+  cursor: pointer;
 }
