@@ -18,6 +18,9 @@
   position: relative;
   left: 8px;
 }
+.create-event input::placeholder {
+  font-size: 1.2rem;
+}
 
 .create-event input[type='text'] {
   position: relative;
@@ -25,7 +28,7 @@
 }
 .create-event #start,
 .create-event #end {
-  max-width: 75px;
+  max-width: 80px;
 }
 .create-event #start {
   margin-right: 12px;
