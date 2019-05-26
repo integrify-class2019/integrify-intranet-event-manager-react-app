@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from './routes/SignUpForm';
 import SignInForm from './routes/SignInForm';
 import '../../LogIn.css';
+import { connect } from 'react-redux';
 
 class LogIn extends Component {
     render() {
@@ -28,7 +29,7 @@ class LogIn extends Component {
 
                             <NavLink
                                 exact
-                                to="/"
+                                to="/sign-up"
                                 activeClassName="PageSwitcher-Item-Active"
                                 className="PageSwitcher-Item"
                             >
@@ -47,7 +48,7 @@ class LogIn extends Component {
                             or{' '}
                             <NavLink
                                 exact
-                                to="/"
+                                to="/sign-up"
                                 activeClassName="FormTitle-Link-Active"
                                 className="FormTitle-Link"
                             >
@@ -55,7 +56,7 @@ class LogIn extends Component {
                             </NavLink>
                         </div>
 
-                        <Route exact path="/" component={SignUpForm} />
+                        <Route exact path="/sign-up" component={SignUpForm} />
 
                         <Route path="/sign-in" component={SignInForm} />
                     </div>
@@ -64,5 +65,9 @@ class LogIn extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    console.log(state);
+    return {};
+};
 
-export default LogIn;
+export default connect(mapStateToProps)(LogIn);

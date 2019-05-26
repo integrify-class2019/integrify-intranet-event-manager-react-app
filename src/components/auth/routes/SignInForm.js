@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signIn } from '../../../store/actions/authAction';
 
 class SignInForm extends Component {
     state = { email: '', password: '' };
@@ -21,9 +23,13 @@ class SignInForm extends Component {
 
         console.log('the form was submitted with the following data:');
         console.log(this.state);
+        this.props.signIn(this.state);
     };
 
     render() {
+        const { authError } = this.props;
+        console.log(authError);
+
         return (
             <div className="FormCenter">
                 <form className="FormFields" onSubmit={this.handleSubmit}>
@@ -58,7 +64,8 @@ class SignInForm extends Component {
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField-Button mr-20">Sign In</button>{' '}
+                        <div className="red-text">{authError ? <p>{authError}</p> : null}</div>
+                        <button className="FormField-Button mr-20">Sign In</button>
                         <Link to="/" className="FormField-Link">
                             Create an account
                         </Link>
@@ -69,4 +76,15 @@ class SignInForm extends Component {
     }
 }
 
-export default SignInForm;
+const mapStateToProps = state => ({
+    authError: state.auth.authError,
+});
+
+const mapDispatchToProps = dispatch => ({
+    signIn: creds => dispatch(signIn(creds)),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SignInForm);

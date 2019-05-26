@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -95,6 +95,12 @@ class Dashboard extends Component {
 
     render() {
         const { events, typeInput, searchTerm } = this.state;
+        const { auth } = this.props;
+
+        // if (!auth.uid) {
+        //     return <Redirect to="/sign-in" />;
+        // }
+
         this.updateEventFromJB();
         const renderEvents =
             events &&
@@ -151,6 +157,7 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         eventsJS: events,
+        auth: state.firebase.auth,
     };
 };
 export default compose(
