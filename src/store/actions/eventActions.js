@@ -1,11 +1,15 @@
 export const createEvent = event => (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
+    const { profile } = getState().firebase;
+    const authorId = getState().firebase.auth.uid;
+    console.log(profile);
+
     firestore
         .collection('events')
         .add({
             ...event,
-            userId: 'user11',
+            authorId,
             authorName: 'Steve Phuc',
             participant: { total: 15, in: ['userid', 'userid1'], out: ['userid3'] },
         })

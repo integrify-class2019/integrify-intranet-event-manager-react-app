@@ -3,6 +3,7 @@
   "rules": {
     "no-console": 0,
     "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
     "prettier/prettier": [
       "error",
       {
