@@ -7,6 +7,7 @@ import '../../css/Dashboard.css';
 import EventDashboard from './EventDashboard';
 
 import AddBtn from '../../assets/images/add-btn.svg';
+import NavBar from '../layout/Navbar';
 
 class Dashboard extends Component {
   state = {
@@ -74,6 +75,7 @@ class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { events, typeInput, searchTerm } = this.state;
 
     const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
@@ -93,6 +95,7 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
+        <NavBar pageName={this.props.pageName} isOpen={this.props.isOpen} handleOpen={this.props.handleOpen}/>
         <section className="search-box-add">
           <form action="" className="search-form">
             <input

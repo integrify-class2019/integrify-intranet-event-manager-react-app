@@ -1,42 +1,47 @@
 import React from 'react';
-// import '../../css/Navbar.css';
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+
+import '../../css/Navbar.css';
+
 import HeaderLogo from '../../assets/images/header-logo.svg';
 import MenuIcon from '../../assets/images/menu bar.svg';
 
+
 const NavBar = ({ pageName, isOpen, handleOpen }) => {
   return (
-    <header className="main-header">
-      <div className="container header-nav">
-        <a href="#" className="logo">
-          <img src={HeaderLogo} alt="logo" className="header-logo" />
-          <h1>{pageName}</h1>
-        </a>
+      <header className="main-header">
+        <div className="container header-nav">
+          <a href="#" className="logo">
+            <img src={HeaderLogo} alt="logo" className="header-logo" />
+            <h1>{pageName}</h1>
+          </a>
 
-        <a href="#" className="menu-bar" onClick={() => handleOpen()}>
-          <img src={MenuIcon} alt="menu bar" />
-        </a>
+          <button className="menu-bar" onClick={() => handleOpen()}>
+            <img src={MenuIcon} alt="menu bar" />
+          </button>
 
-        <nav className={isOpen ? 'open' : ''}>
-          <ul className="nav-links">
-            <li>
-              <a href="../index.html">Dashboard</a>
-            </li>
-            <li>
-              <a href="./create-event.html">Create Event</a>
-            </li>
-            <li>
-              <a href="./my-events.html">My Events</a>
-            </li>
-            <li>
-              <a href="./attending-events.html">Attending</a>
-            </li>
-            <li>
-              <a href="./login.html">Logout</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+          <nav className={isOpen ? 'open' : ''}>
+            <ul className="nav-links">
+              <li>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </li>
+              <li>
+                <NavLink to="create-event">Create Event</NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-events/">My Events</NavLink>
+              </li>
+              <li>
+                <NavLink to="/attending">Attending</NavLink>
+              </li>
+              <li>
+                <NavLink to="log-out">Logout</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+     
   );
 };
 

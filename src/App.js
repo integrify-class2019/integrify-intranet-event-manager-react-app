@@ -18,19 +18,19 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
+     <BrowserRouter>       
           <div className="mobile-wrapper">
-            <NavBar pageName="Dashboard" handleOpen={this.handleOpen} isOpen={this.state.isOpen} />
-            <DashBoard />
-            {/* <Switch>
+            {/* <NavBar pageName="Dashboard" handleOpen={this.handleOpen} isOpen={this.state.isOpen} /> */}
+            <DashBoard pageName="Dashboard" handleOpen={this.handleOpen} isOpen={this.state.isOpen} />
+            <CreateEvent pageName="CreateEvent" handleOpen={this.handleOpen} isOpen={this.state.isOpen} />
+
+            <Switch>
               <Route exact path="/dashboard" component={DashBoard} />
               <Route exact path="/sign-in" component={LogIn} />
               <Route exact path="/create-event" component={CreateEvent} />
-            </Switch> */}
+            </Switch>
           </div>
-        </div>
-      </BrowserRouter>
+      </BrowserRouter> 
     );
   }
 }
