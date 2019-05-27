@@ -27,6 +27,11 @@ class Dashboard extends Component {
         });
     }
 
+    componentDidUpdate() {
+        console.log('update');
+        this.updateEventFromJB();
+    }
+
     showInputChange = typeInput => {
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item === true).length === 0) {
@@ -116,17 +121,15 @@ class Dashboard extends Component {
         //     return <Redirect to="/sign-in" />;
         // }
         // update data form firebase
-        this.updateEventFromJB();
+
         const renderEvents =
-            events &&
-            events.map(event => (
-                <Link to={`/event/${event.id}`}>
-                    <EventDashboard key={event.id} event={event} />{' '}
-                </Link>
-            ));
+            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+        // <Link to={`/event/${event.id}`} key={event.id}>
+        //     <EventDashboard key={event.id} event={event} />{' '}
+        // </Link>
 
         const renderType = Object.keys(typeInput).map(typeItem => (
-            <div className="search-switch">
+            <div className="search-switch" key={typeItem}>
                 <Switch
                     type="checkbox"
                     id={typeItem}
@@ -181,7 +184,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log(state);
+    console.log(state);
     const { events } = state.firestore.ordered;
     return {
         eventsJS: events,
