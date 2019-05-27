@@ -10,7 +10,7 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
         .add({
             ...event,
             authorId,
-            authorName: 'Steve Phuc',
+            authorName: profile.name,
             participant: { total: 15, in: ['userid', 'userid1'], out: ['userid3'] },
         })
         .then(() => {

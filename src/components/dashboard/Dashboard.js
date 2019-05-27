@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Switch from 'react-switch';
-import { eventsData } from '../../data';
+// import { eventsData } from '../../data';
 import '../../Dashboard.css';
 import EventDashboard from './EventDashboard';
 
