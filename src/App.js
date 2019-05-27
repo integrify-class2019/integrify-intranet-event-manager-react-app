@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import DashBoard from './components/dashboard/Dashboard';
 import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
+
 import './Base.css';
 import EventDetail from './components/dashboard/EventDetail';
 import Home from './components/Home';

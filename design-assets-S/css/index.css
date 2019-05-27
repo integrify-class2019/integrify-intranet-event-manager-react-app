@@ -128,10 +128,10 @@ nav {
 
 /* Event card */
 .events-section {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   margin-top: -15px;
 }
 
@@ -139,7 +139,8 @@ nav {
   margin-top: -40px;
 }
 .event-card {
-  width: 280px;
+  /* width: 70%; */
+  /* margin: auto; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
