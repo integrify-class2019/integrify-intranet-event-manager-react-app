@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signUp } from '../../../store/actions/authAction';
 
 class SignUpForm extends Component {
     state = { email: '', password: '', name: '', hasAgreed: false };
@@ -22,9 +24,11 @@ class SignUpForm extends Component {
 
         console.log('the form was submitted with the following data:');
         console.log(this.state);
+        this.props.signUp(this.state);
     };
 
     render() {
+        const { auth, authError } = this.props;
         return (
             <div className="FormCenter">
                 <form className="FormFields" onSubmit={this.handleSubmit}>
@@ -91,6 +95,9 @@ class SignUpForm extends Component {
                     </div>
 
                     <div className="FormField">
+                        <div className="center red-text">
+                            {authError ? <p>{authError}</p> : null}
+                        </div>
                         <button className="FormField-Button mr-20">Sign Up</button>{' '}
                         <Link to="/sign-in" className="FormField-Link">
                             I am already a member
@@ -102,4 +109,16 @@ class SignUpForm extends Component {
     }
 }
 
-export default SignUpForm;
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+});
+
+const mapDispatchToProps = dispatch => ({
+    signUp: creds => dispatch(signUp(creds)),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SignUpForm);

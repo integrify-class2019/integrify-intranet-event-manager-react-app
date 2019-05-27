@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 import Switch from 'react-switch';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { eventsData } from '../../data';
+// import { eventsData } from '../../data';
 import '../../Dashboard.css';
-
 import EventDashboard from './EventDashboard';
 
-export default class Dashboard extends Component {
+// let eventInitial = [...eventsData];
+let eventInitial = [];
+class Dashboard extends Component {
     state = {
         events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
@@ -15,8 +19,11 @@ export default class Dashboard extends Component {
     };
 
     componentDidMount() {
+        // const { eventsJS } = this.props;
+        // console.log(eventsData);
+
         this.setState({
-            events: eventsData,
+            events: eventInitial,
         });
     }
 
@@ -24,12 +31,12 @@ export default class Dashboard extends Component {
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item === true).length === 0) {
             this.setState({
-                events: eventsData,
+                events: eventInitial,
             });
-            return eventsData;
+            return eventInitial;
         }
 
-        const newEvents = eventsData.filter(event => {
+        const newEvents = eventInitial.filter(event => {
             if (typeInput[event.type] === true) {
                 return event;
             }
@@ -64,6 +71,25 @@ export default class Dashboard extends Component {
         }
     };
 
+    updateEventFromJB = () => {
+        const { eventsJS } = this.props;
+        console.log(eventsJS);
+
+        if (eventsJS) {
+            // console.log('update events');
+            // console.log(eventsJS[0].participant);
+            // console.log(eventInitial.includes(eventsJS[0]));
+
+            if (!eventInitial.includes(eventsJS[0])) {
+                eventInitial = [...eventInitial, ...eventsJS];
+                this.setState({
+                    events: eventInitial,
+                });
+                console.log(eventInitial);
+            }
+        }
+    };
+
     // for the switch library
 
     handleSwitchChange = (checked, event, id) => {
@@ -84,7 +110,20 @@ export default class Dashboard extends Component {
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
-        const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
+        const { auth } = this.props;
+
+        // if (!auth.uid) {
+        //     return <Redirect to="/sign-in" />;
+        // }
+        // update data form firebase
+        this.updateEventFromJB();
+        const renderEvents =
+            events &&
+            events.map(event => (
+                <Link to={`/event/${event.id}`}>
+                    <EventDashboard key={event.id} event={event} />{' '}
+                </Link>
+            ));
 
         const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="search-switch">
@@ -140,3 +179,16 @@ export default class Dashboard extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    // console.log(state);
+    const { events } = state.firestore.ordered;
+    return {
+        eventsJS: events,
+        auth: state.firebase.auth,
+    };
+};
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([{ collection: 'events' }])
+)(Dashboard);
