@@ -1,27 +1,103 @@
 import React, { Component } from 'react';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faThumbsUp, faThumbsDown);
 
 export default class EventDashboard extends Component {
+    state = {
+        enrollments: [],
+        userid: 'testuser',
+    };
+
+    handeEnroll = e => {
+        const { userid, enrollments } = this.state;
+        this.setState({ enrollments: [userid] });
+        console.log(this.state);
+        console.log(e.target);
+
+        e.target.className = 'btn-enroll btn-in-active';
+    };
+
     render() {
         const { event } = this.props;
         const { name, participant, time, type, id } = event;
+        const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
             <div className={`event-card event-${type}`} key={id}>
                 <div className="event-header">
                     <h2 className="event-title">{name}</h2>
                     <div className="progress">
-                        Participant:{participant.in.length}/{participant.total}
+                        <CircularProgressbar
+                            value={participant.in.length}
+                            maxValue={20}
+                            text={value}
+                            background="true"
+                            styles={{
+                                // Customize the root svg element
+                                root: {},
+                                // Customize the path, i.e. the "completed progress"
+                                path: {
+                                    // Path color
+                                    stroke: 'green',
+                                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                    strokeLinecap: 'butt',
+                                    // Customize transition animation
+                                    transition: 'stroke-dashoffset 0.5s ease 0s',
+                                    // Rotate the path
+                                    transform: 'rotate(0.25turn)',
+                                    transformOrigin: 'center center',
+                                },
+                                // Customize the circle behind the path, i.e. the "total progress"
+                                trail: {
+                                    // Trail color
+                                    stroke: 'lightgray',
+                                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                    strokeLinecap: 'butt',
+                                    // Rotate the trail
+                                    transform: 'rotate(0.25turn)',
+                                    transformOrigin: 'center center',
+                                },
+                                // Customize the text
+                                text: {
+                                    // Text color
+                                    fill: 'black',
+                                    // Text size
+                                    fontSize: '3rem',
+                                    fontWeight: 'bolder',
+                                },
+                                // Customize background - only used when the `background` prop is true
+                                background: {
+                                    fill: 'white',
+                                },
+                            }}
+                        />{' '}
                     </div>
                 </div>
 
-                <div className="event-actions">
-                    <div className="thumbs-up">
-                        <span> svg👍</span>
-                        <span className="in">IN</span>
-                    </div>
-                    <div className="thumbs-down">
-                        <span> svg👎</span>
-                        <span className="out">OUT</span>
-                    </div>
+                <div className="enroll-buttons">
+                    <a
+                        id={id}
+                        className="btn-enroll btn-in"
+                        style={{ cursor: 'pointer' }}
+                        onClick={this.handeEnroll}
+                    >
+                        <FontAwesomeIcon icon="thumbs-up" />
+                        &nbsp;IN&nbsp;
+                    </a>
+                    <a
+                        id={id}
+                        className="btn-enroll btn-out"
+                        style={{ cursor: 'pointer' }}
+                        onClick={this.handeEnroll}
+                    >
+                        <FontAwesomeIcon icon="thumbs-down" />
+                        <i className="icon icon-thumbs-down" />
+                        &nbsp;OUT
+                    </a>
                 </div>
 
                 <div className="event-details">
