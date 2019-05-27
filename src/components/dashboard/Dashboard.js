@@ -18,17 +18,17 @@ class Dashboard extends Component {
         checked: false,
     };
 
-    componentDidMount() {
-        // const { eventsJS } = this.props;
-        // console.log(eventsData);
+    // componentDidMount() {
+    //     // const { eventsJS } = this.props;
+    //     // console.log(eventsData);
 
-        this.setState({
-            events: eventInitial,
-        });
-    }
+    //     this.setState({
+    //         events: eventInitial,
+    //     });
+    // }
 
     componentDidUpdate() {
-        console.log('update');
+        // console.log('update');
         this.updateEventFromJB();
     }
 
@@ -184,7 +184,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
+    // console.log(state);
     const { events } = state.firestore.ordered;
     return {
         eventsJS: events,
