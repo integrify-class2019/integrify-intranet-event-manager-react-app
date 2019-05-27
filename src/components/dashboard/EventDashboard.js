@@ -17,6 +17,9 @@ export default class EventDashboard extends Component {
         const { userid, enrollments } = this.state;
         this.setState({ enrollments: [userid] });
         console.log(this.state);
+        console.log(e.target);
+
+        e.target.className = 'btn-enroll btn-in-active';
     };
 
     render() {
@@ -30,7 +33,6 @@ export default class EventDashboard extends Component {
                     <div className="progress">
                         <CircularProgressbar
                             value={participant.in.length}
-                            minValue={0}
                             maxValue={20}
                             text={value}
                             background="true"

@@ -52,29 +52,34 @@ export default class Dashboard extends Component {
         });
     };
 
-    handleInputChange = event => {
+    handleSearchChange = event => {
         const { name, type, value } = event.target;
-        if (type === 'checkbox') {
-            const typeInput = { ...this.state.typeInput };
-            typeInput[name] = !typeInput[name];
-            this.showInputChange(typeInput);
-            this.setState({
-                typeInput,
-            });
-        } else {
-            this.setState({
-                [name]: value,
-            });
 
-            if (name === 'searchTerm') {
-                this.showSearchTermChange(value);
-            }
+        this.setState({
+            [name]: value,
+        });
+
+        if (name === 'searchTerm') {
+            this.showSearchTermChange(value);
         }
     };
 
-    // handleSwitchChange = checked => {
-    //     this.setState({ checked });
-    // };
+    // for the switch library
+
+    handleSwitchChange = (checked, event, id) => {
+        console.log(id);
+
+        // const { name, type, value } = event.target;
+
+        const typeInput = { ...this.state.typeInput };
+        typeInput[id] = !typeInput[id];
+        this.showInputChange(typeInput);
+        this.setState({
+            typeInput,
+        });
+
+        this.setState({ checked });
+    };
 
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
@@ -82,16 +87,29 @@ export default class Dashboard extends Component {
         const renderEvents = events.map(event => <EventDashboard key={event.id} event={event} />);
 
         const renderType = Object.keys(typeInput).map(typeItem => (
-            <>
-                <input
+            <div className="search-switch">
+                <Switch
                     type="checkbox"
                     id={typeItem}
                     name={typeItem}
                     checked={typeInput[typeItem]}
-                    onChange={this.handleInputChange}
+                    // checked={this.state.checked}
+                    // onChange={this.handleInputChange}
+                    onChange={this.handleSwitchChange}
+                    onColor="#f3cf74"
+                    onHandleColor="#ffb600"
+                    handleDiameter={25}
+                    uncheckedIcon={false}
+                    checkedIcon={false}
+                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                    height={20}
+                    width={40}
+                    className="react-switch"
+                    // id="material-switch"
                 />
                 <label htmlFor={typeItem}>{typeItem}</label>
-            </>
+            </div>
         ));
 
         return (
@@ -104,7 +122,7 @@ export default class Dashboard extends Component {
                             className="search-input"
                             value={searchTerm}
                             name="searchTerm"
-                            onChange={this.handleInputChange}
+                            onChange={this.handleSearchChange}
                         />
                         <div className="search-checkboxes">{renderType}</div>
                     </form>
