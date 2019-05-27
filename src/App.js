@@ -10,32 +10,36 @@ import Home from './components/Home';
 import NavBar from './components/layout/Navbar';
 
 class App extends Component {
-  state = {
-    isOpen: false
-  };
+    state = {
+        isOpen: false,
+    };
 
-  handleOpen = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  };
+    handleOpen = () => {
+        this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    };
 
-  render() {
-    // console.log(this.state);
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <div className="mobile-wrapper">
-            <NavBar pageName="fixAfter" isOpen={this.state.isOpen} handleOpen={this.handleOpen} />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/dashboard" component={DashBoard} />
-              <Route exact path="/sign-in" component={LogIn} />
-              <Route exact path="/create-event" component={CreateEvent} />
-              <Route path="/event/:id" component={EventDetail} />
-            </Switch>
-          </div>
-        </div>
-      </BrowserRouter>
-    );
-  }
+    render() {
+        console.log(this.props);
+        console.log(this.state);
+
+        return (
+            <BrowserRouter>
+                <div className="App">
+                    <div className="mobile-wrapper">
+                        {window.location.pathname !== '/sign-in' && (
+                            <NavBar isOpen={this.state.isOpen} handleOpen={this.handleOpen} />
+                        )}
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/dashboard" component={DashBoard} />
+                            <Route exact path="/sign-in" component={LogIn} />
+                            <Route exact path="/create-event" component={CreateEvent} />
+                            <Route path="/event/:id" component={EventDetail} />
+                        </Switch>
+                    </div>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 export default App;
