@@ -116,6 +116,8 @@ class Dashboard extends Component {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
+        // console.log(this.props);
+        // console.log(this.state);
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;
