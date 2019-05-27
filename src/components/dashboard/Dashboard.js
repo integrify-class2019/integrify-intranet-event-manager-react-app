@@ -18,13 +18,18 @@ class Dashboard extends Component {
         checked: false,
     };
 
-    componentDidMount() {
-        // const { eventsJS } = this.props;
-        // console.log(eventsData);
+    // componentDidMount() {
+    //     // const { eventsJS } = this.props;
+    //     // console.log(eventsData);
 
-        this.setState({
-            events: eventInitial,
-        });
+    //     this.setState({
+    //         events: eventInitial,
+    //     });
+    // }
+
+    componentDidUpdate() {
+        // console.log('update');
+        this.updateEventFromJB();
     }
 
     showInputChange = typeInput => {
@@ -116,17 +121,15 @@ class Dashboard extends Component {
         //     return <Redirect to="/sign-in" />;
         // }
         // update data form firebase
-        this.updateEventFromJB();
+
         const renderEvents =
-            events &&
-            events.map(event => (
-                <Link to={`/event/${event.id}`}>
-                    <EventDashboard key={event.id} event={event} />{' '}
-                </Link>
-            ));
+            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+        // <Link to={`/event/${event.id}`} key={event.id}>
+        //     <EventDashboard key={event.id} event={event} />{' '}
+        // </Link>
 
         const renderType = Object.keys(typeInput).map(typeItem => (
-            <div className="search-switch">
+            <div className="search-switch" key={typeItem}>
                 <Switch
                     type="checkbox"
                     id={typeItem}

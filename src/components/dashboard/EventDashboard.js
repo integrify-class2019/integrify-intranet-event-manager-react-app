@@ -79,7 +79,8 @@ export default class EventDashboard extends Component {
                 </div>
 
                 <div className="enroll-buttons">
-                    <a
+                    <button
+                        type="button"
                         id={id}
                         className="btn-enroll btn-in"
                         style={{ cursor: 'pointer' }}
@@ -87,8 +88,9 @@ export default class EventDashboard extends Component {
                     >
                         <FontAwesomeIcon icon="thumbs-up" />
                         &nbsp;IN&nbsp;
-                    </a>
-                    <a
+                    </button>
+                    <button
+                        type="button"
                         id={id}
                         className="btn-enroll btn-out"
                         style={{ cursor: 'pointer' }}
@@ -97,7 +99,7 @@ export default class EventDashboard extends Component {
                         <FontAwesomeIcon icon="thumbs-down" />
                         <i className="icon icon-thumbs-down" />
                         &nbsp;OUT
-                    </a>
+                    </button>
                 </div>
 
                 <div className="event-details">
