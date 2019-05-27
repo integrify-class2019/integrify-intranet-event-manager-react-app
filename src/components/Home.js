@@ -1,17 +1,16 @@
 import React from 'react';
 import '../Base.css';
 import { connect } from 'react-redux';
-import LogIn from './auth/LogIn';
-import Dashboard from './dashboard/Dashboard';
+import { Redirect } from 'react-router-dom';
+// import LogIn from './auth/LogIn';
+// import Dashboard from './dashboard/Dashboard';
 
 const App = props => {
     const { auth } = props;
-    const showHome = auth.uid ? <Dashboard /> : <LogIn />;
-    return (
-        <div className="App">
-            <div className="mobile-wrapper">{showHome}</div>
-        </div>
-    );
+    if (auth.uid) {
+        return <Redirect to="/dashboard" />;
+    }
+    return <Redirect to="/sign-in" />;
 };
 
 const mapStateToProps = state => {
