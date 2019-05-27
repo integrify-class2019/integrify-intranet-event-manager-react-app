@@ -95,7 +95,6 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
-        <NavBar pageName={this.props.pageName} isOpen={this.props.isOpen} handleOpen={this.props.handleOpen}/>
         <section className="search-box-add">
           <form action="" className="search-form">
             <input

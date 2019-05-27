@@ -36,8 +36,6 @@ export default class CreateEvent extends Component {
     const { eventName, eventDescription, eventType, eventLocation, date } = this.state;
     return (
       <div className="CreateEvent">
-        {/* <NavBar pageName={this.props.pageName} isOpen={this.props.isOpen} handleOpen={this.props.handleOpen} /> */}
-        <Navbar pageName={this.props.pageName} isOpen={this.props.isOpen} handleOpen={this.props.handleOpen}/>
         <div className="CreateEvent-title">
           <h1>Create Event</h1>
           <div>Menu</div>

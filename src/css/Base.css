@@ -142,6 +142,14 @@ button:hover {
   font-weight: 700;
 }
 
+button:active {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
 a {
   color: #000;
   text-align: center;

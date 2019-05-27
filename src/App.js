@@ -9,7 +9,8 @@ import EventDashboard from './components/dashboard/EventDashboard';
 
 class App extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    pageName: ''
   };
 
   handleOpen = () => {
@@ -18,19 +19,17 @@ class App extends Component {
 
   render() {
     return (
-     <BrowserRouter>       
-          <div className="mobile-wrapper">
-            {/* <NavBar pageName="Dashboard" handleOpen={this.handleOpen} isOpen={this.state.isOpen} /> */}
-            <DashBoard pageName="Dashboard" handleOpen={this.handleOpen} isOpen={this.state.isOpen} />
-            <CreateEvent pageName="CreateEvent" handleOpen={this.handleOpen} isOpen={this.state.isOpen} />
+      <BrowserRouter>
+        <div className="mobile-wrapper">
+          <NavBar pageName={this.state.pageName} isOpen={this.state.isOpen} handleOpen={this.handleOpen} />
 
-            <Switch>
-              <Route exact path="/dashboard" component={DashBoard} />
-              <Route exact path="/sign-in" component={LogIn} />
-              <Route exact path="/create-event" component={CreateEvent} />
-            </Switch>
-          </div>
-      </BrowserRouter> 
+          <Switch>
+            <Route exact path="/dashboard" component={DashBoard} />
+            <Route exact path="/sign-in" component={LogIn} />
+            <Route exact path="/create-event" component={CreateEvent} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
