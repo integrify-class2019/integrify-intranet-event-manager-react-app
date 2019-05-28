@@ -11,7 +11,7 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
             ...event,
             authorId,
             authorName: profile.name,
-            participant: { total: 15, in: ['userid', 'userid1'], out: ['userid3'] },
+            participant: { total: 15, in: [], out: [] },
         })
         .then(() => {
             dispatch({ type: 'CREATE_EVENT', event });

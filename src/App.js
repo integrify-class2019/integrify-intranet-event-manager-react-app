@@ -10,25 +10,12 @@ import Home from './components/Home';
 import NavBar from './components/layout/Navbar';
 
 class App extends Component {
-    state = {
-        isOpen: false,
-    };
-
-    handleOpen = () => {
-        this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-    };
-
     render() {
-        console.log(this.props);
-        console.log(this.state);
-
         return (
             <BrowserRouter>
                 <div className="App">
                     <div className="mobile-wrapper">
-                        {window.location.pathname !== '/sign-in' && (
-                            <NavBar isOpen={this.state.isOpen} handleOpen={this.handleOpen} />
-                        )}
+                        <NavBar />
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/dashboard" component={DashBoard} />

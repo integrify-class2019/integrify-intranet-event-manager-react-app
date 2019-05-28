@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Asap', sans-serif;
+  font-family: "Asap", sans-serif;
   scroll-behavior: smooth;
   text-decoration: none;
 }
@@ -34,7 +34,7 @@ img {
 .mobile-wrapper {
   /* width: 280px; */
   /* width: ; */
-  margin: 5rem auto;
+  /* margin: 5rem auto; */
   /* height: 520px; */
 }
 
@@ -130,7 +130,7 @@ footer {
 
 footer::before {
   background: #4e4747;
-  content: '';
+  content: "";
   height: 2rem;
   left: 0px;
   opacity: 0.5;
@@ -164,13 +164,13 @@ input {
 }
 
 button {
-  background: #ffb600;
-  border: 1px solid #ffb600;
-  display: block;
-  height: 3rem;
-  border-radius: 1.5rem;
-  margin: 1.5rem auto;
-  padding: 0.7rem 0.85rem;
-  text-align: center;
-  width: 14rem;
+  /* background: #ffb600; */
+  /* border: 1px solid #ffb600; */
+  /* display: block; */
+  /* height: 3rem; */
+  /* border-radius: 1.5rem; */
+  /* margin: 1.5rem auto; */
+  /* padding: 0.7rem 0.85rem; */
+  /* text-align: center; */
+  /* width: 14rem; */
 }
