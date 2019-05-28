@@ -18,6 +18,18 @@ class Dashboard extends Component {
         checked: false,
     };
 
+    componentWillMount() {
+        // for when you come back from NavBar it can show every page
+        const { eventsJS } = this.props;
+        // console.log(eventsJS);
+        if (eventsJS) {
+            eventInitial = [...eventsJS];
+            this.setState({
+                events: eventInitial,
+            });
+        }
+    }
+
     componentDidUpdate() {
         // console.log(eventInitial);
         this.updateEventFromJB();
@@ -108,7 +120,6 @@ class Dashboard extends Component {
 
         const { auth } = this.props;
         // console.log(this.props);
-        console.log(this.state.events);
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;
