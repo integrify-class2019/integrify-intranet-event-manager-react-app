@@ -18,17 +18,8 @@ class Dashboard extends Component {
         checked: false,
     };
 
-    // componentDidMount() {
-    //     // const { eventsJS } = this.props;
-    //     // console.log(eventsData);
-
-    //     this.setState({
-    //         events: eventInitial,
-    //     });
-    // }
-
     componentDidUpdate() {
-        // console.log('update');
+        // console.log(eventInitial);
         this.updateEventFromJB();
     }
 
@@ -78,19 +69,19 @@ class Dashboard extends Component {
 
     updateEventFromJB = () => {
         const { eventsJS } = this.props;
-        console.log(eventsJS);
+        // console.log(eventsJS);
 
         if (eventsJS) {
             // console.log('update events');
             // console.log(eventsJS[0].participant);
             // console.log(eventInitial.includes(eventsJS[0]));
 
-            if (!eventInitial.includes(eventsJS[0])) {
-                eventInitial = [...eventInitial, ...eventsJS];
+            if (eventInitial.length == 0) {
+                eventInitial = [...eventsJS];
                 this.setState({
                     events: eventInitial,
                 });
-                console.log(eventInitial);
+                // console.log(eventInitial);
             }
         }
     };
@@ -117,7 +108,7 @@ class Dashboard extends Component {
 
         const { auth } = this.props;
         // console.log(this.props);
-        // console.log(this.state);
+        console.log(this.state.events);
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;

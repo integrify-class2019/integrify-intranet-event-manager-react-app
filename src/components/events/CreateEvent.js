@@ -7,16 +7,23 @@ import '../../CreateEvent.css';
 
 class CreateEvent extends Component {
     state = {
-        eventName: '',
-        eventDescription: '',
-        eventType: '',
-        eventLocation: '',
+        name: '',
+        description: '',
+        type: '',
+        location: '',
         date: new Date(),
+        time: {},
     };
 
     handleDate = date => {
-        this.setState({ date });
-        console.log(this.state);
+        this.setState(
+            {
+                date,
+            },
+            () => {
+                console.log(this.state);
+            }
+        );
     };
 
     handleChange = e => {
@@ -26,12 +33,38 @@ class CreateEvent extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        const { date } = this.state;
+        const months = [
+            'Jan',
+            'Feb',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+        ];
+        const month = date.getMonth();
+        const day = date.getDate();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        console.log(`${day} ${months[month]}`, `${hour}: ${minute}`);
 
-        // this is where we can send the data to the server for Sign UP or Sign In
+        this.setState(
+            {
+                time: { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` },
+            },
+            () => {
+                console.log('the event created with the following data:');
+                console.log(this.state);
+                this.props.createEvent(this.state);
+            }
+        );
 
-        console.log('the event created with the following data:');
-        console.log(this.state);
-        this.props.createEvent(this.state);
         // this.props.history.push('/');
     };
 
@@ -39,10 +72,10 @@ class CreateEvent extends Component {
         const { eventName, eventDescription, eventType, eventLocation, date } = this.state;
         return (
             <div className="CreateEvent">
-                <div className="CreateEvent-title">
+                {/* <div className="CreateEvent-title">
                     <h1>Create Event</h1>
                     <div>Menu</div>
-                </div>
+                </div> */}
                 <div className="CreateEvent-Form">
                     <form className="FormFields">
                         <div className="FormField">
@@ -55,7 +88,7 @@ class CreateEvent extends Component {
                                 value={eventName}
                                 className="FormField-Input"
                                 placeholder="Name of your event"
-                                name="eventName"
+                                name="name"
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -70,7 +103,7 @@ class CreateEvent extends Component {
                                 value={eventDescription}
                                 className="FormField-Input"
                                 placeholder="What are you organising?"
-                                name="eventDescription"
+                                name="description"
                                 onChange={this.handleChange}
                                 required
                             />
@@ -82,15 +115,16 @@ class CreateEvent extends Component {
                             </label>
                             <select
                                 value={eventType}
-                                name="eventType"
+                                name="type"
                                 onChange={this.handleChange}
                                 required
                             >
                                 <option value="">-- Select your Event --</option>
-                                <option value="type1">type1</option>
-                                <option value="type2">type2</option>
-                                <option value="type3">type3</option>
-                                <option value="type4">type4</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Meetup">Meetup</option>
+                                <option value="Party">Party</option>
+                                <option value="Presentation">Presentation</option>
+                                <option value="type4">Other</option>
                             </select>
                         </div>
 
@@ -104,7 +138,7 @@ class CreateEvent extends Component {
                                 value={eventLocation}
                                 className="FormField-Input"
                                 placeholder="Place, room, or address"
-                                name="eventLocation"
+                                name="location"
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -115,6 +149,8 @@ class CreateEvent extends Component {
                             </label>
                             <DateTimePicker
                                 disableClock
+                                clearIcon={null}
+                                format="dd-MM-y HH:mm"
                                 type="date"
                                 className="FormField-Calendar"
                                 name="date"
