@@ -127,7 +127,10 @@ class Dashboard extends Component {
         // update data form firebase
 
         const renderEvents =
-            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+            events &&
+            events.map(event => (
+                <EventDashboard key={event.id} event={event} history={this.props.history} />
+            ));
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}
         // </Link>

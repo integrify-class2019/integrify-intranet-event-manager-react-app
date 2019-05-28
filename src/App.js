@@ -5,7 +5,7 @@ import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
 
 import './Base.css';
-import EventDetail from './components/dashboard/EventDetail';
+import EventDetail from './components/events/EventDetail';
 import Home from './components/Home';
 import NavBar from './components/layout/Navbar';
 
