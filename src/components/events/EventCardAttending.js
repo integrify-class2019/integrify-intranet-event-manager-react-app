@@ -13,8 +13,8 @@ class EventCardAttending extends Component {
     const { name, participant, time, type, id } = event;
     const value = participant.in.length === 0 ? '0' : participant.in.length;
     return (
-      // <NavLink to = {filteredeventis}
-      <div className={`event-card event-${type}`} key={id}>
+      // <NavLink to = {filteredEventids}
+      <div className={`attending-event-card event-${type}`} key={id}>
         <div className="event-header">
           <h2 className="event-title">{name}</h2>
           <div className="progress">

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../../Attending.css';
+import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-router-dom';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import Switch from 'react-switch';
+
 import EventCardAttending from './EventCardAttending';
+
+import '../../css/Attending.css';
 
 // let eventInitial = [...eventsData];
 let eventInitial = [];
@@ -47,21 +53,23 @@ class AttendingEvents extends Component {
 
     return (
       <main>
-        <section class="events-section">
-          <div class="events container">{renderAttendingEvents}</div>
+        <section class="attending-events-section">
+          <div class="attending-events container">{renderAttendingEvents}</div>
         </section>
       </main>
     );
   }
 }
 
-const mapStatesToProps = state => {
-  console.log(state);
+const mapStateToProps = state => {
+  // console.log(state);
   const { events } = state.firestore.ordered;
   return {
     eventsJS: events,
     auth: state.firebase.auth
   };
 };
-
-export default connect(mapStatesToProps)(AttendingEvents);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: 'events' }])
+)(AttendingEvents);

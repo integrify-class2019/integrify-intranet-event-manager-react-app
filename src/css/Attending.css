@@ -1,41 +1,37 @@
-Event card .events-section {
+.attending-events-section {
   width: 95%;
   margin: auto;
-  margin-top: -15px;
+  margin-top: 3vh;
 }
 
-.event-card:not(first-child) {
+/* .event-card:not(first-child) {
   margin-top: -40px;
-}
-.event-card {
-  /* width: 100%; */
-  min-height: 35vh;
+} */
+.attending-event-card {
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  /* -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); */
-  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+  border-radius: 2rem;
+  margin-bottom: 4vh;
 }
 
 .event-Other {
-  background: url(assets/images/event-Other.jpg);
+  background: url(../assets/images/event-Other.jpg);
   background-position: center;
   background-size: cover;
   background-attachment: unset;
   background-repeat: no-repeat;
 }
-.event-2 {
-  /* background: url(../assets/images/event-2.jpg) top/cover no-repeat; */
-}
 .event-Party {
-  background: url(assets/images/event-Party.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Party.jpg) top/cover no-repeat;
 }
 .event-Presentation {
-  background: url(assets/images/event-Presentation.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Presentation.jpg) top/cover no-repeat;
 }
 .event-Sport {
-  background: url(assets/images/event-Sport.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Sport.jpg) top/cover no-repeat;
 }
 
 /* Event header */
@@ -96,7 +92,7 @@ Event card .events-section {
 /* Event details */
 .event-details {
   width: 100%;
-  /* padding: 2px 20px 25px 20px; */
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

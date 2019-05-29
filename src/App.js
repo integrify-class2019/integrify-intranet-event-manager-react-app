@@ -6,13 +6,13 @@ import DashBoard from './components/dashboard/Dashboard';
 import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
 
-import './Base.css';
+import './css/Base.css';
 import EventDetail from './components/events/EventDetail';
 import Home from './components/Home';
 import { connect } from 'react-redux';
 import AttendingEvents from './components/events/AttendingEvents';
 
-import './Base.css';
+import './css/Base.css';
 
 class App extends Component {
   render() {

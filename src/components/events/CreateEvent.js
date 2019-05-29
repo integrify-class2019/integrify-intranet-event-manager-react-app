@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { createEvent } from '../../store/actions/eventActions';
 
-import '../../CreateEvent.css';
+import '../../css/CreateEvent.css';
 
 class CreateEvent extends Component {
     state = {
