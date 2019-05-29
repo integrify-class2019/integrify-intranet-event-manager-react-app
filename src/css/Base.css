@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Asap", sans-serif;
+  font-family: 'Asap', sans-serif;
   scroll-behavior: smooth;
   text-decoration: none;
 }
@@ -93,14 +93,13 @@ main {
   background: white;
   display: flex;
   flex-direction: column;
-  height: 580px;
+  /* height: 580px; */
   justify-content: flex-start;
   margin: auto;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 1.3rem;
-
-  width: 300px;
+  width: 100%;
   z-index: -10;
 }
 
@@ -130,7 +129,7 @@ footer {
 
 footer::before {
   background: #4e4747;
-  content: "";
+  content: '';
   height: 2rem;
   left: 0px;
   opacity: 0.5;

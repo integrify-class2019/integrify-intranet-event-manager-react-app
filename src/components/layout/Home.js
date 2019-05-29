@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Base.css';
+import '../../css/Base.css';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 // import LogIn from './auth/LogIn';
@@ -17,7 +17,7 @@ const mapStateToProps = state => {
     console.log(state);
 
     return {
-        auth: state.firebase.auth,
+        auth: state.firebase.auth
     };
 };
 

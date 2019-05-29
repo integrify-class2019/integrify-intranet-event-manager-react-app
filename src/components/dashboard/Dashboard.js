@@ -5,7 +5,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Switch from 'react-switch';
 // import { eventsData } from '../../data';
-import '../../Dashboard.css';
+import '../../css/Dashboard.css';
+
 import EventDashboard from './EventDashboard';
 
 // let eventInitial = [...eventsData];
@@ -33,7 +34,7 @@ class Dashboard extends Component {
 
     componentDidUpdate() {
         // console.log(eventInitial);
-        this.updateEventFromJB();
+        this.updateEventFromDB();
     }
 
     showInputChange = typeInput => {
@@ -80,7 +81,7 @@ class Dashboard extends Component {
         }
     };
 
-    updateEventFromJB = () => {
+    updateEventFromDB = () => {
         const { eventsJS } = this.props;
         // console.log(eventsJS);
 
@@ -116,17 +117,11 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
-    // update participant when click in out
-    onEnrollData = (eventid, data) => {
-        console.log('eventid', eventid);
-        console.log('enroll', data);
-    };
-
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
-        console.log(this.props);
+        // console.log(this.props);
 
         // console.log(this.state.events);
 
@@ -138,13 +133,7 @@ class Dashboard extends Component {
         const renderEvents =
             events &&
             events.map(event => (
-                <EventDashboard
-                    key={event.id}
-                    event={event}
-                    history={this.props.history}
-                    userId={this.props.auth.uid}
-                    enrollData={this.onEnrollData}
-                />
+                <EventDashboard key={event.id} event={event} history={this.props.history} />
             ));
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}

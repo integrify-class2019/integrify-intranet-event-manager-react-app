@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -19,7 +19,7 @@ const store = createStore(
         reactReduxFirebase(fbConfig, {
             userProfile: 'users',
             useFirestoreForProfile: true,
-            attachAuthIsReady: true,
+            attachAuthIsReady: true
         })
     )
 );
