@@ -116,14 +116,19 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
+    // update participant when click in out
+    onEnrollData = (eventid, data) => {
+        console.log('eventid', eventid);
+        console.log('enroll', data);
+    };
+
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
-        // console.log(this.props);
+        console.log(this.props);
 
         // console.log(this.state.events);
-
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;
@@ -133,7 +138,13 @@ class Dashboard extends Component {
         const renderEvents =
             events &&
             events.map(event => (
-                <EventDashboard key={event.id} event={event} history={this.props.history} />
+                <EventDashboard
+                    key={event.id}
+                    event={event}
+                    history={this.props.history}
+                    userId={this.props.auth.uid}
+                    enrollData={this.onEnrollData}
+                />
             ));
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}

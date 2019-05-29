@@ -18,28 +18,35 @@ export default class EventDashboard extends Component {
 
     handleEnroll = e => {
         const { eventIn, eventOut } = this.state;
+        const { userId } = this.props;
+        const eventId = e.target.id;
         if (e.target.classList.contains('btn-in')) {
             eventOut.map(el => {
-                if (el === e.target.id) {
+                if (el === userId) {
                     const newEventOut = eventIn.filter(event => event !== el);
 
                     this.setState({ eventOut: newEventOut });
                 }
             });
-            this.setState({ eventIn: [...eventIn, e.target.id] }, () => {
+            this.setState({ eventIn: [...eventIn, userId] }, () => {
                 console.log('in', this.state.eventIn);
+                // call the data and copy the state to database
+
+                this.props.enrollData(eventId, this.state);
             });
         }
         if (e.target.classList.contains('btn-out')) {
             eventIn.map(el => {
-                if (el === e.target.id) {
+                if (el === userId) {
                     const newEventIn = eventIn.filter(event => event !== el);
 
                     this.setState({ eventIn: newEventIn });
                 }
             });
-            this.setState({ eventOut: [...eventOut, e.target.id] }, () => {
+            this.setState({ eventOut: [...eventOut, userId] }, () => {
                 console.log('out', this.state.eventOut);
+                // call the data and copy the state to database
+                this.props.enrollData(eventId, this.state);
             });
         }
 
@@ -71,7 +78,8 @@ export default class EventDashboard extends Component {
 
     render() {
         const { event } = this.props;
-        console.log(this.state);
+        // console.log(this.state);
+        // console.log(this.props);
 
         console.log(event.participant);
 
@@ -169,37 +177,3 @@ export default class EventDashboard extends Component {
         );
     }
 }
-
-//   <div class="event-card event-1">
-//     <div class="event-header">
-//       <h2 class="event-title">Summer Picnic, 2019</h2>
-//       <div class="progress">
-//         <img src="https://quickchart.io/chart?c={
-//                   type:'radialGauge',
-//                   data:{
-//                     datasets:[{data:[30],backgroundColor:'green'}]
-//                   }
-//                 }">
-//       </div>
-//     </div>
-
-//     <div class="event-actions">
-//       <a class="thumbs-up" href="#">
-//         <img src="./assets/images/thumbsup.svg" alt="thumbs up" class="up">
-//         <span class="in">IN</span>
-//       </a>
-//       <a class="thumbs-down" href="#">
-//         <img src="./assets/images/thumbsdown.svg" alt="thumbs down" class="down">
-//         <span class="out">OUT</span>
-//       </a>
-
-//     </div>
-
-//     <div class="event-details">
-//       <div class="date-time">
-//         <h3><span class="date">20</span> May</h3>
-//         <h3 class="time">16:00 - 19.30</h3>
-//       </div>
-//       <img src="./assets/images/location.svg" alt="" class="location">
-//     </div>
-//   </div>
