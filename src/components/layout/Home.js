@@ -10,14 +10,14 @@ const App = props => {
     if (auth.uid) {
         return <Redirect to="/dashboard" />;
     }
-    return <Redirect to="/sign-in" />;
+    // return <Redirect to="/sign-in" />;
 };
 
 const mapStateToProps = state => {
     console.log(state);
 
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 

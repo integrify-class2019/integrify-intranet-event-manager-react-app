@@ -20,7 +20,8 @@ class LogIn extends Component {
                     <div className="LogIn-Form">
                         <div className="PageSwitcher">
                             <NavLink
-                                to="/sign-in"
+                                exact
+                                to="/"
                                 activeClassName="PageSwitcher-Item-Active"
                                 className="PageSwitcher-Item"
                             >
@@ -38,7 +39,12 @@ class LogIn extends Component {
                         </div>
 
                         <div className="FormTitle">
-                            <NavLink to="/sign-in" activeClassName="FormTitle-Link-Active" className="FormTitle-Link">
+                            <NavLink
+                                exact
+                                to="/"
+                                activeClassName="FormTitle-Link-Active"
+                                className="FormTitle-Link"
+                            >
                                 Sign In
                             </NavLink>{' '}
                             or{' '}
@@ -52,9 +58,9 @@ class LogIn extends Component {
                             </NavLink>
                         </div>
 
-                        <Route exact path="/sign-up" component={SignUpForm} />
+                        <Route path="/sign-up" component={SignUpForm} />
 
-                        <Route path="/sign-in" component={SignInForm} />
+                        <Route exact path="/" component={SignInForm} />
                     </div>
                 </div>
             </Router>

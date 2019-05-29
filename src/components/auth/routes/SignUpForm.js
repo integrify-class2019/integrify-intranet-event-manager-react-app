@@ -29,6 +29,11 @@ class SignUpForm extends Component {
 
     render() {
         const { auth, authError } = this.props;
+        if (auth.uid) {
+            console.log(auth.uid);
+
+            window.location.href = 'http://localhost:3000/';
+        }
         return (
             <div className="FormCenter">
                 <form className="FormFields" onSubmit={this.handleSubmit}>
@@ -99,7 +104,7 @@ class SignUpForm extends Component {
                             {authError ? <p>{authError}</p> : null}
                         </div>
                         <button className="FormField-Button mr-20">Sign Up</button>{' '}
-                        <Link to="/sign-in" className="FormField-Link">
+                        <Link to="/" className="FormField-Link">
                             I am already a member
                         </Link>
                     </div>
