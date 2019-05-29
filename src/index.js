@@ -12,23 +12,23 @@ import rootReducer from './store/reducers/rootReducer';
 import App from './App';
 
 const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig, {
-      userProfile: 'users',
-      useFirestoreForProfile: true,
-      attachAuthIsReady: true
-    })
-  )
+    rootReducer,
+    compose(
+        applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+        reduxFirestore(fbConfig),
+        reactReduxFirebase(fbConfig, {
+            userProfile: 'users',
+            useFirestoreForProfile: true,
+            attachAuthIsReady: true
+        })
+    )
 );
 
 store.firebaseAuthIsReady.then(() => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  );
+    ReactDOM.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        document.getElementById('root')
+    );
 });

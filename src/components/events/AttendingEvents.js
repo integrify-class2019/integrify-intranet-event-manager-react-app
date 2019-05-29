@@ -13,56 +13,57 @@ import '../../css/Attending.css';
 let eventInitial = [];
 
 class AttendingEvents extends Component {
-  state = {
-    events: [],
-    clicked: false
-  };
-  // componentDidUpdate() {
-  //   // console.log(eventInitial);
-  //   this.updateEventFromDB();
-  //   // console.log(this.props);
-  // }
+    state = {
+        events: [],
+        clicked: false
+    };
+    // componentDidUpdate() {
+    //   // console.log(eventInitial);
+    //   this.updateEventFromDB();
+    //   // console.log(this.props);
+    // }
 
-  // updateEventFromDB = () => {
-  //   const { eventsFB } = this.props;
-  //   // console.log(eventsJS);
+    // updateEventFromDB = () => {
+    //   const { eventsFB } = this.props;
+    //   // console.log(eventsJS);
 
-  //   if (eventsFB.length > 0) {
-  //     this.setState({
-  //       events: eventsFB
-  //     });
-  //   }
-  // };
+    //   if (eventsFB.length > 0) {
+    //     this.setState({
+    //       events: eventsFB
+    //     });
+    //   }
+    // };
 
-  render() {
-    console.log(this.props.eventsFB);
+    render() {
+        console.log(this.props.eventsFB);
 
-    const { clicked } = this.state;
-    const events = this.props.eventsFB;
-    const { auth } = this.props;
-    console.log(this.props);
-    console.log(this.state.events);
-    const renderAttendingEvents = events && events.map(event => <EventCardAttending key={event.id} event={event} />);
+        const { clicked } = this.state;
+        const events = this.props.eventsFB;
+        const { auth } = this.props;
+        console.log(this.props);
+        console.log(this.state.events);
+        const renderAttendingEvents =
+            events && events.map(event => <EventCardAttending key={event.id} event={event} />);
 
-    return (
-      <main>
-        <section class="attending-events-section">
-          <div class="attending-events container">{renderAttendingEvents}</div>
-        </section>
-      </main>
-    );
-  }
+        return (
+            <main>
+                <section class="attending-events-section">
+                    <div class="attending-events container">{renderAttendingEvents}</div>
+                </section>
+            </main>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
-  const { events } = state.firestore.ordered;
-  return {
-    eventsFB: events,
-    auth: state.firebase.auth
-  };
+    // console.log(state);
+    const { events } = state.firestore.ordered;
+    return {
+        eventsFB: events,
+        auth: state.firebase.auth
+    };
 };
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([{ collection: 'events' }])
+    connect(mapStateToProps),
+    firestoreConnect([{ collection: 'events' }])
 )(AttendingEvents);
