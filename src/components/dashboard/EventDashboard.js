@@ -11,7 +11,7 @@ library.add(faThumbsUp, faThumbsDown);
 export default class EventDashboard extends Component {
     state = {
         eventIn: [],
-        eventOut: [],
+        eventOut: []
     };
 
     // for getting the user's enrollments
@@ -100,7 +100,7 @@ export default class EventDashboard extends Component {
                                     transition: 'stroke-dashoffset 0.5s ease 0s',
                                     // Rotate the path
                                     transform: 'rotate(0.25turn)',
-                                    transformOrigin: 'center center',
+                                    transformOrigin: 'center center'
                                 },
                                 // Customize the circle behind the path, i.e. the "total progress"
                                 trail: {
@@ -110,7 +110,7 @@ export default class EventDashboard extends Component {
                                     strokeLinecap: 'butt',
                                     // Rotate the trail
                                     transform: 'rotate(0.25turn)',
-                                    transformOrigin: 'center center',
+                                    transformOrigin: 'center center'
                                 },
                                 // Customize the text
                                 text: {
@@ -118,12 +118,12 @@ export default class EventDashboard extends Component {
                                     fill: 'black',
                                     // Text size
                                     fontSize: '3rem',
-                                    fontWeight: 'bolder',
+                                    fontWeight: 'bolder'
                                 },
                                 // Customize background - only used when the `background` prop is true
                                 background: {
-                                    fill: 'white',
-                                },
+                                    fill: 'white'
+                                }
                             }}
                         />{' '}
                     </div>

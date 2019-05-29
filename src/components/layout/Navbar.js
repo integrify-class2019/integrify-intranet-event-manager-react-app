@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../../Navbar.css';
+import '../../css/Navbar.css';
 
 import HeaderLogo from '../../assets/images/header-logo.svg';
 import MenuIcon from '../../assets/images/menu bar.svg';
 
 class NavBar extends React.Component {
     state = {
-        isOpen: false,
+        isOpen: false
     };
 
     handleOpen = () => {
@@ -18,19 +18,25 @@ class NavBar extends React.Component {
     };
 
     render() {
-        const pageName = window.location.pathname.slice(1);
+        const path = window.location.pathname;
+        const capitalInitial = path.slice(1, 2).toUpperCase();
+        const restLetters = path.slice(2);
+        const pageName =
+            path.slice(1) === 'log-out'
+                ? `${capitalInitial}${restLetters}`.replace('-', '')
+                : `${capitalInitial}${restLetters}`.replace('-', ' ');
 
-        if (window.location.pathname == '/sign-in' || window.location.pathname == '/sign-up') {
+        if (window.location.pathname === '/sign-in' || window.location.pathname === '/sign-up') {
             return <></>;
         }
 
         return (
             <header className="main-header">
                 <div className="container header-nav">
-                    <a href="#" className="logo">
+                    <NavLink to="/dashboard" className="logo">
                         <img src={HeaderLogo} alt="logo" className="header-logo" />
                         <h1>{pageName}</h1>
-                    </a>
+                    </NavLink>
 
                     <button className="menu-bar" onClick={this.handleOpen} type="button">
                         <img src={MenuIcon} alt="menu bar" />

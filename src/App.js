@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+import NavBar from './components/layout/Navbar';
 import DashBoard from './components/dashboard/Dashboard';
 import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
 
-import './Base.css';
+import './css/Base.css';
 import EventDetail from './components/events/EventDetail';
-import Home from './components/Home';
-import NavBar from './components/layout/Navbar';
+import Home from './components/layout/Home';
+import { connect } from 'react-redux';
+import AttendingEvents from './components/events/AttendingEvents';
+
+import './css/Base.css';
 
 class App extends Component {
     render() {
+        // const { auth } = this.props;
+        // console.log(this.props);
+
+        // if (!auth.uid) {
+        //   return <Redirect to="/sign-in" />;
+        // }
         return (
             <BrowserRouter>
                 <div className="App">
@@ -22,6 +33,7 @@ class App extends Component {
                             <Route exact path="/sign-in" component={LogIn} />
                             <Route exact path="/create-event" component={CreateEvent} />
                             <Route path="/event/:id" component={EventDetail} />
+                            <Route path="/attending" component={AttendingEvents} />
                         </Switch>
                     </div>
                 </div>
@@ -29,4 +41,13 @@ class App extends Component {
         );
     }
 }
-export default App;
+
+const mapStateToProps = state => {
+    console.log(state);
+
+    return {
+        auth: state.firebase.auth
+    };
+};
+
+export default connect(mapStateToProps)(App);
