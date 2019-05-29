@@ -16,6 +16,7 @@ class Dashboard extends Component {
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
         checked: false,
+        enrollments: [],
     };
 
     componentDidUpdate() {
@@ -103,12 +104,68 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
+    // for getting the user's enrollments
+
+    onHandeEnroll = e => {
+        const { enrollments } = this.state;
+        let found = false;
+        if (e.target.classList.contains('btn-in')) {
+            for (let i = 0; i <= enrollments.length; i++) {
+                if (enrollments[i] != e.target.id) {
+                    console.log('yes');
+                    found = true;
+                    console.log(e.target.id);
+                    this.setState(
+                        {
+                            enrollments: [...enrollments, e.target.id],
+                        },
+                        () => {
+                            console.log(this.state.enrollments);
+                        }
+                    );
+                }
+                if (!found) return;
+            }
+
+            // state = {
+            //     [id]: 'string',
+            // };
+            console.log(e.target.id);
+            // enrollments.map(el => {
+            //     if (el !== e.target.id) {
+            //         console.log(el);
+            //         this.setState(
+            //             {
+            //                 enrollments: [...enrollments, e.target.id],
+            //             },
+            //             () => {
+            //                 console.log(this.state.enrollments);
+            //             }
+            //         );
+            //     }
+            // });
+        }
+        // if (e.target.classList.contains('btn-out')) {
+        //     for (let i = 0; i <= enrollments.length; i++) {
+        //         if (enrollments[i] == e.target.id) {
+        //             const index = enrollments[i].indexOf(e.target.id);
+
+        //             this.setState({ enrollments: [...enrollments.splice(index, 1)] }, () => {
+        //                 console.log(this.state.enrollments);
+        //             });
+        //         }
+        //     }
+        // }
+
+        console.log(this.state.enrollments);
+    };
+
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
         // console.log(this.props);
-        console.log(this.state.events);
+        // console.log(this.state.events);
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;
@@ -116,7 +173,10 @@ class Dashboard extends Component {
         // update data form firebase
 
         const renderEvents =
-            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+            events &&
+            events.map(event => (
+                <EventDashboard key={event.id} event={event} onHandeEnroll={this.onHandeEnroll} />
+            ));
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}
         // </Link>

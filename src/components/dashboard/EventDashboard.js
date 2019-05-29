@@ -8,18 +8,27 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 library.add(faThumbsUp, faThumbsDown);
 
 export default class EventDashboard extends Component {
-    state = {
-        enrollments: [],
-        userid: 'testuser',
-    };
-
     handeEnroll = e => {
-        const { userid, enrollments } = this.state;
-        this.setState({ enrollments: [userid] });
-        console.log(this.state);
-        console.log(e.target);
+        this.props.onHandeEnroll(e);
 
-        e.target.className = 'btn-enroll btn-in-active';
+        switch (e.target.className) {
+            case 'btn-enroll btn-in':
+                const outBtn =
+                    e.target.parentElement.querySelector('.btn-out-active') ||
+                    e.target.parentElement.querySelector('.btn-out');
+                outBtn.className = 'btn-enroll btn-out';
+                e.target.className = 'btn-enroll btn-in-active';
+
+                break;
+            case 'btn-enroll btn-out':
+                const inBtn =
+                    e.target.parentElement.querySelector('.btn-in-active') ||
+                    e.target.parentElement.querySelector('.btn-in');
+                inBtn.className = 'btn-enroll btn-in';
+                e.target.className = 'btn-enroll btn-out-active';
+            default:
+                break;
+        }
     };
 
     render() {
