@@ -5,7 +5,9 @@ import NavBar from './components/layout/Navbar';
 import DashBoard from './components/dashboard/Dashboard';
 import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
-import EventDetail from './components/dashboard/EventDetail';
+
+import './Base.css';
+import EventDetail from './components/events/EventDetail';
 import Home from './components/Home';
 import { connect } from 'react-redux';
 import AttendingEvents from './components/events/AttendingEvents';

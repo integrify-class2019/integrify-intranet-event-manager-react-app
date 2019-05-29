@@ -13,8 +13,9 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
             authorName: profile.name,
             participant: { total: 15, in: [], out: [] },
         })
-        .then(() => {
-            dispatch({ type: 'CREATE_EVENT', event });
+        .then(res => {
+            console.log(res);
+            dispatch({ type: 'CREATE_EVENT', event: { ...event, id: res.id } });
         })
         .catch(err => {
             dispatch({ type: 'CREATE_EVENT_ERROR', err });

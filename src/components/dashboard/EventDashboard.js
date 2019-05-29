@@ -4,31 +4,82 @@ import 'react-circular-progressbar/dist/styles.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { Redirect } from 'react-router-dom';
 
 library.add(faThumbsUp, faThumbsDown);
 
 export default class EventDashboard extends Component {
     state = {
-        enrollments: [],
-        userid: 'testuser',
+        eventIn: [],
+        eventOut: [],
     };
 
-    handeEnroll = e => {
-        const { userid, enrollments } = this.state;
-        this.setState({ enrollments: [userid] });
-        console.log(this.state);
-        console.log(e.target);
+    // for getting the user's enrollments
 
-        e.target.className = 'btn-enroll btn-in-active';
+    handleEnroll = e => {
+        const { eventIn, eventOut } = this.state;
+        if (e.target.classList.contains('btn-in')) {
+            eventOut.map(el => {
+                if (el === e.target.id) {
+                    const newEventOut = eventIn.filter(event => event !== el);
+
+                    this.setState({ eventOut: newEventOut });
+                }
+            });
+            this.setState({ eventIn: [...eventIn, e.target.id] }, () => {
+                console.log('in', this.state.eventIn);
+            });
+        }
+        if (e.target.classList.contains('btn-out')) {
+            eventIn.map(el => {
+                if (el === e.target.id) {
+                    const newEventIn = eventIn.filter(event => event !== el);
+
+                    this.setState({ eventIn: newEventIn });
+                }
+            });
+            this.setState({ eventOut: [...eventOut, e.target.id] }, () => {
+                console.log('out', this.state.eventOut);
+            });
+        }
+
+        switch (e.target.className) {
+            case 'btn-enroll btn-in':
+                const outBtn =
+                    e.target.parentElement.querySelector('.btn-out-active') ||
+                    e.target.parentElement.querySelector('.btn-out');
+                outBtn.className = 'btn-enroll btn-out';
+                e.target.className = 'btn-enroll btn-in-active';
+
+                break;
+            case 'btn-enroll btn-out':
+                const inBtn =
+                    e.target.parentElement.querySelector('.btn-in-active') ||
+                    e.target.parentElement.querySelector('.btn-in');
+                inBtn.className = 'btn-enroll btn-in';
+                e.target.className = 'btn-enroll btn-out-active';
+            default:
+                break;
+        }
+    };
+
+    clickEventDetail = () => {
+        console.log(this.props);
+        // return <Redirect to={`'/event/' ${this.props.event.id} `} />;
+        this.props.history.push(`/event/${this.props.event.id}`);
     };
 
     render() {
         const { event } = this.props;
+        console.log(this.state);
+
+        console.log(event.participant);
+
         const { name, participant, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
             <div className={`event-card event-${type}`} key={id}>
-                <div className="event-header">
+                <div className="event-header" onClick={this.clickEventDetail}>
                     <h2 className="event-title">{name}</h2>
                     <div className="progress">
                         <CircularProgressbar
@@ -84,7 +135,7 @@ export default class EventDashboard extends Component {
                         id={id}
                         className="btn-enroll btn-in"
                         style={{ cursor: 'pointer' }}
-                        onClick={this.handeEnroll}
+                        onClick={this.handleEnroll}
                     >
                         <FontAwesomeIcon icon="thumbs-up" />
                         &nbsp;IN&nbsp;
@@ -94,7 +145,7 @@ export default class EventDashboard extends Component {
                         id={id}
                         className="btn-enroll btn-out"
                         style={{ cursor: 'pointer' }}
-                        onClick={this.handeEnroll}
+                        onClick={this.handleEnroll}
                     >
                         <FontAwesomeIcon icon="thumbs-down" />
                         <i className="icon icon-thumbs-down" />
