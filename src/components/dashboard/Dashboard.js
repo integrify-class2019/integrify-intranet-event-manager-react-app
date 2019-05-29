@@ -20,7 +20,7 @@ class Dashboard extends Component {
 
     componentDidUpdate() {
         // console.log(eventInitial);
-        this.updateEventFromJB();
+        this.updateEventFromDB();
     }
 
     showInputChange = typeInput => {
@@ -67,7 +67,7 @@ class Dashboard extends Component {
         }
     };
 
-    updateEventFromJB = () => {
+    updateEventFromDB = () => {
         const { eventsJS } = this.props;
         // console.log(eventsJS);
 

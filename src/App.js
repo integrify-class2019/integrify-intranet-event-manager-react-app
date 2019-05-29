@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import NavBar from './components/layout/Navbar';
 import DashBoard from './components/dashboard/Dashboard';
@@ -7,12 +7,19 @@ import LogIn from './components/auth/LogIn';
 import CreateEvent from './components/events/CreateEvent';
 import EventDetail from './components/dashboard/EventDetail';
 import Home from './components/Home';
+import { connect } from 'react-redux';
 import AttendingEvents from './components/events/AttendingEvents';
 
 import './Base.css';
 
 class App extends Component {
   render() {
+    // const { auth } = this.props;
+    // console.log(this.props);
+
+    // if (!auth.uid) {
+    //   return <Redirect to="/sign-in" />;
+    // }
     return (
       <BrowserRouter>
         <div className="App">
@@ -32,4 +39,13 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+const mapStateToProps = state => {
+  console.log(state);
+
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(App);

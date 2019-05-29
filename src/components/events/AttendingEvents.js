@@ -1,143 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import '../../Attending.css';
+import EventCardAttending from './EventCardAttending';
 
-const AttendingEvents = () => {
-  return (
-    <main>
-      <section class="events-section">
-        <div class="events container">
-          <div class="event-card event-1">
-            <div class="event-header">
-              <h2 class="event-title">Summer Picnic, 2019</h2>
-              <div class="progress">
-                <img
-                  src="https://quickchart.io/chart?c={
-                      type:'radialGauge',
-                      data:{
-                        datasets:[{data:[30],backgroundColor:'green'}]
-                      }  
-                    }"
-                />
-              </div>
-            </div>
+// let eventInitial = [...eventsData];
+let eventInitial = [];
 
-            <div class="event-details">
-              <div class="date-time">
-                <h3>
-                  <span class="date">20</span> May
-                </h3>
-                <h3 class="time">16:00 - 19.30</h3>
-              </div>
-              <img src="../assets/images/location.svg" alt="" class="location" />
-            </div>
-          </div>
+class AttendingEvents extends Component {
+  state = {
+    events: [],
+    clicked: false
+  };
+  componentDidUpdate() {
+    // console.log(eventInitial);
+    this.updateEventFromDB();
+  }
 
-          <div class="event-card event-2">
-            <div class="event-header">
-              <h2 class="event-title">After Party JS</h2>
-              <div class="progress">
-                <img
-                  src="https://quickchart.io/chart?c={
-                      type:'radialGauge',
-                      data:{
-                        datasets:[{data:[30],backgroundColor:'green'}]
-                      }  
-                    }"
-                />
-              </div>
-            </div>
+  updateEventFromDB = () => {
+    const { eventsJS } = this.props;
+    // console.log(eventsJS);
 
-            <div class="event-details">
-              <div class="date-time">
-                <h3>
-                  <span class="date">20</span> May
-                </h3>
-                <h3 class="time">16:00 - 19.30</h3>
-              </div>
-              <img src="../assets/images/location.svg" alt="" class="location" />
-            </div>
-          </div>
+    if (eventsJS) {
+      // console.log('update events');
+      // console.log(eventsJS[0].participant);
+      // console.log(eventInitial.includes(eventsJS[0]));
 
-          <div class="event-card event-3">
-            <div class="event-header">
-              <h2 class="event-title">Web Submit, 2019</h2>
-              <div class="progress">
-                <img
-                  src="https://quickchart.io/chart?c={
-                      type:'radialGauge',
-                      data:{
-                        datasets:[{data:[30],backgroundColor:'green'}]
-                      }  
-                    }"
-                />
-              </div>
-            </div>
+      if (eventInitial.length === 0) {
+        eventInitial = [...eventsJS];
+        this.setState({
+          events: eventInitial
+        });
+        // console.log(eventInitial);
+      }
+    }
+  };
 
-            <div class="event-details">
-              <div class="date-time">
-                <h3>
-                  <span class="date">20</span> May
-                </h3>
-                <h3 class="time">16:00 - 19.30</h3>
-              </div>
-              <img src="../assets/images/location.svg" alt="" class="location" />
-            </div>
-          </div>
+  render() {
+    console.log(this.props.eventsJS);
 
-          <div class="event-card event-4">
-            <div class="event-header">
-              <h2 class="event-title">JS Meetup, 2019</h2>
-              <div class="progress">
-                <img
-                  src="https://quickchart.io/chart?c={
-                      type:'radialGauge',
-                      data:{
-                        datasets:[{data:[30],backgroundColor:'green'}]
-                      }  
-                    }"
-                />
-              </div>
-            </div>
+    const { events, clicked } = this.state;
 
-            <div class="event-details">
-              <div class="date-time">
-                <h3>
-                  <span class="date">20</span> May
-                </h3>
-                <h3 class="time">16:00 - 19.30</h3>
-              </div>
-              <img src="../assets/images/location.svg" alt="" class="location" />
-            </div>
-          </div>
+    const { auth } = this.props;
+    // console.log(this.props);
+    console.log(this.state.events);
+    const renderAttendingEvents = events && events.map(event => <EventCardAttending key={event.id} event={event} />);
 
-          <div class="event-card event-5">
-            <div class="event-header">
-              <h2 class="event-title">Intro to Dart 2.0</h2>
-              <div class="progress">
-                <img
-                  src="https://quickchart.io/chart?c={
-                      type:'radialGauge',
-                      data:{
-                        datasets:[{data:[30],backgroundColor:'green'}]
-                      }  
-                    }"
-                />
-              </div>
-            </div>
+    return (
+      <main>
+        <section class="events-section">
+          <div class="events container">{renderAttendingEvents}</div>
+        </section>
+      </main>
+    );
+  }
+}
 
-            <div class="event-details">
-              <div class="date-time">
-                <h3>
-                  <span class="date">10</span> Feb
-                </h3>
-                <h3 class="time">16:00 - 19.30</h3>
-              </div>
-              <img src="../assets/images/location.svg" alt="" class="location" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+const mapStatesToProps = state => {
+  console.log(state);
+  const { events } = state.firestore.ordered;
+  return {
+    eventsJS: events,
+    auth: state.firebase.auth
+  };
 };
 
-export default AttendingEvents;
+export default connect(mapStatesToProps)(AttendingEvents);
