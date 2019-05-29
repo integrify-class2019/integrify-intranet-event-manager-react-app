@@ -4,6 +4,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { Redirect } from 'react-router-dom';
 
 library.add(faThumbsUp, faThumbsDown);
 
@@ -22,13 +23,19 @@ export default class EventDashboard extends Component {
         e.target.className = 'btn-enroll btn-in-active';
     };
 
+    clickEventDetail = () => {
+        console.log(this.props);
+        // return <Redirect to={`'/event/' ${this.props.event.id} `} />;
+        this.props.history.push(`/event/${this.props.event.id}`);
+    };
+
     render() {
         const { event } = this.props;
         const { name, participant, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
             <div className={`event-card event-${type}`} key={id}>
-                <div className="event-header">
+                <div className="event-header" onClick={this.clickEventDetail}>
                     <h2 className="event-title">{name}</h2>
                     <div className="progress">
                         <CircularProgressbar

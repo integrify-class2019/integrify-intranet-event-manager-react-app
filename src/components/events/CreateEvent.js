@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { createEvent } from '../../store/actions/eventActions';
 
 import '../../CreateEvent.css';
@@ -70,12 +71,13 @@ class CreateEvent extends Component {
 
     render() {
         const { eventName, eventDescription, eventType, eventLocation, date } = this.state;
+
+        if (this.props.event.id) {
+            // redirect after they add event
+            return <Redirect to={`/event/${this.props.event.id}`} />;
+        }
         return (
             <div className="CreateEvent">
-                {/* <div className="CreateEvent-title">
-                    <h1>Create Event</h1>
-                    <div>Menu</div>
-                </div> */}
                 <div className="CreateEvent-Form">
                     <form className="FormFields">
                         <div className="FormField">
@@ -176,11 +178,19 @@ class CreateEvent extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    console.log(state);
+
+    return {
+        event: state.event,
+    };
+};
+
 const mapDispatchToProps = dispatch => ({
     createEvent: event => dispatch(createEvent(event)),
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(CreateEvent);
