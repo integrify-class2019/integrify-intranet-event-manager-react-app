@@ -108,29 +108,35 @@ class Dashboard extends Component {
 
     onHandeEnroll = e => {
         const { enrollments } = this.state;
-        let found = false;
+        let found = true;
         if (e.target.classList.contains('btn-in')) {
-            for (let i = 0; i <= enrollments.length; i++) {
-                if (enrollments[i] != e.target.id) {
+            console.log('enrollments', enrollments);
+
+            for (let i = 0; i < enrollments.length; i++) {
+                console.log('enrollments[i]', enrollments[i], ' :', e.target.id);
+
+                if (enrollments[i] == e.target.id) {
                     console.log('yes');
-                    found = true;
-                    console.log(e.target.id);
-                    this.setState(
-                        {
-                            enrollments: [...enrollments, e.target.id],
-                        },
-                        () => {
-                            console.log(this.state.enrollments);
-                        }
-                    );
+                    found = false;
+
+                    // console.log(e.target.id);
                 }
-                if (!found) return;
+            }
+            if (found) {
+                this.setState(
+                    {
+                        enrollments: [...enrollments, e.target.id],
+                    },
+                    () => {
+                        console.log(this.state.enrollments);
+                    }
+                );
             }
 
             // state = {
             //     [id]: 'string',
             // };
-            console.log(e.target.id);
+            // console.log(e.target.id);
             // enrollments.map(el => {
             //     if (el !== e.target.id) {
             //         console.log(el);
@@ -157,7 +163,7 @@ class Dashboard extends Component {
         //     }
         // }
 
-        console.log(this.state.enrollments);
+        // console.log(this.state.enrollments);
     };
 
     render() {
