@@ -16,6 +16,7 @@ class Dashboard extends Component {
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
         checked: false,
+        enrollments: [],
     };
 
     componentWillMount() {
@@ -120,6 +121,9 @@ class Dashboard extends Component {
 
         const { auth } = this.props;
         // console.log(this.props);
+
+        // console.log(this.state.events);
+
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;

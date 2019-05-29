@@ -94,17 +94,33 @@
   background-attachment: unset;
   background-repeat: no-repeat;
 }
-.event-2 {
-  /* background: url(../assets/images/event-2.jpg) top/cover no-repeat; */
+.event-Meetup {
+  background: url(assets/images/event-Meetup.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: unset;
+  background-repeat: no-repeat;
 }
 .event-Party {
-  background: url(assets/images/event-Party.jpg) top/cover no-repeat;
+  background: url(assets/images/event-Party.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: unset;
+  background-repeat: no-repeat;
 }
 .event-Presentation {
-  background: url(assets/images/event-Presentation.jpg) top/cover no-repeat;
+  background: url(assets/images/event-Presentation.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: unset;
+  background-repeat: no-repeat;
 }
 .event-Sport {
-  background: url(assets/images/event-Sport.jpg) top/cover no-repeat;
+  background: url(assets/images/event-Sport.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: unset;
+  background-repeat: no-repeat;
 }
 
 /* Event header */
@@ -157,7 +173,8 @@
   color: white;
   background-color: #78b728;
 }
-.btn-out:hover {
+.btn-out:hover,
+.btn-out-active {
   color: white;
   background-color: #ea5014;
 }
@@ -174,12 +191,12 @@
 
 .date-time {
   color: #000;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .date-time .date {
   margin: 0;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .date-time .time {
   margin: 0 auto 25px;
