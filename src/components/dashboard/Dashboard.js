@@ -19,6 +19,18 @@ class Dashboard extends Component {
         enrollments: [],
     };
 
+    componentWillMount() {
+        // for when you come back from NavBar it can show every page
+        const { eventsJS } = this.props;
+        // console.log(eventsJS);
+        if (eventsJS) {
+            eventInitial = [...eventsJS];
+            this.setState({
+                events: eventInitial,
+            });
+        }
+    }
+
     componentDidUpdate() {
         // console.log(eventInitial);
         this.updateEventFromJB();
@@ -109,7 +121,9 @@ class Dashboard extends Component {
 
         const { auth } = this.props;
         // console.log(this.props);
+
         // console.log(this.state.events);
+
 
         // if (!auth.uid) {
         //     return <Redirect to="/sign-in" />;
@@ -117,7 +131,10 @@ class Dashboard extends Component {
         // update data form firebase
 
         const renderEvents =
-            events && events.map(event => <EventDashboard key={event.id} event={event} />);
+            events &&
+            events.map(event => (
+                <EventDashboard key={event.id} event={event} history={this.props.history} />
+            ));
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}
         // </Link>
