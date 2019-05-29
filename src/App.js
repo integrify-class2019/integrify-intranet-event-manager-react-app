@@ -8,7 +8,7 @@ import CreateEvent from './components/events/CreateEvent';
 
 import './css/Base.css';
 import EventDetail from './components/events/EventDetail';
-import Home from './components/Home';
+import Home from './components/layout/Home';
 import { connect } from 'react-redux';
 import AttendingEvents from './components/events/AttendingEvents';
 

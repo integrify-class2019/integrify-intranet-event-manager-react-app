@@ -26,7 +26,7 @@ class NavBar extends React.Component {
         ? `${capitalInitial}${restLetters}`.replace('-', '')
         : `${capitalInitial}${restLetters}`.replace('-', ' ');
 
-    if (window.location.pathname == '/sign-in' || window.location.pathname == '/sign-up') {
+    if (window.location.pathname === '/sign-in' || window.location.pathname === '/sign-up') {
       return <></>;
     }
 
