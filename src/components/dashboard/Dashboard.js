@@ -106,65 +106,44 @@ class Dashboard extends Component {
 
     // for getting the user's enrollments
 
-    onHandeEnroll = e => {
-        const { enrollments } = this.state;
-        let found = true;
-        if (e.target.classList.contains('btn-in')) {
-            console.log('enrollments', enrollments);
+    // onHandeEnroll = e => {
+    //     const { enrollments } = this.state;
+    //     let found = false;
+    //     if (e.target.classList.contains('btn-in')) {
+    //         // console.log('enrollments', enrollments);
+    //         enrollments.map(el => {
+    //             if (el === e.target.id) {
+    //                 console.log('yes');
+    //                 found = true;
+    //             }
+    //         });
+    //         if (!found) {
+    //             this.setState(
+    //                 {
+    //                     enrollments: [...enrollments, e.target.id],
+    //                 },
+    //                 () => {
+    //                     console.log(this.state.enrollments);
+    //                 }
+    //             );
+    //         }
+    //     }
+    //     if (e.target.classList.contains('btn-out')) {
+    //         enrollments.map(el => {
+    //             if (el === e.target.id) {
+    //                 // const index = enrollments.indexOf(el);
+    //                 // console.log(index);
+    //                 const newEnrollments = enrollments.filter(enroll => enroll !== el);
 
-            for (let i = 0; i < enrollments.length; i++) {
-                console.log('enrollments[i]', enrollments[i], ' :', e.target.id);
+    //                 this.setState({ enrollments: newEnrollments }, () => {
+    //                     console.log(this.state.enrollments);
+    //                 });
+    //             }
+    //         });
+    //     }
 
-                if (enrollments[i] == e.target.id) {
-                    console.log('yes');
-                    found = false;
-
-                    // console.log(e.target.id);
-                }
-            }
-            if (found) {
-                this.setState(
-                    {
-                        enrollments: [...enrollments, e.target.id],
-                    },
-                    () => {
-                        console.log(this.state.enrollments);
-                    }
-                );
-            }
-
-            // state = {
-            //     [id]: 'string',
-            // };
-            // console.log(e.target.id);
-            // enrollments.map(el => {
-            //     if (el !== e.target.id) {
-            //         console.log(el);
-            //         this.setState(
-            //             {
-            //                 enrollments: [...enrollments, e.target.id],
-            //             },
-            //             () => {
-            //                 console.log(this.state.enrollments);
-            //             }
-            //         );
-            //     }
-            // });
-        }
-        // if (e.target.classList.contains('btn-out')) {
-        //     for (let i = 0; i <= enrollments.length; i++) {
-        //         if (enrollments[i] == e.target.id) {
-        //             const index = enrollments[i].indexOf(e.target.id);
-
-        //             this.setState({ enrollments: [...enrollments.splice(index, 1)] }, () => {
-        //                 console.log(this.state.enrollments);
-        //             });
-        //         }
-        //     }
-        // }
-
-        // console.log(this.state.enrollments);
-    };
+    //     // console.log(this.state.enrollments);
+    // };
 
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
@@ -179,10 +158,7 @@ class Dashboard extends Component {
         // update data form firebase
 
         const renderEvents =
-            events &&
-            events.map(event => (
-                <EventDashboard key={event.id} event={event} onHandeEnroll={this.onHandeEnroll} />
-            ));
+            events && events.map(event => <EventDashboard key={event.id} event={event} />);
         // <Link to={`/event/${event.id}`} key={event.id}>
         //     <EventDashboard key={event.id} event={event} />{' '}
         // </Link>

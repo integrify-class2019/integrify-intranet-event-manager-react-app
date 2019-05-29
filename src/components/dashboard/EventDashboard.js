@@ -8,8 +8,37 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 library.add(faThumbsUp, faThumbsDown);
 
 export default class EventDashboard extends Component {
-    handeEnroll = e => {
-        this.props.onHandeEnroll(e);
+    state = {
+        eventIn: [],
+        eventOut: [],
+    };
+
+    handleEnroll = e => {
+        const { eventIn, eventOut } = this.state;
+        if (e.target.classList.contains('btn-in')) {
+            eventOut.map(el => {
+                if (el === e.target.id) {
+                    const newEventOut = eventIn.filter(event => event !== el);
+
+                    this.setState({ eventOut: newEventOut });
+                }
+            });
+            this.setState({ eventIn: [...eventIn, e.target.id] }, () => {
+                console.log('in', this.state.eventIn);
+            });
+        }
+        if (e.target.classList.contains('btn-out')) {
+            eventIn.map(el => {
+                if (el === e.target.id) {
+                    const newEventIn = eventIn.filter(event => event !== el);
+
+                    this.setState({ eventIn: newEventIn });
+                }
+            });
+            this.setState({ eventOut: [...eventOut, e.target.id] }, () => {
+                console.log('out', this.state.eventOut);
+            });
+        }
 
         switch (e.target.className) {
             case 'btn-enroll btn-in':
@@ -33,6 +62,10 @@ export default class EventDashboard extends Component {
 
     render() {
         const { event } = this.props;
+        console.log(this.state);
+
+        console.log(event.participant);
+
         const { name, participant, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
@@ -93,7 +126,7 @@ export default class EventDashboard extends Component {
                         id={id}
                         className="btn-enroll btn-in"
                         style={{ cursor: 'pointer' }}
-                        onClick={this.handeEnroll}
+                        onClick={this.handleEnroll}
                     >
                         <FontAwesomeIcon icon="thumbs-up" />
                         &nbsp;IN&nbsp;
@@ -103,7 +136,7 @@ export default class EventDashboard extends Component {
                         id={id}
                         className="btn-enroll btn-out"
                         style={{ cursor: 'pointer' }}
-                        onClick={this.handeEnroll}
+                        onClick={this.handleEnroll}
                     >
                         <FontAwesomeIcon icon="thumbs-down" />
                         <i className="icon icon-thumbs-down" />
