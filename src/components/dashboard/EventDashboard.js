@@ -13,6 +13,8 @@ export default class EventDashboard extends Component {
         eventOut: [],
     };
 
+    // for getting the user's enrollments
+
     handleEnroll = e => {
         const { eventIn, eventOut } = this.state;
         if (e.target.classList.contains('btn-in')) {

@@ -104,47 +104,6 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
-    // for getting the user's enrollments
-
-    // onHandeEnroll = e => {
-    //     const { enrollments } = this.state;
-    //     let found = false;
-    //     if (e.target.classList.contains('btn-in')) {
-    //         // console.log('enrollments', enrollments);
-    //         enrollments.map(el => {
-    //             if (el === e.target.id) {
-    //                 console.log('yes');
-    //                 found = true;
-    //             }
-    //         });
-    //         if (!found) {
-    //             this.setState(
-    //                 {
-    //                     enrollments: [...enrollments, e.target.id],
-    //                 },
-    //                 () => {
-    //                     console.log(this.state.enrollments);
-    //                 }
-    //             );
-    //         }
-    //     }
-    //     if (e.target.classList.contains('btn-out')) {
-    //         enrollments.map(el => {
-    //             if (el === e.target.id) {
-    //                 // const index = enrollments.indexOf(el);
-    //                 // console.log(index);
-    //                 const newEnrollments = enrollments.filter(enroll => enroll !== el);
-
-    //                 this.setState({ enrollments: newEnrollments }, () => {
-    //                     console.log(this.state.enrollments);
-    //                 });
-    //             }
-    //         });
-    //     }
-
-    //     // console.log(this.state.enrollments);
-    // };
-
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
