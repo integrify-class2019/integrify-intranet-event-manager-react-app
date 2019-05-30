@@ -154,12 +154,12 @@ label {
 
 input {
   /* display: block; */
-  border: 1px solid #909090;
+  /* border: 1px solid #909090;
   color: #909090;
   border-radius: 1.2rem;
   margin: 0.25rem auto;
   line-height: 2.4rem;
-  text-align: center;
+  text-align: center; */
 }
 
 button {

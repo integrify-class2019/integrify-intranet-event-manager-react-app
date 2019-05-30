@@ -186,12 +186,7 @@ class Dashboard extends Component {
                         />
                         <div className="search-checkboxes">{renderType}</div>
                     </form>
-                    <div className="add-btn">
-                        <img src="./assets/images/add-btn.svg" alt="" />
-                    </div>
-                    <NavLink exact to="/create-event" className="Dashboard-CreateEvent">
-                        create event (temporary)
-                    </NavLink>
+                    <NavLink exact to="/create-event" className="Dashboard-CreateEvent" />
                 </section>
                 <section className="events-section">
                     <div className="events">{renderEvents}</div>
