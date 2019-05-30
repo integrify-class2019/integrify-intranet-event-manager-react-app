@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { createEvent } from '../../store/actions/eventActions';
 
-import '../../CreateEvent.css';
+import '../../css/CreateEvent.css';
 
 class CreateEvent extends Component {
     state = {
@@ -12,13 +13,13 @@ class CreateEvent extends Component {
         type: '',
         location: '',
         date: new Date(),
-        time: {},
+        time: {}
     };
 
     handleDate = date => {
         this.setState(
             {
-                date,
+                date
             },
             () => {
                 console.log(this.state);
@@ -34,20 +35,7 @@ class CreateEvent extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { date } = this.state;
-        const months = [
-            'Jan',
-            'Feb',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec',
-        ];
+        const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         const month = date.getMonth();
         const day = date.getDate();
         const hour = date.getHours();
@@ -56,7 +44,7 @@ class CreateEvent extends Component {
 
         this.setState(
             {
-                time: { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` },
+                time: { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` }
             },
             () => {
                 console.log('the event created with the following data:');
@@ -70,12 +58,13 @@ class CreateEvent extends Component {
 
     render() {
         const { eventName, eventDescription, eventType, eventLocation, date } = this.state;
+
+        if (this.props.event.id) {
+            // redirect after they add event
+            return <Redirect to={`/event/${this.props.event.id}`} />;
+        }
         return (
             <div className="CreateEvent">
-                {/* <div className="CreateEvent-title">
-                    <h1>Create Event</h1>
-                    <div>Menu</div>
-                </div> */}
                 <div className="CreateEvent-Form">
                     <form className="FormFields">
                         <div className="FormField">
@@ -113,12 +102,7 @@ class CreateEvent extends Component {
                             <label className="FormField-Label" htmlFor="eventType">
                                 Type of Event
                             </label>
-                            <select
-                                value={eventType}
-                                name="type"
-                                onChange={this.handleChange}
-                                required
-                            >
+                            <select value={eventType} name="type" onChange={this.handleChange} required>
                                 <option value="">-- Select your Event --</option>
                                 <option value="Sport">Sport</option>
                                 <option value="Meetup">Meetup</option>
@@ -161,11 +145,7 @@ class CreateEvent extends Component {
                         </div>
 
                         <div className="FormField">
-                            <button
-                                type="submit"
-                                className="FormField-Button"
-                                onClick={this.handleSubmit}
-                            >
+                            <button type="submit" className="FormField-Button" onClick={this.handleSubmit}>
                                 Create Event
                             </button>
                         </div>
@@ -176,11 +156,19 @@ class CreateEvent extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    console.log(state);
+
+    return {
+        event: state.event
+    };
+};
+
 const mapDispatchToProps = dispatch => ({
-    createEvent: event => dispatch(createEvent(event)),
+    createEvent: event => dispatch(createEvent(event))
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(CreateEvent);

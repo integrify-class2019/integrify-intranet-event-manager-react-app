@@ -5,7 +5,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Switch from 'react-switch';
 // import { eventsData } from '../../data';
-import '../../Dashboard.css';
+import '../../css/Dashboard.css';
+
 import EventDashboard from './EventDashboard';
 
 // let eventInitial = [...eventsData];
@@ -19,9 +20,21 @@ class Dashboard extends Component {
         enrollments: [],
     };
 
+    componentWillMount() {
+        // for when you come back from NavBar it can show every page
+        const { eventsJS } = this.props;
+        // console.log(eventsJS);
+        if (eventsJS) {
+            eventInitial = [...eventsJS];
+            this.setState({
+                events: eventInitial,
+            });
+        }
+    }
+
     componentDidUpdate() {
         // console.log(eventInitial);
-        this.updateEventFromJB();
+        this.updateEventFromDB();
     }
 
     showInputChange = typeInput => {
@@ -68,7 +81,7 @@ class Dashboard extends Component {
         }
     };
 
-    updateEventFromJB = () => {
+    updateEventFromDB = () => {
         const { eventsJS } = this.props;
         // console.log(eventsJS);
 
@@ -104,11 +117,16 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
+    enrollData = (eventId, data) => {
+        console.log(eventId, data);
+    };
+
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
         // console.log(this.props);
+
         // console.log(this.state.events);
 
         // if (!auth.uid) {
@@ -117,10 +135,16 @@ class Dashboard extends Component {
         // update data form firebase
 
         const renderEvents =
-            events && events.map(event => <EventDashboard key={event.id} event={event} />);
-        // <Link to={`/event/${event.id}`} key={event.id}>
-        //     <EventDashboard key={event.id} event={event} />{' '}
-        // </Link>
+            events &&
+            events.map(event => (
+                <EventDashboard
+                    key={event.id}
+                    event={event}
+                    history={this.props.history}
+                    enrollData={this.enrollData}
+                    userId={auth.uid}
+                />
+            ));
 
         const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="search-switch" key={typeItem}>

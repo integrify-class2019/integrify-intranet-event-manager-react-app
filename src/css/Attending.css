@@ -1,0 +1,118 @@
+.attending-events-section {
+  width: 95%;
+  margin: auto;
+  margin-top: 3vh;
+}
+
+/* .event-card:not(first-child) {
+  margin-top: -40px;
+} */
+.attending-event-card {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2rem;
+  margin-bottom: 4vh;
+}
+
+.event-Other {
+  background: url(../assets/images/event-Other.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: unset;
+  background-repeat: no-repeat;
+}
+.event-Party {
+  background: url(../assets/images/event-Party.jpg) top/cover no-repeat;
+}
+.event-Presentation {
+  background: url(../assets/images/event-Presentation.jpg) top/cover no-repeat;
+}
+.event-Sport {
+  background: url(../assets/images/event-Sport.jpg) top/cover no-repeat;
+}
+
+/* Event header */
+.event-header {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  margin: auto 50px;
+}
+
+.event-header h2 {
+  font-size: 3rem;
+  color: white;
+  text-align: left;
+  justify-self: flex-start;
+}
+
+/* Event actions */
+.enroll-buttons {
+  width: 300px;
+  display: flex;
+}
+
+.btn-enroll {
+  width: calc(50% - 5px);
+  /* min-width: 45%; */
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #bbb;
+  padding: 4px 0px;
+  background-color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-in {
+  color: #78b728;
+  border: 1px solid #59891d;
+}
+.btn-out {
+  color: #ea5014;
+  border: 1px solid #bb3e0d;
+}
+
+.btn-in:hover,
+.btn-in-active {
+  color: white;
+  background-color: #78b728;
+}
+.btn-out:hover {
+  color: white;
+  background-color: #ea5014;
+}
+
+/* Event details */
+.event-details {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.date-time {
+  color: #000;
+  font-size: 2rem;
+}
+
+.date-time .date {
+  margin: 0;
+  font-size: 2rem;
+}
+.date-time .time {
+  margin: 0 auto 25px;
+  font-size: 1.5rem;
+  color: #ffb600;
+}
+.location {
+  width: 18px;
+}

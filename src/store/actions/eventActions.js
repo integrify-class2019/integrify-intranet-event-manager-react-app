@@ -13,10 +13,30 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
             authorName: profile.name,
             participant: { total: 15, in: [], out: [] },
         })
-        .then(() => {
-            dispatch({ type: 'CREATE_EVENT', event });
+        .then(res => {
+            console.log(res);
+            dispatch({ type: 'CREATE_EVENT', event: { ...event, id: res.id } });
         })
         .catch(err => {
             dispatch({ type: 'CREATE_EVENT_ERROR', err });
+        });
+};
+
+export const joinEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore();
+    const { profile } = getState().firebase;
+    const authorId = getState().firebase.auth.uid;
+    console.log(profile);
+
+    firestore
+        .collection('events')
+        .doc(eventId)
+        .update(authorId)
+        .then(() => {
+            dispatch({ type: 'JOIN_EVENT', eventId });
+        })
+        .catch(err => {
+            dispatch({ type: 'JOIN_EVENT_ERROR', err });
         });
 };
