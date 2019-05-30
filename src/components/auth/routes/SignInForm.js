@@ -64,9 +64,14 @@ class SignInForm extends Component {
                     </div>
 
                     <div className="FormField">
+                        <div>
+                            <p>Guest user can use: </p>
+                            <p>Email:guest@integrify.io</p>
+                            <p>Pass:guest123</p>
+                        </div>
                         <div className="red-text">{authError ? <p>{authError}</p> : null}</div>
                         <button className="FormField-Button mr-20">Sign In</button>
-                        <Link to="/" className="FormField-Link">
+                        <Link to="/sign-up" className="FormField-Link">
                             Create an account
                         </Link>
                     </div>

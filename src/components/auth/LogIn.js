@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import SignUpForm from './routes/SignUpForm';
 import SignInForm from './routes/SignInForm';
 import '../../css/LogIn.css';
@@ -20,7 +20,8 @@ class LogIn extends Component {
                     <div className="LogIn-Form">
                         <div className="PageSwitcher">
                             <NavLink
-                                to="/sign-in"
+                                exact
+                                to="/"
                                 activeClassName="PageSwitcher-Item-Active"
                                 className="PageSwitcher-Item"
                             >
@@ -38,7 +39,12 @@ class LogIn extends Component {
                         </div>
 
                         <div className="FormTitle">
-                            <NavLink to="/sign-in" activeClassName="FormTitle-Link-Active" className="FormTitle-Link">
+                            <NavLink
+                                exact
+                                to="/"
+                                activeClassName="FormTitle-Link-Active"
+                                className="FormTitle-Link"
+                            >
                                 Sign In
                             </NavLink>{' '}
                             or{' '}
@@ -51,10 +57,11 @@ class LogIn extends Component {
                                 Sign Up
                             </NavLink>
                         </div>
+                        <Switch>
+                            <Route path="/sign-up" component={SignUpForm} />
 
-                        <Route exact path="/sign-up" component={SignUpForm} />
-
-                        <Route path="/sign-in" component={SignInForm} />
+                            <Route path="/" component={SignInForm} />
+                        </Switch>
                     </div>
                 </div>
             </Router>

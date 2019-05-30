@@ -17,7 +17,7 @@ export const signOut = () => (dispatch, getState, { getFirebase }) => {
         .auth()
         .signOut()
         .then(() => {
-            dispatch({ type: 'SIGNOUT_SUCCESS' });
+            dispatch({ type: 'SIGNOUT_SUCCESS', signOut: true });
         });
 };
 
