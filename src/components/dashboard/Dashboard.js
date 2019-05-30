@@ -117,6 +117,10 @@ class Dashboard extends Component {
         this.setState({ checked });
     };
 
+    enrollData = (eventId, data) => {
+        console.log(eventId, data);
+    };
+
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
@@ -133,11 +137,14 @@ class Dashboard extends Component {
         const renderEvents =
             events &&
             events.map(event => (
-                <EventDashboard key={event.id} event={event} history={this.props.history} />
+                <EventDashboard
+                    key={event.id}
+                    event={event}
+                    history={this.props.history}
+                    enrollData={this.enrollData}
+                    userId={auth.uid}
+                />
             ));
-        // <Link to={`/event/${event.id}`} key={event.id}>
-        //     <EventDashboard key={event.id} event={event} />{' '}
-        // </Link>
 
         const renderType = Object.keys(typeInput).map(typeItem => (
             <div className="search-switch" key={typeItem}>
