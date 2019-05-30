@@ -66,7 +66,7 @@ export default class EventDashboard extends Component {
         const { event } = this.props;
         console.log(this.state);
 
-        console.log(event.participant);
+        console.log(event);
 
         const { name, participant, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
