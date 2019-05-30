@@ -9,71 +9,34 @@ import { Redirect } from 'react-router-dom';
 library.add(faThumbsUp, faThumbsDown);
 
 export default class EventDashboard extends Component {
-    state = {
-        eventIn: [],
-        eventOut: [],
+    checkIn = () => {
+        const { event, userId } = this.props;
+        const { in: eventIn } = event.participant;
+        if (eventIn.includes(userId)) {
+            return 'btn-in-active';
+        }
+        return '';
     };
 
-    // for getting the user's enrollments
+    checkOut = () => {
+        const { event, userId } = this.props;
+        const { out: eventOut } = event.participant;
 
-    componentDidMount() {
-        // console.log(this.state);
-        // console.log(this.props);
-        // this.setState({
-        //     eventIn: this.props.event.participant.in,
-        //     eventOut: this.props.event.participant.out,
-        // });
-    }
+        if (eventOut.includes(userId)) {
+            return 'btn-out-active';
+        }
+        return '';
+    };
 
     handleEnroll = e => {
-        const { eventIn, eventOut } = this.state;
-        const { userId } = this.props;
-        // console.log(userId);
         const eventId = e.target.id;
-        if (e.target.classList.contains('btn-in')) {
-            eventOut.map(el => {
-                if (el === userId) {
-                    const newEventOut = eventIn.filter(event => event !== el);
 
-                    this.setState({ eventOut: newEventOut });
-                }
-            });
-            this.setState({ eventIn: [...eventIn, userId] }, () => {
-                console.log('in', this.state.eventIn);
-                // call the data and copy the state to database
-
-                this.props.enrollData(eventId, this.state);
-            });
-        }
-        if (e.target.classList.contains('btn-out')) {
-            eventIn.map(el => {
-                if (el === userId) {
-                    const newEventIn = eventIn.filter(event => event !== el);
-
-                    this.setState({ eventIn: newEventIn });
-                }
-            });
-            this.setState({ eventOut: [...eventOut, userId] }, () => {
-                console.log('out', this.state.eventOut);
-                // call the data and copy the state to database
-                this.props.enrollData(eventId, this.state);
-            });
-        }
-
-        switch (e.target.className) {
-            case 'btn-enroll btn-in':
-                const outBtn =
-                    e.target.parentElement.querySelector('.btn-out-active') ||
-                    e.target.parentElement.querySelector('.btn-out');
-                outBtn.className = 'btn-enroll btn-out';
-                e.target.className = 'btn-enroll btn-in-active';
+        switch (e.target.name) {
+            case 'clickIn':
+                this.props.enrollAction('in', eventId);
                 break;
-            case 'btn-enroll btn-out':
-                const inBtn =
-                    e.target.parentElement.querySelector('.btn-in-active') ||
-                    e.target.parentElement.querySelector('.btn-in');
-                inBtn.className = 'btn-enroll btn-in';
-                e.target.className = 'btn-enroll btn-out-active';
+            case 'clickOut':
+                this.props.enrollAction('out', eventId);
                 break;
             default:
                 break;
@@ -88,11 +51,8 @@ export default class EventDashboard extends Component {
 
     render() {
         const { event } = this.props;
-        // console.log(this.state);
-        // console.log(this.props);
 
-        // console.log(event.participant);
-        console.log(event);
+        // console.log(event);
 
         const { name, participant, time, location, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
@@ -152,7 +112,8 @@ export default class EventDashboard extends Component {
                     <button
                         type="button"
                         id={id}
-                        className="btn-enroll btn-in"
+                        name="clickIn"
+                        className={`btn-enroll btn-in ${this.checkIn()}`}
                         style={{ cursor: 'pointer' }}
                         onClick={this.handleEnroll}
                     >
@@ -161,8 +122,9 @@ export default class EventDashboard extends Component {
                     </button>
                     <button
                         type="button"
+                        name="clickOut"
                         id={id}
-                        className="btn-enroll btn-out"
+                        className={`btn-enroll btn-out ${this.checkOut()}`}
                         style={{ cursor: 'pointer' }}
                         onClick={this.handleEnroll}
                     >
