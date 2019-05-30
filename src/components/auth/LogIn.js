@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import SignUpForm from './routes/SignUpForm';
 import SignInForm from './routes/SignInForm';
 import '../../css/LogIn.css';
@@ -57,10 +57,11 @@ class LogIn extends Component {
                                 Sign Up
                             </NavLink>
                         </div>
+                        <Switch>
+                            <Route path="/sign-up" component={SignUpForm} />
 
-                        <Route path="/sign-up" component={SignUpForm} />
-
-                        <Route exact path="/" component={SignInForm} />
+                            <Route path="/" component={SignInForm} />
+                        </Switch>
                     </div>
                 </div>
             </Router>

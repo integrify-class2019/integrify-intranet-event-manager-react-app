@@ -2,15 +2,16 @@ import React from 'react';
 import '../../css/Base.css';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { signOut } from '../../store/actions/authAction';
 // import LogIn from './auth/LogIn';
 // import Dashboard from './dashboard/Dashboard';
 
-const App = props => {
+const Logout = props => {
     const { auth } = props;
     if (auth.uid) {
-        return <Redirect to="/dashboard" />;
+        props.signOut();
+        return <Redirect to="/" />;
     }
-    // return <Redirect to="/" />;
 };
 
 const mapStateToProps = state => {
@@ -20,5 +21,11 @@ const mapStateToProps = state => {
         auth: state.firebase.auth,
     };
 };
+const mapDispatchToProps = dispatch => ({
+    signOut: () => dispatch(signOut()),
+});
 
-export default connect(mapStateToProps)(App);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Logout);
