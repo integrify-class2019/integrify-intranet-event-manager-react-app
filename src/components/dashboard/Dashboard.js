@@ -8,6 +8,7 @@ import Switch from 'react-switch';
 import '../../css/Dashboard.css';
 
 import EventDashboard from './EventDashboard';
+import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 // let eventInitial = [...eventsData];
 let eventInitial = [];
@@ -17,7 +18,7 @@ class Dashboard extends Component {
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
         checked: false,
-        enrollments: [],
+        enrollments: []
     };
 
     componentWillMount() {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
         if (eventsJS) {
             eventInitial = [...eventsJS];
             this.setState({
-                events: eventInitial,
+                events: eventInitial
             });
         }
     }
@@ -41,7 +42,7 @@ class Dashboard extends Component {
         // / show all if all is false
         if (Object.values(typeInput).filter(item => item === true).length === 0) {
             this.setState({
-                events: eventInitial,
+                events: eventInitial
             });
             return eventInitial;
         }
@@ -52,7 +53,7 @@ class Dashboard extends Component {
             }
         });
         this.setState({
-            events: newEvents,
+            events: newEvents
         });
         return newEvents;
     };
@@ -65,7 +66,7 @@ class Dashboard extends Component {
             }
         });
         this.setState({
-            events: newEvents,
+            events: newEvents
         });
     };
 
@@ -73,7 +74,7 @@ class Dashboard extends Component {
         const { name, type, value } = event.target;
 
         this.setState({
-            [name]: value,
+            [name]: value
         });
 
         if (name === 'searchTerm') {
@@ -93,7 +94,7 @@ class Dashboard extends Component {
             if (eventInitial.length == 0) {
                 eventInitial = [...eventsJS];
                 this.setState({
-                    events: eventInitial,
+                    events: eventInitial
                 });
                 // console.log(eventInitial);
             }
@@ -111,7 +112,7 @@ class Dashboard extends Component {
         typeInput[id] = !typeInput[id];
         this.showInputChange(typeInput);
         this.setState({
-            typeInput,
+            typeInput
         });
 
         this.setState({ checked });
@@ -173,30 +174,35 @@ class Dashboard extends Component {
         ));
 
         return (
-            <div className="Dashboard">
-                <section className="search-box-add">
-                    <form action="" className="search-form">
-                        <input
-                            type="text"
-                            placeholder="Search events..."
-                            className="search-input"
-                            value={searchTerm}
-                            name="searchTerm"
-                            onChange={this.handleSearchChange}
-                        />
-                        <div className="search-checkboxes">{renderType}</div>
-                    </form>
-                    <div className="add-btn">
-                        <img src="./assets/images/add-btn.svg" alt="" />
+            <>
+                <NavbarWithDrawer pageName="Dashboard" />
+                <main>
+                    <div className="Dashboard">
+                        <section className="search-box-add">
+                            <form action="" className="search-form">
+                                <input
+                                    type="text"
+                                    placeholder="Search events..."
+                                    className="search-input"
+                                    value={searchTerm}
+                                    name="searchTerm"
+                                    onChange={this.handleSearchChange}
+                                />
+                                <div className="search-checkboxes">{renderType}</div>
+                            </form>
+                            <div className="add-btn">
+                                <img src="./assets/images/add-btn.svg" alt="" />
+                            </div>
+                            <NavLink exact to="/create-event" className="Dashboard-CreateEvent">
+                                create event (temporary)
+                            </NavLink>
+                        </section>
+                        <section className="events-section">
+                            <div className="events">{renderEvents}</div>
+                        </section>
                     </div>
-                    <NavLink exact to="/create-event" className="Dashboard-CreateEvent">
-                        create event (temporary)
-                    </NavLink>
-                </section>
-                <section className="events-section">
-                    <div className="events">{renderEvents}</div>
-                </section>
-            </div>
+                </main>
+            </>
         );
     }
 }
@@ -206,7 +212,7 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         eventsJS: events,
-        auth: state.firebase.auth,
+        auth: state.firebase.auth
     };
 };
 export default compose(
