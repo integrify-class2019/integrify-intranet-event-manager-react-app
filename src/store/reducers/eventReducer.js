@@ -10,10 +10,10 @@ const eventReducer = (state = initState, action) => {
             console.log('CREATE_EVENT_ERROR', action.err);
             return state;
         case 'JOIN_EVENT':
-            console.log('create project', action.eventId);
+            console.log('join event  ', action.eventId);
             return state;
         case 'JOIN_EVENT_ERROR':
-            console.log('CREATE_EVENT_ERROR', action.err);
+            console.log('join event error', action.err);
             return state;
         default:
             return state;

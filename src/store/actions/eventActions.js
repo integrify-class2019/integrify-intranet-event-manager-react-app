@@ -22,17 +22,17 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
         });
 };
 
-export const joinEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
+export const joinEvent = (eventId, data) => (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
     const { profile } = getState().firebase;
     const authorId = getState().firebase.auth.uid;
-    console.log(profile);
+    console.log(data);
 
     firestore
         .collection('events')
         .doc(eventId)
-        .update(authorId)
+        .update({ participant: { in: data.eventIn, out: data.eventOut } })
         .then(() => {
             dispatch({ type: 'JOIN_EVENT', eventId });
         })

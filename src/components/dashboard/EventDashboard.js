@@ -16,6 +16,15 @@ export default class EventDashboard extends Component {
 
     // for getting the user's enrollments
 
+    componentDidMount() {
+        // console.log(this.state);
+        // console.log(this.props);
+        // this.setState({
+        //     eventIn: this.props.event.participant.in,
+        //     eventOut: this.props.event.participant.out,
+        // });
+    }
+
     handleEnroll = e => {
         const { eventIn, eventOut } = this.state;
         const { userId } = this.props;
@@ -82,7 +91,7 @@ export default class EventDashboard extends Component {
         // console.log(this.state);
         // console.log(this.props);
 
-        console.log(event.participant);
+        // console.log(event.participant);
 
         const { name, participant, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;

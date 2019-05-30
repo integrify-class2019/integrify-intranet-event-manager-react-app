@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Switch from 'react-switch';
+import { joinEvent } from '../../store/actions/eventActions';
 // import { eventsData } from '../../data';
 import '../../css/Dashboard.css';
 
@@ -119,20 +120,14 @@ class Dashboard extends Component {
 
     enrollData = (eventId, data) => {
         console.log(eventId, data);
+        this.props.joinEvent(eventId, data);
     };
 
     render() {
         const { events, typeInput, searchTerm, checked } = this.state;
 
         const { auth } = this.props;
-        // console.log(this.props);
-
-        // console.log(this.state.events);
-
-        // if (!auth.uid) {
-        //     return <Redirect to="/sign-in" />;
-        // }
-        // update data form firebase
+        console.log(this.props);
 
         const renderEvents =
             events &&
@@ -175,6 +170,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <section className="search-box-add">
+                    <div style={{ color: 'black' }}>Hi {this.props.profile.name} </div>
                     <form action="" className="search-form">
                         <input
                             type="text"
@@ -207,9 +203,18 @@ const mapStateToProps = state => {
     return {
         eventsJS: events,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
     };
 };
+
+const mapDispatchToProps = dispatch => ({
+    joinEvent: (eventId, data) => dispatch(joinEvent(eventId, data)),
+});
+
 export default compose(
-    connect(mapStateToProps),
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    ),
     firestoreConnect([{ collection: 'events' }])
 )(Dashboard);
