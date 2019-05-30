@@ -12,11 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  /* display: none; */
 }
 
 .LogIn-Form {
-  /* width: 50%; */
+  width: 50%;
   margin: 0 auto;
   background-color: #353535;
   padding: 25px 40px;
