@@ -10,6 +10,7 @@ import Home from './components/layout/Home';
 import AttendingEvents from './components/events/AttendingEvents';
 import LogIn from './components/auth/LogIn';
 import Logout from './components/auth/Logout';
+import UserEvents from './components/events/UserEvents';
 
 import './css/Base.css';
 import NavbarWithDrawer from './components/layout/NavbarWithDrawer/NavbarWithDrawer';

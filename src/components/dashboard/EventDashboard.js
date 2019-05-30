@@ -58,7 +58,6 @@ export default class EventDashboard extends Component {
                     e.target.parentElement.querySelector('.btn-out');
                 outBtn.className = 'btn-enroll btn-out';
                 e.target.className = 'btn-enroll btn-in-active';
-
                 break;
             case 'btn-enroll btn-out':
                 const inBtn =
@@ -66,6 +65,7 @@ export default class EventDashboard extends Component {
                     e.target.parentElement.querySelector('.btn-in');
                 inBtn.className = 'btn-enroll btn-in';
                 e.target.className = 'btn-enroll btn-out-active';
+                break;
             default:
                 break;
         }
@@ -82,9 +82,9 @@ export default class EventDashboard extends Component {
         // console.log(this.state);
         // console.log(this.props);
 
-        console.log(event.participant);
+        console.log(event);
 
-        const { name, participant, time, type, id } = event;
+        const { name, participant, time, location, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
             <div className={`event-card event-${type}`} key={id}>
@@ -172,7 +172,8 @@ export default class EventDashboard extends Component {
                             {time.hourBegin} - {time.hourEnd}{' '}
                         </h3>
                     </div>
-                    <img src="" alt="" className="location" />
+                    <h3 className="location">{location}</h3>
+                    {/* <img src="" alt="" className="location" /> */}
                 </div>
             </div>
         );
