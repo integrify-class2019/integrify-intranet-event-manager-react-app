@@ -10,6 +10,7 @@
 /* Search box */
 .search-box-add {
   padding-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .search-checkboxes {
@@ -42,7 +43,7 @@
   font-size: 12px;
 }
 
-.search-box-add .more {
+/* .search-box-add .more {
   display: inline-block;
   margin-top: 10px;
   font-size: 12px;
@@ -53,12 +54,19 @@
   text-align: center;
   border-radius: 1.5rem;
   color: #000;
-}
+} */
 
-.add-btn {
+.Dashboard-CreateEvent {
   width: 50px;
+  height: 50px;
   display: block;
-  margin: 13px;
+  /* margin-top: 15px;
+  margin-left: 40px; */
+  margin: 15px 40px;
+  background: url(../assets/images/add-btn.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .progress {
@@ -171,12 +179,12 @@
 .btn-in:hover,
 .btn-in-active {
   color: white;
-  background-color: #78b728;
+  background-color: #78b728 !important;
 }
 .btn-out:hover,
 .btn-out-active {
   color: white;
-  background-color: #ea5014;
+  background-color: #ea5014 !important;
 }
 
 /* Event details */
@@ -204,5 +212,10 @@
   color: #ffb600;
 }
 .location {
-  width: 18px;
+  color: black;
+  width: 100px;
+  margin-right: 40vw;
+}
+.location::before {
+  content: url(../assets/images/location.svg);
 }
