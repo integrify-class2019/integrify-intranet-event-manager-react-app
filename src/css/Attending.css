@@ -8,7 +8,7 @@
   margin-top: -40px;
 } */
 .attending-event-card {
-  min-height: 30vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
