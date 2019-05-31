@@ -217,5 +217,5 @@ export default compose(
         mapDispatchToProps
     ),
 
-    firestoreConnect([{ collection: 'events' }])
+    firestoreConnect([{ collection: 'events', orderBy: ['date', 'asc'] }])
 )(Dashboard);

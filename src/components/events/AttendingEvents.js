@@ -15,8 +15,8 @@ const eventInitial = [];
 
 class AttendingEvents extends Component {
     state = {
-        events: [],
-        clicked: false,
+        // events: [],
+        // clicked: false,
     };
     // componentDidUpdate() {
     //   // console.log(eventInitial);
@@ -38,13 +38,23 @@ class AttendingEvents extends Component {
     render() {
         console.log(this.props.eventsFB);
 
-        const { clicked } = this.state;
+        // const { clicked } = this.state;
         const events = this.props.eventsFB;
-        const { auth } = this.props;
+        const userId = this.props.auth.uid;
         console.log(this.props);
-        console.log(this.state.events);
+        // console.log(this.state.events);
+
+        const eventsFilter =
+            events &&
+            events.filter(event => {
+                if (event.participant.in.includes(userId)) {
+                    return event;
+                }
+            });
+
         const renderAttendingEvents =
-            events && events.map(event => <EventCardAttending key={event.id} event={event} />);
+            eventsFilter &&
+            eventsFilter.map(event => <EventCardAttending key={event.id} event={event} />);
 
         return (
             <>
@@ -69,5 +79,5 @@ const mapStateToProps = state => {
 };
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{ collection: 'events' }])
+    firestoreConnect([{ collection: 'events', orderBy: ['date', 'asc'] }])
 )(AttendingEvents);
