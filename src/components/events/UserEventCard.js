@@ -14,9 +14,13 @@ class UserEventCard extends Component {
         const { id } = this.props.event;
         this.setState({ isdeleted: !isdeleted, deletedId: [id] });
         console.log('event id:', this.props.event.id);
+    };
 
-        console.log(e.target);
-        console.log(this.state);
+    clickEventDetail = () => {
+        console.log(this.props);
+
+        // return <Redirect to={`'/event/' ${this.props.event.id} `} />;
+        this.props.history.push(`/event/${this.props.event.id}`);
     };
 
     render() {
@@ -89,7 +93,7 @@ class UserEventCard extends Component {
                     <h3 className="location">{location}</h3>
                 </div>
                 <div className="edit-delete-btns">
-                    <button type="button" className="btn-edit">
+                    <button type="button" className="btn-edit" onClick={this.clickEventDetail}>
                         edit
                     </button>
                     <button type="button" className=" btn-delete" onClick={this.handleDelete}>

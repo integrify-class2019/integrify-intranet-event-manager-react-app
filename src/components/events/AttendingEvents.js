@@ -11,12 +11,12 @@ import '../../css/Attending.css';
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 // let eventInitial = [...eventsData];
-let eventInitial = [];
+const eventInitial = [];
 
 class AttendingEvents extends Component {
     state = {
         events: [],
-        clicked: false
+        clicked: false,
     };
     // componentDidUpdate() {
     //   // console.log(eventInitial);
@@ -50,8 +50,8 @@ class AttendingEvents extends Component {
             <>
                 <NavbarWithDrawer pageName="Attending" />
                 <main>
-                    <section class="attending-events-section">
-                        <div class="attending-events container">{renderAttendingEvents}</div>
+                    <section className="attending-events-section">
+                        <div className="attending-events container">{renderAttendingEvents}</div>
                     </section>
                 </main>
             </>
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         eventsFB: events,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 export default compose(

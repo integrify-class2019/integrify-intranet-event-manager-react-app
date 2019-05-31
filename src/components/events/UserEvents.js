@@ -18,7 +18,11 @@ class UserEvents extends Component {
 
         const events = this.props.userEvents;
         const { auth } = this.props;
-        const renderUserEvents = events && events.map(event => <UserEventCard key={event.id} event={event} />);
+        const renderUserEvents =
+            events &&
+            events.map(event => (
+                <UserEventCard key={event.id} event={event} history={this.props.history} />
+            ));
 
         return (
             <>
@@ -37,7 +41,7 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         userEvents: events,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 export default compose(

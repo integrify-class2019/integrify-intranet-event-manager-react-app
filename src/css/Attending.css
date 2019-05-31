@@ -19,19 +19,62 @@
 
 .event-Other {
   background: url(../assets/images/event-Other.jpg);
+
   background-position: center;
+
   background-size: cover;
+
   background-attachment: unset;
+
   background-repeat: no-repeat;
 }
+
+.event-Meetup {
+  background: url(../assets/images/event-Meetup.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
 .event-Party {
-  background: url(../assets/images/event-Party.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Party.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
 }
+
 .event-Presentation {
-  background: url(../assets/images/event-Presentation.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Presentation.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
 }
+
 .event-Sport {
-  background: url(../assets/images/event-Sport.jpg) top/cover no-repeat;
+  background: url(../assets/images/event-Sport.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
 }
 
 /* Event header */
