@@ -65,3 +65,17 @@ export const outEvent = eventId => (dispatch, getState, { getFirebase, getFirest
             dispatch({ type: 'OUT_EVENT_ERROR', err });
         });
 };
+
+export const deleteEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+        .collection('events')
+        .doc(eventId)
+        .delete();
+    // .then(() => {
+    //     dispatch({ type: 'IN_EVENT', eventId });
+    // })
+    // .catch(err => {
+    //     dispatch({ type: 'IN_EVENT_ERROR', err });
+    // });
+};

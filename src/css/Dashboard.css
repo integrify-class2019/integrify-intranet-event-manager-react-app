@@ -1,51 +1,51 @@
 .search-input {
-    border: 1px solid #909090;
+  border: 1px solid #909090;
 
-    color: #909090;
+  color: #909090;
 
-    border-radius: 1.2rem;
+  border-radius: 1.2rem;
 
-    /* margin: 0.25rem auto; */
+  /* margin: 0.25rem auto; */
 
-    line-height: 2.4rem;
+  line-height: 2.4rem;
 
-    text-align: center;
+  text-align: center;
 }
 
 /* Search box */
 
 .search-box-add {
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .search-checkboxes {
-    width: 80%;
+  width: 80%;
 
-    margin: auto;
+  margin: auto;
 
-    display: flex;
+  display: flex;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 
-    align-items: center;
+  align-items: center;
 }
 
 .search-switch {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .search-form input[type='text'] {
-    display: block;
+  display: block;
 
-    width: 90%;
+  width: 90%;
 
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 /* .search-form input[type='checkbox'] {
@@ -61,7 +61,7 @@
   } */
 
 .search-form label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 /* .search-box-add .more {
@@ -89,251 +89,249 @@
   } */
 
 .Dashboard-CreateEvent {
-    width: 50px;
+  width: 50px;
 
-    height: 50px;
+  height: 50px;
 
-    display: block;
+  display: block;
 
-    /* margin-top: 15px;
+  /* margin-top: 15px;
   
     margin-left: 40px; */
 
-    margin: 15px 40px;
+  margin: 15px 40px;
 
-    background: url(../assets/images/add-btn.svg);
+  background: url(../assets/images/add-btn.svg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .progress {
-    width: 40px;
+  width: 40px;
 
-    height: 40px;
+  height: 40px;
 }
 
 /* Event card */
 
 .events-section {
-    width: 100%;
+  width: 100%;
 
-    margin: auto;
+  margin: auto;
 
-    margin-top: -15px;
+  margin-top: -15px;
 }
 
 .event-card:not(first-child) {
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
 .event-card {
-    /* width: 100%; */
+  /* width: 100%; */
 
-    min-height: 35vh;
+  min-height: 45vh;
 
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    justify-content: space-around;
+  justify-content: space-around;
 
-    align-items: center;
+  align-items: center;
 
-    /* -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); */
+  /* -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); */
 
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
 }
 
 .event-Other {
-    background: url(../assets/images/event-Other.jpg);
+  background: url(../assets/images/event-Other.jpg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-attachment: unset;
+  background-attachment: unset;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .event-Meetup {
-    background: url(../assets/images/event-Meetup.jpg);
+  background: url(../assets/images/event-Meetup.jpg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-attachment: unset;
+  background-attachment: unset;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .event-Party {
-    background: url(../assets/images/event-Party.jpg);
+  background: url(../assets/images/event-Party.jpg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-attachment: unset;
+  background-attachment: unset;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .event-Presentation {
-    background: url(../assets/images/event-Presentation.jpg);
+  background: url(../assets/images/event-Presentation.jpg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-attachment: unset;
+  background-attachment: unset;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .event-Sport {
-    background: url(../assets/images/event-Sport.jpg);
+  background: url(../assets/images/event-Sport.jpg);
 
-    background-position: center;
+  background-position: center;
 
-    background-size: cover;
+  background-size: cover;
 
-    background-attachment: unset;
+  background-attachment: unset;
 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 /* Event header */
 
 .event-header {
-    width: 95%;
+  width: 95%;
 
-    display: flex;
+  display: flex;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    padding: 20px 10px;
+  padding: 20px 10px;
 
-    margin: auto 50px;
+  margin: auto 50px;
 }
 
 .event-header h2 {
-    font-size: 3rem;
+  font-size: 3rem;
 
-    color: white;
+  color: white;
 
-    text-align: left;
+  text-align: left;
 
-    justify-self: flex-start;
+  justify-self: flex-start;
 }
 
 /* Event actions */
 
 .enroll-buttons {
-    width: 300px;
+  width: 300px;
 
-    display: flex;
+  display: flex;
 }
 
 .btn-enroll {
-    width: calc(50% - 5px);
+  width: calc(50% - 5px);
 
-    /* min-width: 45%; */
+  /* min-width: 45%; */
 
-    margin: 10px;
+  margin: 10px;
 
-    text-align: center;
+  text-align: center;
 
-    border: 1px solid #bbb;
+  border: 1px solid #bbb;
 
-    padding: 4px 0px;
+  padding: 4px 0px;
 
-    background-color: #fff;
+  background-color: #fff;
 
-    -webkit-border-radius: 4px;
+  -webkit-border-radius: 4px;
 
-    -moz-border-radius: 4px;
+  -moz-border-radius: 4px;
 
-    border-radius: 4px;
+  border-radius: 4px;
 
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .btn-in {
-    color: #78b728;
+  color: #78b728;
 
-    border: 1px solid #59891d;
+  border: 1px solid #59891d;
 }
 
 .btn-out {
-    color: #ea5014;
+  color: #ea5014;
 
-    border: 1px solid #bb3e0d;
+  border: 1px solid #bb3e0d;
 }
 
 .btn-in:hover,
 .btn-in-active {
-    color: white !important;
-
-    background-color: #78b728 !important;
+  color: white !important;
+  background-color: #78b728 !important;
 }
 
 .btn-out:hover,
 .btn-out-active {
-    color: white !important;
-
-    background-color: #ea5014 !important;
+  color: white !important;
+  background-color: #ea5014 !important;
 }
 
 /* Event details */
 
 .event-details {
-    width: 100%;
+  width: 100%;
 
-    /* padding: 2px 20px 25px 20px; */
+  /* padding: 2px 20px 25px 20px; */
 
-    display: flex;
+  display: flex;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    align-items: center;
+  align-items: center;
 
-    background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .date-time {
-    color: #000;
+  color: #000;
 
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .date-time .date {
-    margin: 0;
+  margin: 0;
 
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .date-time .time {
-    margin: 0 auto 25px;
+  margin: 0 auto 25px;
 
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 
-    color: #ffb600;
+  color: #ffb600;
 }
 
 .location {
-    color: black;
+  color: black;
 
-    width: 100px;
+  width: 100px;
 
-    margin-right: 40vw;
+  margin-right: 40vw;
 }
 
 .location::before {
-    content: url(../assets/images/location.svg);
+  content: url(../assets/images/location.svg);
 }

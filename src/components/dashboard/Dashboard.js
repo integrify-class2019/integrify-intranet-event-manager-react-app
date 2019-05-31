@@ -108,6 +108,7 @@ class Dashboard extends Component {
         const { typeInput, searchTerm } = this.state;
 
         const { auth } = this.props;
+        console.log(auth);
 
         const eventFilter = this.filterEvent();
 
