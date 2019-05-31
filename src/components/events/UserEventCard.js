@@ -12,8 +12,9 @@ class UserEventCard extends Component {
     handleDelete = e => {
         const { isdeleted } = this.state;
         const { id } = this.props.event;
-        this.setState({ isdeleted: !isdeleted, deletedId: [id] });
-        console.log('event id:', this.props.event.id);
+
+        this.props.deleteAction(id);
+        // this.props.(this.state);        console.log('event id:', this.props.event.id);
     };
 
     clickEventDetail = () => {

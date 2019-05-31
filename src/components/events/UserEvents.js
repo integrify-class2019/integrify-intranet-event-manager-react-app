@@ -5,6 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import UserEventCard from './UserEventCard';
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
+import { deleteEvent } from '../../store/actions/eventActions';
 
 // import '../../css/Attending.css';
 
@@ -12,16 +13,37 @@ import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 const eventInitial = [];
 
 class UserEvents extends Component {
+    deleteAction = id => {
+        console.log('deleted');
+
+        this.props.deleteEvent(id);
+    };
+
     render() {
         console.log(this.props.auth);
         console.log(this.props.userEvents);
 
         const events = this.props.userEvents;
-        const { auth } = this.props;
-        const renderUserEvents =
+
+        const userId = this.props.auth.uid;
+
+        const eventsFilter =
             events &&
-            events.map(event => (
-                <UserEventCard key={event.id} event={event} history={this.props.history} />
+            events.filter(event => {
+                if (event.authorId === userId) {
+                    return event;
+                }
+            });
+
+        const renderUserEvents =
+            eventsFilter &&
+            eventsFilter.map(event => (
+                <UserEventCard
+                    key={event.id}
+                    event={event}
+                    history={this.props.history}
+                    deleteAction={this.deleteAction}
+                />
             ));
 
         return (
@@ -37,6 +59,10 @@ class UserEvents extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    deleteEvent: event => dispatch(deleteEvent(event)),
+});
+
 const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
@@ -45,6 +71,10 @@ const mapStateToProps = state => {
     };
 };
 export default compose(
-    connect(mapStateToProps),
+    connect(
+        mapStateToProps,
+
+        mapDispatchToProps
+    ),
     firestoreConnect([{ collection: 'events' }])
 )(UserEvents);

@@ -5,12 +5,12 @@ import 'react-circular-progressbar/dist/styles.css';
 class EventCardAttending extends Component {
     state = {
         enrollments: [],
-        userid: 'testuser'
+        userid: 'testuser',
     };
 
     render() {
         const { event } = this.props;
-        const { name, participant, time, type, id } = event;
+        const { name, participant, location, time, type, id } = event;
         const value = participant.in.length === 0 ? '0' : participant.in.length;
         return (
             // <NavLink to = {filteredEventids}
@@ -36,7 +36,7 @@ class EventCardAttending extends Component {
                                     transition: 'stroke-dashoffset 0.5s ease 0s',
                                     // Rotate the path
                                     transform: 'rotate(0.25turn)',
-                                    transformOrigin: 'center center'
+                                    transformOrigin: 'center center',
                                 },
                                 // Customize the circle behind the path, i.e. the "total progress"
                                 trail: {
@@ -46,7 +46,7 @@ class EventCardAttending extends Component {
                                     strokeLinecap: 'butt',
                                     // Rotate the trail
                                     transform: 'rotate(0.25turn)',
-                                    transformOrigin: 'center center'
+                                    transformOrigin: 'center center',
                                 },
                                 // Customize the text
                                 text: {
@@ -54,12 +54,12 @@ class EventCardAttending extends Component {
                                     fill: 'black',
                                     // Text size
                                     fontSize: '3rem',
-                                    fontWeight: 'bolder'
+                                    fontWeight: 'bolder',
                                 },
                                 // Customize background - only used when the `background` prop is true
                                 background: {
-                                    fill: 'white'
-                                }
+                                    fill: 'white',
+                                },
                             }}
                         />
                     </div>
@@ -75,7 +75,7 @@ class EventCardAttending extends Component {
                             {time.hourBegin} - {time.hourEnd}{' '}
                         </h3>
                     </div>
-                    <img src="" alt="" className="location" />
+                    <h3 className="location">{location}</h3>
                 </div>
             </div>
         );

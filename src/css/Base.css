@@ -89,20 +89,20 @@ footer p {
 /* OTHER COMMON ELEMENTS */
 
 label {
-  color: #ffb600;
+  /* color: #ffb600;
   font-size: 1.5rem;
-  text-align: center;
+  text-align: center; */
   /* padding-bottom: 0.5rem; */
 }
 
 input {
   /* display: block; */
-  border: 1px solid #909090;
+  /* border: 1px solid #909090;
   color: #909090;
   border-radius: 1.2rem;
   margin: 0.25rem auto;
   line-height: 2.4rem;
-  text-align: center;
+  text-align: center; */
 }
 
 input::placeholder {
