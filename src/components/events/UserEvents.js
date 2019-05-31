@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-r
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import UserEventCard from './UserEventCard';
+import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 // import '../../css/Attending.css';
 
@@ -17,15 +18,17 @@ class UserEvents extends Component {
 
         const events = this.props.userEvents;
         const { auth } = this.props;
-        const renderUserEvents =
-            events && events.map(event => <UserEventCard key={event.id} event={event} />);
+        const renderUserEvents = events && events.map(event => <UserEventCard key={event.id} event={event} />);
 
         return (
-            <main>
-                <section className="user-events-section">
-                    <div className="user-events container">{renderUserEvents}</div>
-                </section>
-            </main>
+            <>
+                <NavbarWithDrawer pageName="My Events" />
+                <main>
+                    <section className="user-events-section">
+                        <div className="user-events container">{renderUserEvents}</div>
+                    </section>
+                </main>
+            </>
         );
     }
 }
@@ -34,7 +37,7 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         userEvents: events,
-        auth: state.firebase.auth,
+        auth: state.firebase.auth
     };
 };
 export default compose(

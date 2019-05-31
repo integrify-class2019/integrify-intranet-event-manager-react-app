@@ -8,6 +8,7 @@ import Switch from 'react-switch';
 import EventCardAttending from './EventCardAttending';
 
 import '../../css/Attending.css';
+import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 // let eventInitial = [...eventsData];
 let eventInitial = [];
@@ -46,11 +47,14 @@ class AttendingEvents extends Component {
             events && events.map(event => <EventCardAttending key={event.id} event={event} />);
 
         return (
-            <main>
-                <section class="attending-events-section">
-                    <div class="attending-events container">{renderAttendingEvents}</div>
-                </section>
-            </main>
+            <>
+                <NavbarWithDrawer pageName="Attending" />
+                <main>
+                    <section class="attending-events-section">
+                        <div class="attending-events container">{renderAttendingEvents}</div>
+                    </section>
+                </main>
+            </>
         );
     }
 }
