@@ -1,0 +1,22 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(228, 228, 228, 0.9);
+    height: 70px;
+    z-index: 800;
+}
+.navbar-navigation {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.page-name {
+    margin-left: 1rem;
+}
+
+.spacer {
+    flex: 1;
+}

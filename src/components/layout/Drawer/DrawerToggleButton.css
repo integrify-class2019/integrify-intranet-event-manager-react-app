@@ -1,0 +1,15 @@
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 25px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.menu-btn:focus {
+    outline: none;
+}
