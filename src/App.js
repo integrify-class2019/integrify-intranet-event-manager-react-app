@@ -32,6 +32,7 @@ class App extends Component {
                         <Route exact path="/create-event" component={CreateEvent} />
                         <Route path="/event/:id" component={EventDetail} />
                         <Route path="/attending" component={AttendingEvents} />
+                        <Route path="/my-events" component={UserEvents} />
                         <Route path="/log-out" component={Logout} />
                         {/* <Route exact path="/sign-in" component={LogIn} /> */}
                         <Route path="/" component={Home} />
