@@ -29,7 +29,7 @@ class Dashboard extends Component {
 
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
 
-        searchTerm: ''
+        searchTerm: '',
 
         // checked: false,
 
@@ -40,7 +40,7 @@ class Dashboard extends Component {
         const { name, type, value } = event.target;
 
         this.setState({
-            [name]: value
+            [name]: value,
         });
     };
 
@@ -88,7 +88,7 @@ class Dashboard extends Component {
         typeInput[id] = !typeInput[id];
 
         this.setState({
-            typeInput
+            typeInput,
         });
     };
 
@@ -199,14 +199,14 @@ const mapStateToProps = state => {
 
         auth: state.firebase.auth,
 
-        profile: state.firebase.profile
+        profile: state.firebase.profile,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId))
+    outEvent: eventId => dispatch(outEvent(eventId)),
 });
 
 export default compose(
@@ -216,5 +216,5 @@ export default compose(
         mapDispatchToProps
     ),
 
-    firestoreConnect([{ collection: 'events' }])
+    firestoreConnect([{ collection: 'events', orderBy: ['date', 'asc'] }])
 )(Dashboard);

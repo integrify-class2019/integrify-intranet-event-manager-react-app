@@ -11,12 +11,12 @@ import '../../css/Attending.css';
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 // let eventInitial = [...eventsData];
-let eventInitial = [];
+const eventInitial = [];
 
 class AttendingEvents extends Component {
     state = {
-        events: [],
-        clicked: false
+        // events: [],
+        // clicked: false,
     };
     // componentDidUpdate() {
     //   // console.log(eventInitial);
@@ -38,20 +38,30 @@ class AttendingEvents extends Component {
     render() {
         console.log(this.props.eventsFB);
 
-        const { clicked } = this.state;
+        // const { clicked } = this.state;
         const events = this.props.eventsFB;
-        const { auth } = this.props;
+        const userId = this.props.auth.uid;
         console.log(this.props);
-        console.log(this.state.events);
+        // console.log(this.state.events);
+
+        const eventsFilter =
+            events &&
+            events.filter(event => {
+                if (event.participant.in.includes(userId)) {
+                    return event;
+                }
+            });
+
         const renderAttendingEvents =
-            events && events.map(event => <EventCardAttending key={event.id} event={event} />);
+            eventsFilter &&
+            eventsFilter.map(event => <EventCardAttending key={event.id} event={event} />);
 
         return (
             <>
                 <NavbarWithDrawer pageName="Attending" />
                 <main>
-                    <section class="attending-events-section">
-                        <div class="attending-events container">{renderAttendingEvents}</div>
+                    <section className="attending-events-section">
+                        <div className="attending-events container">{renderAttendingEvents}</div>
                     </section>
                 </main>
             </>
@@ -64,10 +74,10 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         eventsFB: events,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{ collection: 'events' }])
+    firestoreConnect([{ collection: 'events', orderBy: ['date', 'asc'] }])
 )(AttendingEvents);
