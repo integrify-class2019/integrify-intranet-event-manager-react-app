@@ -38,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
     const { events } = state.firestore.data;
     const event = events ? events[id] : null;
     return {
-        event
+        event,
     };
 };
 

@@ -9,6 +9,9 @@ const eventReducer = (state = initState, action) => {
         case 'CREATE_EVENT_ERROR':
             console.log('CREATE_EVENT_ERROR', action.err);
             return state;
+        case 'RESET_EVENT':
+            console.log('RESET_EVENT');
+            return { ...state, id: null };
         case 'IN_EVENT':
             console.log('in event  ', action.eventId);
             return state;

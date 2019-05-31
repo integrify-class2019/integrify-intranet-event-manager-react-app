@@ -22,6 +22,8 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
         });
 };
 
+export const resetEvent = () => ({ type: 'RESET_EVENT' });
+
 export const inEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
@@ -62,4 +64,18 @@ export const outEvent = eventId => (dispatch, getState, { getFirebase, getFirest
         .catch(err => {
             dispatch({ type: 'OUT_EVENT_ERROR', err });
         });
+};
+
+export const deleteEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+        .collection('events')
+        .doc(eventId)
+        .delete();
+    // .then(() => {
+    //     dispatch({ type: 'IN_EVENT', eventId });
+    // })
+    // .catch(err => {
+    //     dispatch({ type: 'IN_EVENT_ERROR', err });
+    // });
 };
