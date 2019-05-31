@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { createEvent } from '../../store/actions/eventActions';
+import { createEvent, resetEvent } from '../../store/actions/eventActions';
 
 import '../../css/CreateEvent.css';
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
@@ -75,6 +75,8 @@ class CreateEvent extends Component {
 
         if (this.props.event.id) {
             // redirect after they add event
+            // console.log(this.props.event);
+            this.props.resetEvent();
             return <Redirect to={`/event/${this.props.event.id}`} />;
         }
         return (
@@ -194,6 +196,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     createEvent: event => dispatch(createEvent(event)),
+    resetEvent: () => dispatch(resetEvent()),
 });
 
 export default connect(
