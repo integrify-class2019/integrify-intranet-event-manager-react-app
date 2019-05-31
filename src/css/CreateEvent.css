@@ -31,13 +31,13 @@
   display: block;
   text-transform: uppercase;
   font-size: 1em;
-  color: white;
+  color: black !important;
 }
 .FormField-Input {
   width: 85%;
   background-color: transparent;
   border: none;
-  color: white;
+  color: black !important;
   outline: none;
   border-bottom: 1px solid #ffb600;
   font-size: 1em;
