@@ -1,72 +1,24 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Link, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Switch from 'react-switch';
+import { inEvent, outEvent } from '../../store/actions/eventActions';
 // import { eventsData } from '../../data';
 import '../../css/Dashboard.css';
 
 import EventDashboard from './EventDashboard';
 
 // let eventInitial = [...eventsData];
-let eventInitial = [];
+const eventInitial = [];
 class Dashboard extends Component {
     state = {
-        events: [],
+        // events: [],
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
         searchTerm: '',
-        checked: false,
-        enrollments: [],
-    };
-
-    componentWillMount() {
-        // for when you come back from NavBar it can show every page
-        const { eventsJS } = this.props;
-        // console.log(eventsJS);
-        if (eventsJS) {
-            eventInitial = [...eventsJS];
-            this.setState({
-                events: eventInitial,
-            });
-        }
-    }
-
-    componentDidUpdate() {
-        // console.log(eventInitial);
-        this.updateEventFromDB();
-    }
-
-    showInputChange = typeInput => {
-        // / show all if all is false
-        if (Object.values(typeInput).filter(item => item === true).length === 0) {
-            this.setState({
-                events: eventInitial,
-            });
-            return eventInitial;
-        }
-
-        const newEvents = eventInitial.filter(event => {
-            if (typeInput[event.type] === true) {
-                return event;
-            }
-        });
-        this.setState({
-            events: newEvents,
-        });
-        return newEvents;
-    };
-
-    showSearchTermChange = searchTerm => {
-        const eventsBefore = this.showInputChange(this.state.typeInput);
-        const newEvents = eventsBefore.filter(event => {
-            if (event.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                return event;
-            }
-        });
-        this.setState({
-            events: newEvents,
-        });
+        // checked: false,
+        // enrollments: [],
     };
 
     handleSearchChange = event => {
@@ -75,28 +27,33 @@ class Dashboard extends Component {
         this.setState({
             [name]: value,
         });
-
-        if (name === 'searchTerm') {
-            this.showSearchTermChange(value);
-        }
     };
 
-    updateEventFromDB = () => {
-        const { eventsJS } = this.props;
-        // console.log(eventsJS);
-
-        if (eventsJS) {
-            // console.log('update events');
-            // console.log(eventsJS[0].participant);
-            // console.log(eventInitial.includes(eventsJS[0]));
-
-            if (eventInitial.length == 0) {
-                eventInitial = [...eventsJS];
-                this.setState({
-                    events: eventInitial,
+    // filter by search and event type
+    filterEvent = () => {
+        const { eventsFB } = this.props;
+        const { typeInput, searchTerm } = this.state;
+        console.log(eventsFB);
+        if (eventsFB) {
+            let eventFilter = [];
+            if (Object.values(typeInput).filter(item => item === true).length === 0) {
+                eventFilter = eventsFB;
+            } else {
+                const typeFilter = eventsFB.filter(event => {
+                    if (typeInput[event.type] === true) {
+                        return event;
+                    }
                 });
-                // console.log(eventInitial);
+                eventFilter = typeFilter;
             }
+
+            eventFilter = eventFilter.filter(event => {
+                if (event.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return event;
+                }
+            });
+
+            return eventFilter;
         }
     };
 
@@ -105,43 +62,37 @@ class Dashboard extends Component {
     handleSwitchChange = (checked, event, id) => {
         console.log(id);
 
-        // const { name, type, value } = event.target;
-
         const typeInput = { ...this.state.typeInput };
         typeInput[id] = !typeInput[id];
-        this.showInputChange(typeInput);
         this.setState({
             typeInput,
         });
-
-        this.setState({ checked });
     };
 
-    enrollData = (eventId, data) => {
-        console.log(eventId, data);
+    enrollAction = (type, eventId) => {
+        console.log(type, eventId);
+        if (type === 'in') {
+            this.props.inEvent(eventId);
+        }
+        if (type === 'out') {
+            this.props.outEvent(eventId);
+        }
     };
 
     render() {
-        const { events, typeInput, searchTerm, checked } = this.state;
+        const { typeInput, searchTerm } = this.state;
 
         const { auth } = this.props;
-        // console.log(this.props);
 
-        // console.log(this.state.events);
-
-        // if (!auth.uid) {
-        //     return <Redirect to="/sign-in" />;
-        // }
-        // update data form firebase
-
+        const eventFilter = this.filterEvent();
         const renderEvents =
-            events &&
-            events.map(event => (
+            eventFilter &&
+            eventFilter.map(event => (
                 <EventDashboard
                     key={event.id}
                     event={event}
                     history={this.props.history}
-                    enrollData={this.enrollData}
+                    enrollAction={this.enrollAction}
                     userId={auth.uid}
                 />
             ));
@@ -175,6 +126,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <section className="search-box-add">
+                    <div style={{ color: 'black' }}>Hi {this.props.profile.name} </div>
                     <form action="" className="search-form">
                         <input
                             type="text"
@@ -201,10 +153,21 @@ const mapStateToProps = state => {
     const { events } = state.firestore.ordered;
     return {
         eventsJS: events,
+        eventsFB: events,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
     };
 };
+
+const mapDispatchToProps = dispatch => ({
+    inEvent: eventId => dispatch(inEvent(eventId)),
+    outEvent: eventId => dispatch(outEvent(eventId)),
+});
+
 export default compose(
-    connect(mapStateToProps),
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    ),
     firestoreConnect([{ collection: 'events' }])
 )(Dashboard);

@@ -13,13 +13,13 @@ class CreateEvent extends Component {
         type: '',
         location: '',
         date: new Date(),
-        time: {}
+        time: {},
     };
 
     handleDate = date => {
         this.setState(
             {
-                date
+                date,
             },
             () => {
                 console.log(this.state);
@@ -35,7 +35,20 @@ class CreateEvent extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { date } = this.state;
-        const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const months = [
+            'Jan',
+            'Feb',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+        ];
         const month = date.getMonth();
         const day = date.getDate();
         const hour = date.getHours();
@@ -44,7 +57,7 @@ class CreateEvent extends Component {
 
         this.setState(
             {
-                time: { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` }
+                time: { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` },
             },
             () => {
                 console.log('the event created with the following data:');
@@ -102,13 +115,18 @@ class CreateEvent extends Component {
                             <label className="FormField-Label" htmlFor="eventType">
                                 Type of Event
                             </label>
-                            <select value={eventType} name="type" onChange={this.handleChange} required>
+                            <select
+                                value={eventType}
+                                name="type"
+                                onChange={this.handleChange}
+                                required
+                            >
                                 <option value="">-- Select your Event --</option>
                                 <option value="Sport">Sport</option>
                                 <option value="Meetup">Meetup</option>
                                 <option value="Party">Party</option>
                                 <option value="Presentation">Presentation</option>
-                                <option value="type4">Other</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
@@ -145,7 +163,11 @@ class CreateEvent extends Component {
                         </div>
 
                         <div className="FormField">
-                            <button type="submit" className="FormField-Button" onClick={this.handleSubmit}>
+                            <button
+                                type="submit"
+                                className="FormField-Button"
+                                onClick={this.handleSubmit}
+                            >
                                 Create Event
                             </button>
                         </div>
@@ -160,12 +182,12 @@ const mapStateToProps = state => {
     console.log(state);
 
     return {
-        event: state.event
+        event: state.event,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
-    createEvent: event => dispatch(createEvent(event))
+    createEvent: event => dispatch(createEvent(event)),
 });
 
 export default connect(
