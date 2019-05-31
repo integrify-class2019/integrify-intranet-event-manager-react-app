@@ -5,7 +5,6 @@
     top: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.3);
-    /* opacity: 0; */
     z-index: 900;
     animation: delayIn 0.2s ease-out 0.1s;
     animation-fill-mode: backwards;
