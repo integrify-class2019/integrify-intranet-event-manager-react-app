@@ -178,12 +178,12 @@
 
 .btn-in:hover,
 .btn-in-active {
-  color: white;
+  color: white !important;
   background-color: #78b728 !important;
 }
 .btn-out:hover,
 .btn-out-active {
-  color: white;
+  color: white !important;
   background-color: #ea5014 !important;
 }
 

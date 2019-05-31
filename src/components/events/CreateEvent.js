@@ -121,7 +121,7 @@ class CreateEvent extends Component {
                                 onChange={this.handleChange}
                                 required
                             >
-                                <option value="">-- Select your Event --</option>
+                                <option value="Other">-- Select your Event --</option>
                                 <option value="Sport">Sport</option>
                                 <option value="Meetup">Meetup</option>
                                 <option value="Party">Party</option>
