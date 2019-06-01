@@ -150,7 +150,9 @@ class Dashboard extends Component {
                     // id="material-switch"
                 />
 
-                <label htmlFor={typeItem}>{typeItem}</label>
+                <label htmlFor={typeItem} style={{ color: '#ffb600' }}>
+                    {typeItem}
+                </label>
             </div>
         ));
 

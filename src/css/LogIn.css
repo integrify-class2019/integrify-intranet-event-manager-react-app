@@ -23,6 +23,15 @@
   overflow: auto;
 }
 
+@media only screen and (max-width: 768px) {
+  .LogIn-Aside {
+    display: none;
+  }
+  .LogIn-Form {
+    width: 100%;
+  }
+}
+
 .PageSwitcher {
   display: flex;
   justify-content: flex-end;
