@@ -22,6 +22,8 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
         });
 };
 
+export const resetEvent = () => ({ type: 'RESET_EVENT' });
+
 export const inEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
