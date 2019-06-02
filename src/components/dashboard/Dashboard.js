@@ -177,7 +177,12 @@ class Dashboard extends Component {
                                 <div className="search-checkboxes">{renderType}</div>
                             </form>
 
-                            <NavLink exact to="/create-event" className="Dashboard-CreateEvent" />
+                            <NavLink
+                                exact
+                                to="/create-event"
+                                className="Dashboard-CreateEvent"
+                                style={{ cursor: 'pointer' }}
+                            />
                         </section>
 
                         <section className="events-section">
