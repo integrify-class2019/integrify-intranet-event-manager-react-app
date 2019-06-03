@@ -29,7 +29,7 @@ class Dashboard extends Component {
 
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
 
-        searchTerm: '',
+        searchTerm: ''
 
         // checked: false,
 
@@ -40,7 +40,7 @@ class Dashboard extends Component {
         const { name, type, value } = event.target;
 
         this.setState({
-            [name]: value,
+            [name]: value
         });
     };
 
@@ -88,7 +88,7 @@ class Dashboard extends Component {
         typeInput[id] = !typeInput[id];
 
         this.setState({
-            typeInput,
+            typeInput
         });
     };
 
@@ -138,13 +138,13 @@ class Dashboard extends Component {
                     onChange={this.handleSwitchChange}
                     onColor="#f3cf74"
                     onHandleColor="#ffb600"
-                    handleDiameter={25}
+                    handleDiameter={15}
                     uncheckedIcon={false}
                     checkedIcon={false}
                     boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
                     activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                    height={20}
-                    width={40}
+                    height={10}
+                    width={30}
                     className="react-switch"
 
                     // id="material-switch"
@@ -207,14 +207,14 @@ const mapStateToProps = state => {
 
         auth: state.firebase.auth,
 
-        profile: state.firebase.profile,
+        profile: state.firebase.profile
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId)),
+    outEvent: eventId => dispatch(outEvent(eventId))
 });
 
 export default compose(
