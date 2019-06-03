@@ -10,10 +10,10 @@ class SignUpForm extends Component {
         const { value, name, type, checked } = e.target;
         type === 'checkbox'
             ? this.setState({
-                  [name]: checked,
+                  [name]: checked
               })
             : this.setState({
-                  [name]: value,
+                  [name]: value
               });
     };
 
@@ -29,6 +29,7 @@ class SignUpForm extends Component {
 
     render() {
         const { auth, authError } = this.props;
+        let pattern = /^[w]{2,9}.[w]{2,9}@integrify.io$/gi;
         if (auth.uid) {
             console.log(auth.uid);
 
@@ -90,19 +91,16 @@ class SignUpForm extends Component {
                                 className="FormField-Checkbox"
                                 name="hasAgreed"
                                 onChange={this.handleChange}
-                            />{' '}
-                            I agree all statement in{' '}
+                            />
+                            I agree all statement in
                             <a href="" className="FormField-TermsLink">
-                                {' '}
                                 terms of service
                             </a>
                         </label>
                     </div>
 
                     <div className="FormField">
-                        <div className="center red-text">
-                            {authError ? <p>{authError}</p> : null}
-                        </div>
+                        <div className="center red-text">{authError ? <p>{authError}</p> : null}</div>
                         <button className="FormField-Button mr-20">Sign Up</button>{' '}
                         <Link to="/" className="FormField-Link">
                             I am already a member
@@ -116,11 +114,11 @@ class SignUpForm extends Component {
 
 const mapStateToProps = state => ({
     auth: state.firebase.auth,
-    authError: state.auth.authError,
+    authError: state.auth.authError
 });
 
 const mapDispatchToProps = dispatch => ({
-    signUp: creds => dispatch(signUp(creds)),
+    signUp: creds => dispatch(signUp(creds))
 });
 
 export default connect(
