@@ -135,17 +135,13 @@ export default class EventDashboard extends Component {
                 </div>
 
                 <div className="event-details">
-                    <div className="date-time">
+                    <div className="date-time-dashboard">
                         <h3 className="date">
-                            <span>{time.day}</span>{' '}
+                            <span>{time.day}</span>
                         </h3>
-
-                        <h3 className="time">
-                            {time.hourBegin} - {time.hourEnd}{' '}
-                        </h3>
+                        <h3 className="time">{time.hourBegin}</h3>
                     </div>
                     <h3 className="location">{location}</h3>
-                    {/* <img src="" alt="" className="location" /> */}
                 </div>
             </div>
         );

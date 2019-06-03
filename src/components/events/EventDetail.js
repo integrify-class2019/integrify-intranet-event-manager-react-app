@@ -10,6 +10,7 @@ import { inEvent, outEvent } from '../../store/actions/eventActions';
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
 
 import '../../css/EventDetail.css';
+
 library.add(faThumbsUp, faThumbsDown);
 
 class EventDetail extends Component {
@@ -58,16 +59,16 @@ class EventDetail extends Component {
             console.log('usersInfo:', usersInfo, ' ', 'participant in:', participant.in, ' ');
 
             if (usersInfo) {
-                const eventParticipants = usersInfo.filter(user => {
+                const eventParticipants = usersInfo.filter(user =>
                     // console.log(user);
-                    return participant.in.includes(user.id);
-                });
+                    participant.in.includes(user.id)
+                );
 
                 console.log(eventParticipants);
 
-                eventParticipantsNames = eventParticipants.map((participant, i) => {
-                    return <p key={participant.name + i}>{participant.name}</p>;
-                });
+                eventParticipantsNames = eventParticipants.map((participant, i) => (
+                    <p key={participant.name + i}>{participant.name}</p>
+                ));
 
                 console.log(eventParticipantsNames);
             }
@@ -77,14 +78,14 @@ class EventDetail extends Component {
                 <>
                     <NavbarWithDrawer pageName="Event Info" />
                     <main className="event-info-page">
-                        <div class={`event-hero event-${type}`}>
-                            <h2 class="event-title">{name}</h2>
+                        <div className={`event-hero event-${type}`}>
+                            <h2 className="event-title">{name}</h2>
                         </div>
-                        <small class="event-category">
+                        <small className="event-category">
                             Event category: <span>{type}</span>
                         </small>
 
-                        <div class="event-actions">
+                        <div className="event-actions">
                             <div className="enroll-buttons">
                                 <button
                                     type="button"
@@ -116,39 +117,40 @@ class EventDetail extends Component {
                             </div>
                         </div>
 
-                        <div class="event-details container">
-                            <div class="event-description event-info">
+                        <div className="event-details-card container">
+                            <div className="event-description event-info">
                                 <h2>Event description</h2>
                                 <p>{description}</p>
                             </div>
 
-                            <div class="event-location event-info">
+                            <div className="event-location event-info">
                                 <h2>Event location</h2>
                                 <p>{location}</p>
                             </div>
 
-                            <div class="event-date event-info">
+                            <div className="event-date event-info">
                                 <h2>Date</h2>
                                 <p>{time.day}</p>
                             </div>
 
-                            <div class="event-timing event-info">
+                            <div className="event-timing event-info">
                                 <h2>Time</h2>
                                 <p>{time.hourBegin} - </p>
                             </div>
 
-                            <div class="event-participants event-info">
+                            <div className="event-participants event-info">
                                 <h2>Participants</h2>
                                 <div>
                                     <p>{eventParticipantsNames}</p>
                                 </div>
                             </div>
 
-                            <div class="event-more-info event-info">
+                            <div className="event-more-info event-info">
                                 <h2>More Info</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto molestias quos
-                                    odio? Ducimus natus nisi fugiat, laborum iure in illo?
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Architecto molestias quos odio? Ducimus natus nisi fugiat,
+                                    laborum iure in illo?
                                 </p>
                             </div>
                         </div>
@@ -174,14 +176,14 @@ const mapStateToProps = (state, ownProps) => {
         event,
         usersInfo,
         eventId: id,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId))
+    outEvent: eventId => dispatch(outEvent(eventId)),
 });
 
 export default compose(

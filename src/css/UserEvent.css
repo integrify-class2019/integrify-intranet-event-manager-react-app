@@ -1,0 +1,153 @@
+.user-events-card {
+  width: 95%;
+  margin: auto;
+  margin-top: 3vh;
+}
+
+/* .event-card:not(first-child) {
+  margin-top: -40px;
+} */
+
+.user-event-info {
+  /* width: 100%; */
+  margin: auto;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 2rem;
+  margin-bottom: 2vh;
+}
+
+.event-Other {
+  background: url(../assets/images/event-Other.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
+.event-Meetup {
+  background: url(../assets/images/event-Meetup.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
+.event-Party {
+  background: url(../assets/images/event-Party.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
+.event-Presentation {
+  background: url(../assets/images/event-Presentation.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
+.event-Sport {
+  background: url(../assets/images/event-Sport.jpg);
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-attachment: unset;
+
+  background-repeat: no-repeat;
+}
+
+/* Event header */
+.event-header {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  margin: 15px 50px;
+}
+
+.event-header h2 {
+  font-size: 3rem;
+  color: white;
+  text-align: left;
+}
+
+/* Event details */
+.event-details {
+  margin-top: auto;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.date-time {
+  color: #000;
+  font-size: 2rem;
+}
+
+.date-time .date {
+  margin: 0;
+  font-size: 2rem;
+}
+.date-time .time {
+  /* margin: 0 auto 25px; */
+  font-size: 1.5rem;
+  color: #ffb600;
+}
+
+.location-user {
+  color: black;
+  font-size: 1.5rem;
+  /* width: ; */
+}
+.location-user::before {
+  content: url(../assets/images/location.svg);
+  vertical-align: -50%;
+  padding-right: 5px;
+}
+.edit-delete-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-edit,
+.btn-delete {
+  width: 150px;
+  margin: 10px;
+  background-color: #ffb600;
+  color: black;
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  padding: 0.5rem 3.2rem;
+  font-size: 2rem;
+  /* font-weight: 500; */
+}

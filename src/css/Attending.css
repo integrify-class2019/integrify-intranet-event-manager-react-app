@@ -8,10 +8,11 @@
   margin-top: -40px;
 } */
 .attending-event-card {
-  min-height: 40vh;
+  /* width: 100%; */
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-radius: 2rem;
   margin-bottom: 4vh;
@@ -82,15 +83,14 @@
   width: 95%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 10px;
-  margin: auto 50px;
+  padding: 10px 10px;
+  margin: 15px 50px;
 }
 
 .event-header h2 {
   font-size: 3rem;
   color: white;
   text-align: left;
-  justify-self: flex-start;
 }
 
 /* Event actions */
@@ -134,9 +134,11 @@
 
 /* Event details */
 .event-details {
+  margin-top: auto;
   width: 100%;
   padding: 10px 20px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background: rgba(255, 255, 255, 0.9);
@@ -152,10 +154,18 @@
   font-size: 2rem;
 }
 .date-time .time {
-  margin: 0 auto 25px;
+  /* margin: 0 auto 25px; */
   font-size: 1.5rem;
   color: #ffb600;
 }
-.location {
-  width: 18px;
+
+.location-attending {
+  color: black;
+  font-size: 1.5rem;
+  /* width: ; */
+}
+.location-attending::before {
+  content: url(../assets/images/location.svg);
+  vertical-align: -50%;
+  padding-right: 5px;
 }
