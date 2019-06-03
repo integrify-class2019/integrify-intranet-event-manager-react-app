@@ -122,12 +122,15 @@ class CreateEvent extends Component {
                                         Type of Event
                                     </label>
                                     <select
+                                        className="FormField-Select"
                                         value={eventType}
                                         name="type"
                                         onChange={this.handleChange}
                                         required
                                     >
-                                        <option value="Other">-- Select your Event --</option>
+                                        <option value={this.state.type}>
+                                            -- Select your Event --
+                                        </option>
                                         <option value="Sport">Sport</option>
                                         <option value="Meetup">Meetup</option>
                                         <option value="Party">Party</option>
@@ -153,7 +156,7 @@ class CreateEvent extends Component {
 
                                 <div className="FormField">
                                     <label className="FormField-Label" htmlFor="eventDate">
-                                        Date:
+                                        Date
                                     </label>
                                     <DateTimePicker
                                         disableClock
@@ -165,6 +168,18 @@ class CreateEvent extends Component {
                                         id="eventDate"
                                         onChange={this.handleDate}
                                         value={date}
+                                    />
+                                </div>
+
+                                <div className="FormField">
+                                    <label className="FormField-Label" htmlFor="eventExtra">
+                                        Extra
+                                    </label>
+                                    <textarea
+                                        className="FormField-Text-Area"
+                                        cols="25"
+                                        rows="4"
+                                        placeholder="Extra Information"
                                     />
                                 </div>
 

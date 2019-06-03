@@ -3,28 +3,28 @@ import DateTimePicker from 'react-datetime-picker';
 
 class EventForm extends Component {
     state = {
-        name: '',
-        description: '',
-        type: '',
-        location: '',
-        date: new Date(),
-        time: {},
+        name: this.props.event.name,
+        description: this.props.event.description,
+        type: this.props.event.type,
+        location: this.props.event.location,
+        date: new Date(this.props.event.date.seconds * 1000),
+        time: this.props.event.time,
     };
 
-    componentDidMount() {
-        const { event } = this.props;
-        const { name, description, type, location, date, time } = event;
-        console.log(this.props.event.date);
+    // componentDidMount() {
+    //     const { event } = this.props;
+    //     const { name, description, type, location, date, time } = event;
+    //     console.log(this.props.event.date);
 
-        this.setState({
-            name,
-            description,
-            type,
-            location,
-            date: new Date(this.props.event.date.seconds * 1000),
-            time,
-        });
-    }
+    //     this.setState({
+    //         name,
+    //         description,
+    //         type,
+    //         location,
+    //         date: new Date(this.props.event.date.seconds * 1000),
+    //         time,
+    //     });
+    // }
 
     handleDate = date => {
         this.setState(
@@ -77,7 +77,7 @@ class EventForm extends Component {
                         onChange={this.handleChange}
                     />
                     <select value={type} name="type" onChange={this.handleChange} required>
-                        <option value="Other">-- Select your Event --</option>
+                        <option value="">-- Select your Event --</option>
                         <option value="Sport">Sport</option>
                         <option value="Meetup">Meetup</option>
                         <option value="Party">Party</option>

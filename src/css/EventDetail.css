@@ -15,7 +15,10 @@ main.event-info-page {
   margin-bottom: 1rem;
 }
 .event-hero h2 {
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #111111;
+  padding: 0.9rem;
+  border-radius: 1rem;
   font-size: 2.5rem;
 }
 

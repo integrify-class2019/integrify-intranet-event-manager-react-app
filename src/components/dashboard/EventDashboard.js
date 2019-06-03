@@ -59,7 +59,9 @@ export default class EventDashboard extends Component {
         return (
             <div className={`event-card event-${type}`} key={id}>
                 <div className="event-header" onClick={this.clickEventDetail}>
-                    <h2 className="event-title">{name}</h2>
+                    <h2 className="event-title" style={{ cursor: 'pointer' }}>
+                        {name}
+                    </h2>
                     <div className="progress">
                         <CircularProgressbar
                             value={participant.in.length}
