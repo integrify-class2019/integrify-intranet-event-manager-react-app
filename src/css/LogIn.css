@@ -1,8 +1,7 @@
-.LogIn {
+/* .LogIn {
   height: 100vh;
   display: flex;
   color: white;
-  /* width: 50%; */
   margin: auto;
 }
 
@@ -12,15 +11,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
 }
 
 .LogIn-Form {
   width: 50%;
-  /* margin: 0 auto; */
   background-color: #353535;
   padding: 25px 40px;
   overflow: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .LogIn-Aside {
+    display: none;
+  }
+  .LogIn-Form {
+    width: 100%;
+  }
 }
 
 .PageSwitcher {
@@ -146,4 +152,4 @@
   display: inline-block;
   padding-bottom: 2px;
   margin-left: 5px;
-}
+} */

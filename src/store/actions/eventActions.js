@@ -24,6 +24,31 @@ export const createEvent = event => (dispatch, getState, { getFirebase, getFires
 
 export const resetEvent = () => ({ type: 'RESET_EVENT' });
 
+export const editEvent = (eventId, event) => (
+    dispatch,
+    getState,
+    { getFirebase, getFirestore }
+) => {
+    // make async call to database
+    const firestore = getFirestore();
+    const { profile } = getState().firebase;
+    const authorId = getState().firebase.auth.uid;
+    console.log(eventId, ' ', event);
+
+    firestore
+        .collection('events')
+        .doc(eventId)
+        .update(event)
+        .then(() => {
+            console.log('update success');
+            // dispatch({ type: 'CREATE_EVENT', event: { ...event, id: res.id } });
+        })
+        .catch(err => {
+            console.log(err);
+            // dispatch({ type: 'CREATE_EVENT_ERROR', err });
+        });
+};
+
 export const inEvent = eventId => (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();

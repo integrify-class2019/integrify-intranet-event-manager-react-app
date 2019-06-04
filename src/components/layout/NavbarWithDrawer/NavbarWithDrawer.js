@@ -11,7 +11,7 @@ import './NavbarWithDrawer.css';
 
 class NavbarWithDrawer extends Component {
     state = {
-        isDrawerOpen: false
+        isDrawerOpen: false,
     };
 
     handleDrawerToggle = () => {
@@ -20,7 +20,7 @@ class NavbarWithDrawer extends Component {
 
     handleBackdropClick = () => {
         this.setState({
-            isDrawerOpen: false
+            isDrawerOpen: false,
         });
     };
 
@@ -34,7 +34,7 @@ class NavbarWithDrawer extends Component {
             <>
                 <header className="navbar">
                     <nav className="navbar-navigation container">
-                        <NavLink to="/dashboard" className="logo">
+                        <NavLink to="/dashboard" className="logo" style={{ cursor: 'pointer' }}>
                             <img src={HeaderLogo} alt="logo" className="header-logo" />
                         </NavLink>
                         <div className="page-name">
@@ -46,7 +46,11 @@ class NavbarWithDrawer extends Component {
                         </div>
                     </nav>
                 </header>
-                <Drawer show={this.state.isDrawerOpen} handleBackdropClick={this.handleBackdropClick} handleDrawerToggle={this.handleDrawerToggle} />
+                <Drawer
+                    show={this.state.isDrawerOpen}
+                    handleBackdropClick={this.handleBackdropClick}
+                    handleDrawerToggle={this.handleDrawerToggle}
+                />
                 {backdrop}
             </>
         );

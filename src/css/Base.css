@@ -13,7 +13,7 @@
 html {
   scroll-behavior: inherit;
   font-size: 10px;
-  height: 100%;
+  /* height: 100%; */
 }
 
 *:focus {
@@ -21,15 +21,15 @@ html {
 }
 
 body {
-  color: black;
-  height: 100%;
+  /* color: black;
+  height: 100%; */
 }
 
 .App {
-  height: 100%;
+  /* height: 100%; */
 }
 img {
-  /* display: block; */
+  display: block;
   margin: auto;
   width: 100%;
 }
@@ -43,9 +43,9 @@ img {
 /* TYPOGRAPHY */
 h1,
 h2 {
-  font-size: 2.2rem;
+  /* font-size: 2.2rem;
   font-weight: 700;
-  text-align: center;
+  text-align: center; */
 }
 
 section {
@@ -60,18 +60,18 @@ main {
 
 /* FOOTER */
 footer {
-  background: #ffb600;
+  /* background: #ffb600;
   display: flex;
   height: 85px;
   justify-content: space-between;
   margin: auto;
   padding: 0.5rem 0.5rem 0.5rem 0.2rem;
   position: relative;
-  width: 280px;
+  width: 280px; */
 }
 
 footer::before {
-  background: #4e4747;
+  /* background: #4e4747;
   content: '';
   height: 2rem;
   left: 0px;
@@ -79,11 +79,11 @@ footer::before {
   position: absolute;
   top: -1rem;
   width: 280px;
-  z-index: 0;
+  z-index: 0; */
 }
 
 footer p {
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* OTHER COMMON ELEMENTS */
@@ -106,8 +106,8 @@ input {
 }
 
 input::placeholder {
-  font-size: 1.4rem;
-  color: #707070;
+  /* font-size: 1.4rem;
+  color: #707070; */
 }
 
 button {
