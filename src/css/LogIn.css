@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .LogIn {
     height: 100vh;
     display: flex;
@@ -21,6 +22,37 @@
     background-color: #353535;
     padding: 25px 40px;
     overflow: auto;
+=======
+/* .LogIn {
+  height: 100vh;
+  display: flex;
+  color: white;
+  margin: auto;
+}
+
+.LogIn-Aside {
+  width: 50%;
+  background-color: #ffb600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LogIn-Form {
+  width: 50%;
+  background-color: #353535;
+  padding: 25px 40px;
+  overflow: auto;
+>>>>>>> 6ae74a1bc02baf45afd53d47098dd0415975a8e5
+}
+
+@media only screen and (max-width: 768px) {
+  .LogIn-Aside {
+    display: none;
+  }
+  .LogIn-Form {
+    width: 100%;
+  }
 }
 
 .PageSwitcher {
@@ -140,6 +172,7 @@
 }
 
 .FormField-TermsLink {
+<<<<<<< HEAD
     color: white;
     border-bottom: 1px solid #ffb600;
     text-decoration: none;
@@ -147,3 +180,12 @@
     padding-bottom: 2px;
     margin-left: 5px;
 }
+=======
+  color: white;
+  border-bottom: 1px solid #ffb600;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 2px;
+  margin-left: 5px;
+} */
+>>>>>>> 6ae74a1bc02baf45afd53d47098dd0415975a8e5

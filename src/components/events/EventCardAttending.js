@@ -70,12 +70,9 @@ class EventCardAttending extends Component {
                         <h3 className="date">
                             <span>{time.day}</span>{' '}
                         </h3>
-
-                        <h3 className="time">
-                            {time.hourBegin} - {time.hourEnd}{' '}
-                        </h3>
+                        <h3 className="time">{time.hourBegin}</h3>
                     </div>
-                    <h3 className="location">{location}</h3>
+                    <h3 className="location-attending">{location}</h3>
                 </div>
             </div>
         );

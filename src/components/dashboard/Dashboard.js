@@ -29,7 +29,7 @@ class Dashboard extends Component {
 
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
 
-        searchTerm: ''
+        searchTerm: '',
 
         // checked: false,
 
@@ -40,7 +40,7 @@ class Dashboard extends Component {
         const { name, type, value } = event.target;
 
         this.setState({
-            [name]: value
+            [name]: value,
         });
     };
 
@@ -88,7 +88,7 @@ class Dashboard extends Component {
         typeInput[id] = !typeInput[id];
 
         this.setState({
-            typeInput
+            typeInput,
         });
     };
 
@@ -150,7 +150,12 @@ class Dashboard extends Component {
                     // id="material-switch"
                 />
 
-                <label htmlFor={typeItem}>{typeItem}</label>
+                <label
+                    htmlFor={typeItem}
+                    style={{ color: '#ffb600', textDecoration: 'underline', marginTop: '5px' }}
+                >
+                    {typeItem}
+                </label>
             </div>
         ));
 
@@ -175,7 +180,12 @@ class Dashboard extends Component {
                                 <div className="search-checkboxes">{renderType}</div>
                             </form>
 
-                            <NavLink exact to="/create-event" className="Dashboard-CreateEvent" />
+                            <NavLink
+                                exact
+                                to="/create-event"
+                                className="Dashboard-CreateEvent"
+                                style={{ cursor: 'pointer' }}
+                            />
                         </section>
 
                         <section className="events-section">
@@ -200,14 +210,14 @@ const mapStateToProps = state => {
 
         auth: state.firebase.auth,
 
-        profile: state.firebase.profile
+        profile: state.firebase.profile,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId))
+    outEvent: eventId => dispatch(outEvent(eventId)),
 });
 
 export default compose(
