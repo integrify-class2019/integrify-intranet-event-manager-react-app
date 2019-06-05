@@ -73,6 +73,16 @@ class Dashboard extends Component {
                     return event;
                 }
             });
+            // not show old event
+
+            eventFilter = eventFilter.filter(event => {
+                const today = Date.now();
+                // console.log(today * 1000);
+                // console.log(event.date.seconds);
+                if (event.date.seconds * 1000 >= today) {
+                    return event;
+                }
+            });
 
             return eventFilter;
         }

@@ -33,10 +33,11 @@ class EventEdit extends Component {
         const minute = date.getMinutes();
         event.time = { day: `${day} ${months[month]}`, hourBegin: `${hour}: ${minute}` };
         this.props.editEvent(eventId, event);
+        this.props.history.push('/my-events');
     };
 
     render() {
-        // console.log(this.props);
+        console.log(this.props);
         const { event } = this.props;
         const { id } = this.props.match.params;
 
