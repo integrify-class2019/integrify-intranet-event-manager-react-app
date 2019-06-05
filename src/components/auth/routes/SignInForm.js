@@ -11,9 +11,7 @@ class SignInForm extends Component {
         const { value, name, type, checked } = e.target;
 
         // eslint-disable-next-line prettier/prettier
-        type === 'checkbox' 
-        ? this.setState({ [name]: checked }) 
-        : this.setState({ [name]: value });
+        type === 'checkbox' ? this.setState({ [name]: checked }) : this.setState({ [name]: value });
     };
 
     handleSubmit = e => {
@@ -26,9 +24,26 @@ class SignInForm extends Component {
         this.props.signIn(this.state);
     };
 
+    errorCatch = authError => {
+        console.log(authError);
+    };
+
     render() {
         const { authError } = this.props;
-        console.log(authError);
+        let errorMsg = '';
+        switch (authError) {
+            case 'auth/user-not-found':
+                errorMsg = <p>Sorry, user not found. Only Integrify email is allowed</p>;
+                break;
+            case 'auth/wrong-password':
+                errorMsg = <p>Sorry, incorrect password. Please try again.</p>;
+                break;
+            case 'auth/user-disabled':
+                errorMsg = <p>Sorry, your user is disabled.</p>;
+                break;
+            default:
+                errorMsg = <p>Login error, Please try again.</p>;
+        }
 
         return (
             <div className="FormCenter">
@@ -69,7 +84,7 @@ class SignInForm extends Component {
                             <p>Email:guest@integrify.io</p>
                             <p>Pass:guest123</p>
                         </div>
-                        <div className="red-text">{authError ? <p>{authError}</p> : null}</div>
+                        <div className="red-text">{authError ? errorMsg : null}</div>
                         <button className="FormField-Button mr-20">Sign In</button>
                         <Link to="/sign-up" className="FormField-Link">
                             Create an account
@@ -82,11 +97,11 @@ class SignInForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    authError: state.auth.authError,
+    authError: state.auth.authError
 });
 
 const mapDispatchToProps = dispatch => ({
-    signIn: creds => dispatch(signIn(creds)),
+    signIn: creds => dispatch(signIn(creds))
 });
 
 export default connect(
