@@ -1,10 +1,10 @@
 # Eventify - Integrify Intranet Event Manager React App
 
-This is an intranet event management react app for managing events within Integrify Academy, Helsinki. 
+This is an intranet event management react app for managing events within Integrify Academy, Helsinki. The app could be easily customized for any other company that is interested in managing its internal corporate events within the organization in a fun and friendly manner. Any member of the organization can create their own corporate events and get other colleagues on boards as well.
 
 It was created for our June, 2019 demo day at Integrify (winter 2019 batch). 
 
-It was developed using React, Redux and Firebase for login authentication and database. Happy Using 😀.
+It was developed using React - for UI components, Redux - for state management and Firebase for login authentication and database management. Happy Using! 😀.
 
 ## Demo
 

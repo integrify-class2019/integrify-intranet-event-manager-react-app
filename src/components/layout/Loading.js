@@ -5,7 +5,7 @@ import '../../css/loading.css';
 const Loading = () => {
     return (
         <div className="loader-container">
-            <img src="../../../src/assets/svg-loader/puff.svg" alt="loader" className="loader" />;
+            <img src="../../assets/svg-loader/giphy.gif" alt="loader" className="loader" />;
         </div>
     );
 };

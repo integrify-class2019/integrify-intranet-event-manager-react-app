@@ -158,8 +158,7 @@ class EventDetail extends Component {
                 </>
             );
         }
-        // return <h1>Loading...</h1>;
-        return <Loading />;
+        return <h1>Loading...</h1>;
     }
 }
 
