@@ -3,6 +3,11 @@
   margin: auto;
   margin-top: 3vh;
 }
+@media only screen and (min-width: 768px) {
+  .attending-events-section {
+    width: 70%;
+  }
+}
 
 /* .event-card:not(first-child) {
   margin-top: -40px;

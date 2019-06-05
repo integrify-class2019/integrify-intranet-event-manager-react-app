@@ -1,4 +1,11 @@
-.user-events-card {
+@media only screen and (min-width: 768px) {
+  .user-events-section {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+.user-event-card {
   width: 95%;
   margin: auto;
   margin-top: 3vh;

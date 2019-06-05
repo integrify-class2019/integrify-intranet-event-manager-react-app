@@ -1,3 +1,10 @@
+@media only screen and (min-width: 768px) {
+  .event-info-page {
+    width: 70vw;
+    margin: auto;
+  }
+}
+
 main.event-info-page {
   margin-top: 70px !important;
   display: flex;
