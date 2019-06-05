@@ -1,11 +1,12 @@
 /* UNIVERSAL RESET */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Asap', sans-serif;
   scroll-behavior: smooth;
   text-decoration: none;
 }
@@ -21,6 +22,7 @@ html {
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   /* color: black;
   height: 100%; */
 }

@@ -38,7 +38,7 @@ class NavbarWithDrawer extends Component {
                             <img src={HeaderLogo} alt="logo" className="header-logo" />
                         </NavLink>
                         <div className="page-name">
-                            <h1>{this.props.pageName}</h1>
+                            <h1 style={{ fontSize: '2.5rem' }}>{this.props.pageName}</h1>
                         </div>
                         <div className="spacer" />
                         <div>
