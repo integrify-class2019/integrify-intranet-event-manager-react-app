@@ -31,12 +31,12 @@
   display: block;
   text-transform: uppercase;
   font-size: 2rem;
-  color: #111111 !important;
+  color: #111111;
 }
 .FormField-Input {
   background-color: transparent;
   border: none;
-  color: #111111 !important;
+  color: #111111;
   outline: none;
   border-bottom: 2px solid #ffb600;
   font-size: 1.5rem;
@@ -71,7 +71,7 @@
 .FormField-Text-Area {
   margin-top: 10px;
   padding: 10px;
-  border: 2px solid #ffb600;
+  border: 1px solid #ffb600;
 }
 
 .FormField-Input::placeholder {
