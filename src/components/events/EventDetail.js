@@ -148,10 +148,7 @@ class EventDetail extends Component {
 
                             <div className="event-more-info event-info">
                                 <h2>More Info</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto molestias quos
-                                    odio? Ducimus natus nisi fugiat, laborum iure in illo?
-                                </p>
+                                <p>No extra information was provided</p>
                             </div>
                         </div>
                     </main>
