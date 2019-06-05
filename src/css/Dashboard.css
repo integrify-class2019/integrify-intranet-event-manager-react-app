@@ -1,3 +1,10 @@
+@media only screen and (min-width: 768px) {
+  .Dashboard {
+    width: 70vw;
+    margin: auto;
+  }
+}
+
 .search-input {
   border: 1px solid #909090;
   color: #909090;
