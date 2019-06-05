@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../../../store/actions/authAction';
+import Loading from '../../layout/Loading';
 
 class SignInForm extends Component {
     state = { email: '', password: '' };
@@ -29,6 +30,7 @@ class SignInForm extends Component {
     };
 
     render() {
+        <Loading />;
         const { authError } = this.props;
         let errorMsg = '';
         switch (authError) {
