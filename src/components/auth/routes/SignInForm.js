@@ -82,11 +82,15 @@ class SignInForm extends Component {
 
                     <div className="FormField">
                         <div>
-                            <p>Guest user can use: </p>
+                            <p style={{ fontSize: '1.3rem', fontWeight: 'bold', paddingBottom: '1rem' }}>
+                                Guest user can use:{' '}
+                            </p>
                             <p>Email:guest@integrify.io</p>
                             <p>Pass:guest123</p>
                         </div>
-                        <div className="red-text">{authError ? errorMsg : null}</div>
+                        <div className="red-text" style={{ color: 'red', paddingTop: '1rem' }}>
+                            {authError ? errorMsg : null}
+                        </div>
                         <button className="FormField-Button mr-20">Sign In</button>
                         <Link to="/sign-up" className="FormField-Link">
                             Create an account
