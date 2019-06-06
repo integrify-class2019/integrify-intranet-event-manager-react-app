@@ -96,7 +96,7 @@
 .LogIn .FormField-Label {
   display: block;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1.3em;
   color: white;
 }
 .LogIn .FormField-Input {
@@ -106,7 +106,7 @@
   color: white;
   outline: none;
   border-bottom: 1px solid #ffb600;
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: 300;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -143,7 +143,6 @@
 .LogIn .FormField-Checkbox {
   position: relative;
   top: 1.5px;
-
 }
 
 .LogIn .FormField-TermsLink {
