@@ -1,161 +1,161 @@
 .FormFields input {
-    color: grey;
+  color: grey;
 }
 
 .LogIn {
-    height: 100vh;
-    display: flex;
-    color: white;
-    margin: auto;
+  height: 100vh;
+  display: flex;
+  color: white;
+  margin: auto;
 }
 
 .LogIn-Aside {
-    width: 50%;
-    background-color: #ffb600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  background-color: #ffb600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .LogIn-Form {
-    width: 50%;
-    background-color: #353535;
-    background-color: #fff;
-    padding: 25px 40px;
-    overflow: auto;
+  width: 50%;
+  background-color: #353535;
+  background-color: #fff;
+  padding: 25px 40px;
+  overflow: auto;
 }
 
 @media only screen and (max-width: 768px) {
-    .LogIn-Aside {
-        display: none;
-    }
-    .LogIn-Form {
-        width: 100%;
-    }
+  .LogIn-Aside {
+    display: none;
+  }
+  .LogIn-Form {
+    width: 100%;
+  }
 }
 
 .LogIn .PageSwitcher {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10%;
 }
 
 .LogIn .PageSwitcher-Item {
-    background-color: #4c5d72;
-    color: #9da6b1;
-    padding: 10px 25px;
-    cursor: pointer;
-    font-size: 1.5em;
-    border: none;
-    outline: none;
-    display: inline-block;
-    text-decoration: none;
+  background-color: #4c5d72;
+  color: #9da6b1;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .LogIn .PageSwitcher-Item-Active {
-    background-color: #ffb600;
-    color: white;
+  background-color: #ffb600;
+  color: white;
 }
 
 .LogIn .PageSwitcher-Item:first-child {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 .LogIn .PageSwitcher-Item:last-child {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .LogIn .FormCenter {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 .LogIn .FormTitle {
-    color: #707c8b;
-    font-weight: 300;
-    margin-bottom: 50px;
+  color: #707c8b;
+  font-weight: 300;
+  margin-bottom: 50px;
 }
 
 .LogIn .FormTitle-Link {
-    color: #707c8b;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 2em;
-    margin: 0 10px;
-    padding-bottom: 5px;
+  color: #707c8b;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2em;
+  margin: 0 10px;
+  padding-bottom: 5px;
 }
 
 .LogIn .FormTitle-Link:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .LogIn .FormTitle-Link-Active {
-    color: #5a5858;
-    border-bottom: 1px solid #ffb600;
+  color: #5a5858;
+  border-bottom: 1px solid #ffb600;
 }
 
 .LogIn .FormField {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .LogIn .FormField-Label {
-    display: block;
-    text-transform: uppercase;
-    font-size: 1.3em;
-    color: #707070;
+  display: block;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  color: #707070;
 }
 .LogIn .FormField-Input {
-    width: 85%;
-    background-color: transparent;
-    border: none;
-    color: grey;
-    outline: none;
-    border-bottom: 1px solid #ffb600;
-    font-size: 1.3em;
-    font-weight: 300;
-    padding-bottom: 10px;
-    margin-top: 10px;
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: grey;
+  outline: none;
+  border-bottom: 1px solid #ffb600;
+  font-size: 1.3em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
 }
 
 .LogIn .FormField-Input::placeholder {
-    color: #707070;
+  color: #707070;
 }
 
 .LogIn .FormField-Button {
-    background-color: #ffb600;
-    color: white;
-    border: none;
-    outline: none;
-    border-radius: 25px;
-    padding: 15px 60px;
-    font-size: 1.2em;
-    font-weight: 500;
+  background-color: #ffb600;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 60px;
+  font-size: 1.2em;
+  font-weight: 500;
 }
 
 .LogIn .FormField-Link {
-    color: #66707d;
-    text-decoration: none;
-    display: inline-block;
-    border-bottom: 1.5px solid #ffb600;
-    padding-bottom: 5px;
+  color: #66707d;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1.5px solid #ffb600;
+  padding-bottom: 5px;
 }
 
 .LogIn .FormField-CheckboxLabel {
-    color: #646f7d;
-    font-size: 1.2em;
+  color: #646f7d;
+  font-size: 1.2em;
 }
 
 .LogIn .FormField-Checkbox {
-    position: relative;
-    top: 1.5px;
-    margin-right: 1rem;
+  position: relative;
+  top: 1.5px;
+  margin-right: 1rem;
 }
 
 .LogIn .FormField-TermsLink {
-    color: white;
-    border-bottom: 1px solid #ffb600;
-    text-decoration: none;
-    display: inline-block;
-    padding-bottom: 2px;
-    margin-left: 5px;
+  color: #707070;
+  border-bottom: 1px solid #ffb600;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 2px;
+  margin-left: 5px;
 }
