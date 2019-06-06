@@ -8,6 +8,7 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { inEvent, outEvent } from '../../store/actions/eventActions';
 
 import NavbarWithDrawer from '../layout/NavbarWithDrawer/NavbarWithDrawer';
+import Loading from '../layout/Loading';
 
 import '../../css/EventDetail.css';
 
@@ -147,11 +148,7 @@ class EventDetail extends Component {
 
                             <div className="event-more-info event-info">
                                 <h2>More Info</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Architecto molestias quos odio? Ducimus natus nisi fugiat,
-                                    laborum iure in illo?
-                                </p>
+                                <p>No extra information was provided</p>
                             </div>
                         </div>
                     </main>
@@ -176,14 +173,14 @@ const mapStateToProps = (state, ownProps) => {
         event,
         usersInfo,
         eventId: id,
-        auth: state.firebase.auth,
+        auth: state.firebase.auth
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId)),
+    outEvent: eventId => dispatch(outEvent(eventId))
 });
 
 export default compose(

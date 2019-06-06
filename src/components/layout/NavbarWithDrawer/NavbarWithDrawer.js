@@ -11,7 +11,7 @@ import './NavbarWithDrawer.css';
 
 class NavbarWithDrawer extends Component {
     state = {
-        isDrawerOpen: false,
+        isDrawerOpen: false
     };
 
     handleDrawerToggle = () => {
@@ -20,7 +20,7 @@ class NavbarWithDrawer extends Component {
 
     handleBackdropClick = () => {
         this.setState({
-            isDrawerOpen: false,
+            isDrawerOpen: false
         });
     };
 

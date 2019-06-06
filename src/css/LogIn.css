@@ -1,3 +1,7 @@
+.FormFields input {
+  color: grey;
+}
+
 .LogIn {
   height: 100vh;
   display: flex;
@@ -16,6 +20,7 @@
 .LogIn-Form {
   width: 50%;
   background-color: #353535;
+  background-color: #fff;
   padding: 25px 40px;
   overflow: auto;
 }
@@ -85,7 +90,7 @@
 }
 
 .LogIn .FormTitle-Link-Active {
-  color: white;
+  color: #5a5858;
   border-bottom: 1px solid #ffb600;
 }
 
@@ -97,13 +102,13 @@
   display: block;
   text-transform: uppercase;
   font-size: 1.3em;
-  color: white;
+  color: #707070;
 }
 .LogIn .FormField-Input {
   width: 85%;
   background-color: transparent;
   border: none;
-  color: white;
+  color: grey;
   outline: none;
   border-bottom: 1px solid #ffb600;
   font-size: 1.3em;
@@ -113,7 +118,7 @@
 }
 
 .LogIn .FormField-Input::placeholder {
-  color: #616e7f;
+  color: #707070;
 }
 
 .LogIn .FormField-Button {
@@ -143,10 +148,11 @@
 .LogIn .FormField-Checkbox {
   position: relative;
   top: 1.5px;
+  margin-right: 1rem;
 }
 
 .LogIn .FormField-TermsLink {
-  color: white;
+  color: #707070;
   border-bottom: 1px solid #ffb600;
   text-decoration: none;
   display: inline-block;
