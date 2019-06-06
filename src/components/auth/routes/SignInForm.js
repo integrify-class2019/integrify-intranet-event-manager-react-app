@@ -81,8 +81,14 @@ class SignInForm extends Component {
                     </div>
 
                     <div className="FormField">
-                        <div>
-                            <p style={{ fontSize: '1.3rem', fontWeight: 'bold', paddingBottom: '1rem' }}>
+                        <div style={{ color: '#111111' }}>
+                            <p
+                                style={{
+                                    fontSize: '1.3rem',
+                                    fontWeight: 'bold',
+                                    paddingBottom: '1rem',
+                                }}
+                            >
                                 Guest user can use:{' '}
                             </p>
                             <p>Email:guest@integrify.io</p>
@@ -103,11 +109,11 @@ class SignInForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    authError: state.auth.authError
+    authError: state.auth.authError,
 });
 
 const mapDispatchToProps = dispatch => ({
-    signIn: creds => dispatch(signIn(creds))
+    signIn: creds => dispatch(signIn(creds)),
 });
 
 export default connect(
