@@ -37,7 +37,7 @@ class SignUpForm extends Component {
         let hasAgreedError = '';
 
         if (!this.state.name) {
-            nameError = 'name field cannot be blank ';
+            nameError = 'name field cannot be empty ';
         } else if (this.state.name.length < 2) {
             nameError = 'name must be minimum of 2 characters';
         }
@@ -51,7 +51,7 @@ class SignUpForm extends Component {
             passwordError = 'password must be minimum of 6 characters';
         }
         if (!this.state.hasAgreed) {
-            hasAgreedError = 'Please accept the terms of service to use the App';
+            hasAgreedError = 'please accept the terms of service to use the App';
         }
         if (nameError || emailError || passwordError) {
             this.setState({ nameError, emailError, passwordError, hasAgreedError });
@@ -111,7 +111,7 @@ class SignUpForm extends Component {
                             id="email"
                             value={this.state.email}
                             className="FormField-Input"
-                            placeholder="Enter your email"
+                            placeholder="firstname.lastname@integrify.io"
                             name="email"
                             onChange={this.handleChange}
                         />

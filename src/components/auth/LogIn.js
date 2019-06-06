@@ -12,8 +12,8 @@ class LogIn extends Component {
                 <div className="LogIn">
                     <div className="LogIn-Aside">
                         <div>
-                            <h1>Integrify Logo or design</h1>
-                            <h2>Integrify Event Planner!</h2>
+                            <h1>Eventify Logo or</h1>
+                            <h2>other company's logo</h2>
                         </div>
                     </div>
 

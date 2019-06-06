@@ -29,7 +29,7 @@ class Dashboard extends Component {
 
         typeInput: { Sport: false, Meetup: false, Party: false, Presentation: false, Other: false },
 
-        searchTerm: '',
+        searchTerm: ''
 
         // checked: false,
 
@@ -40,7 +40,7 @@ class Dashboard extends Component {
         const { name, type, value } = event.target;
 
         this.setState({
-            [name]: value,
+            [name]: value
         });
     };
 
@@ -98,7 +98,7 @@ class Dashboard extends Component {
         typeInput[id] = !typeInput[id];
 
         this.setState({
-            typeInput,
+            typeInput
         });
     };
 
@@ -160,10 +160,7 @@ class Dashboard extends Component {
                     // id="material-switch"
                 />
 
-                <label
-                    htmlFor={typeItem}
-                    style={{ color: '#ffb600', textDecoration: 'underline', marginTop: '5px' }}
-                >
+                <label htmlFor={typeItem} style={{ color: '#ffb600', textDecoration: 'underline', marginTop: '5px' }}>
                     {typeItem}
                 </label>
             </div>
@@ -175,7 +172,9 @@ class Dashboard extends Component {
                 <main>
                     <div className="Dashboard">
                         <section className="search-box-add">
-                            <div style={{ color: 'black' }}>Hi {this.props.profile.name} </div>
+                            <div style={{ color: 'black', paddingLeft: '1.5rem', fontSize: '1.5rem' }}>
+                                Hi {this.props.profile.name}
+                            </div>
 
                             <form action="" className="search-form">
                                 <input
@@ -220,14 +219,14 @@ const mapStateToProps = state => {
 
         auth: state.firebase.auth,
 
-        profile: state.firebase.profile,
+        profile: state.firebase.profile
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     inEvent: eventId => dispatch(inEvent(eventId)),
 
-    outEvent: eventId => dispatch(outEvent(eventId)),
+    outEvent: eventId => dispatch(outEvent(eventId))
 });
 
 export default compose(
