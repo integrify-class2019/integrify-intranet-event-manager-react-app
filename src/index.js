@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import fbConfig from './config/fbConfig';
+import * as serviceWorker from './serviceWorker';
 
 import rootReducer from './store/reducers/rootReducer';
 import App from './App';
@@ -19,7 +20,7 @@ const store = createStore(
         reactReduxFirebase(fbConfig, {
             userProfile: 'users',
             useFirestoreForProfile: true,
-            attachAuthIsReady: true
+            attachAuthIsReady: true,
         })
     )
 );
@@ -32,3 +33,5 @@ store.firebaseAuthIsReady.then(() => {
         document.getElementById('root')
     );
 });
+
+serviceWorker.register();
